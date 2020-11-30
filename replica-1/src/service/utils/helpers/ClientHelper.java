@@ -1,5 +1,6 @@
 package service.utils.helpers;
 
+import replica.ReplicaResponse;
 import service.StoreImpl;
 import service.entities.item.Item;
 import service.utils.date.DateUtils;
@@ -22,7 +23,7 @@ public class ClientHelper {
         this.provinceID = provinceID;
     }
 
-    public synchronized String purchaseItem(String customerID, String itemID, String dateOfPurchase, StoreImpl store) {
+    public synchronized ReplicaResponse purchaseItem(String customerID, String itemID, String dateOfPurchase, StoreImpl store) {
         //TODO User can be added to a waitlist whether they have money or not for an item, but if purchase fails, try to give the item to any other person waiting and so on.
         //TODO ... If it doesn't succeed do nothing
         Date dateOfPurchaseDateObject =  DateUtils.createDateFromString(dateOfPurchase);
@@ -136,7 +137,7 @@ public class ClientHelper {
 
         return itemName;
     }
-    public synchronized String findItem(String customerID, String itemName, HashMap<String, List<Item>> inventory) {
+    public synchronized ReplicaResponse findItem(String customerID, String itemName, HashMap<String, List<Item>> inventory) {
         List<Item> locallyFoundItems = new ArrayList<>();
         HashMap<String, List<Item>> remotelyFoundItems = new HashMap<>();
 
@@ -162,7 +163,7 @@ public class ClientHelper {
         return foundItems.toString();
     }
 
-    public synchronized String returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
+    public synchronized ReplicaResponse returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
         Date dateOfReturnDate = null;
         String response = "";
         try {

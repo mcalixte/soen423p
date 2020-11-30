@@ -1,5 +1,6 @@
 package service.utils.helpers;
 
+import replica.ReplicaResponse;
 import service.StoreImpl;
 import service.entities.item.Item;
 import service.utils.helpers.managerUtils.ManagerUtils;
@@ -13,7 +14,7 @@ public class ManagerHelper {
         this.provinceID = provinceID;
     }
 
-    public synchronized String addItem(String managerID, String itemID, String itemName, int quantity, double price, StoreImpl store) {
+    public synchronized ReplicaResponse addItem(String managerID, String itemID, String itemName, int quantity, double price, StoreImpl store) {
         Item item = null;
         String addToStockResponse = "";
         if(ManagerUtils.verifyID(managerID, this.provinceID)){
@@ -35,7 +36,7 @@ public class ManagerHelper {
 
 
 
-    public synchronized String removeItem(String managerID, String itemID, int quantity, HashMap<String, List<Item>> inventory) {
+    public synchronized ReplicaResponse removeItem(String managerID, String itemID, int quantity, HashMap<String, List<Item>> inventory) {
         String item = "";
         if(ManagerUtils.verifyID(managerID, this.provinceID))
             if(quantity != -1)
@@ -65,7 +66,7 @@ public class ManagerHelper {
         }
     }
 
-    public synchronized String listItemAvailability(String managerID, HashMap<String, List<Item>> inventory) {
+    public synchronized ReplicaResponse listItemAvailability(String managerID, HashMap<String, List<Item>> inventory) {
         String returnMessage;
         if(ManagerUtils.verifyID(managerID, this.provinceID)) {
             returnMessage = ManagerUtils.listItems(inventory);

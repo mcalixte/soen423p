@@ -8,6 +8,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../commonUtils/commonUtils.iml" filepath="$PROJECT_DIR$/../commonUtils/commonUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/replica-1.iml" filepath="$PROJECT_DIR$/replica-1.iml" />
     </modules>
   </component>
