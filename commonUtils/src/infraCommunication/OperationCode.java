@@ -1,4 +1,4 @@
-package udp;
+package infraCommunication;
 
 public enum OperationCode {
         INVALID(-1),

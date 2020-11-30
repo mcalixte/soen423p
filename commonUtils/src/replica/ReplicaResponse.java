@@ -3,13 +3,17 @@ package replica;
 import networkEntities.RegisteredReplica;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
+/**
+ * Client Request will be sent by the front end to the sequecer
+ */
 public class ReplicaResponse implements Serializable {
         private RegisteredReplica replicaID;
         private boolean success;
-        private String response;
+        private HashMap<String, String> response; // 1st entry is the id of the entity who made th erequest, 2nd is the generic log string
 
-        public ReplicaResponse(RegisteredReplica replicaID, boolean success, String response) {
+        public ReplicaResponse(RegisteredReplica replicaID, boolean success, HashMap<String, String> response) {
             this.replicaID = replicaID;
             this.success = success;
             this.response = response;
@@ -31,11 +35,11 @@ public class ReplicaResponse implements Serializable {
             this.success = success;
         }
 
-        public String getResponse() {
+        public HashMap<String, String> getResponse() {
             return response;
         }
 
-        public void setResponse(String response) {
+        public void setResponse(HashMap<String, String> response) {
             this.response = response;
         }
 

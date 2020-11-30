@@ -1,9 +1,9 @@
 import interfaces.IReplicaManager;
 import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
-import udp.MessageRequest;
-import udp.OperationCode;
-import udp.SocketWrapper;
+import infraCommunication.MessageRequest;
+import infraCommunication.OperationCode;
+import infraCommunication.SocketWrapper;
 
 import java.net.SocketException;
 import java.util.Stack;
@@ -63,7 +63,7 @@ public class ReplicaManager implements IReplicaManager {
                     "targetReplica: " + this.getAssociatedReplicaName() + "Command: restore from log from RM",
                     EntityAddressBook.SEQUENCER);
             // Set the Replica in message
-            message.setLocation(associatedReplica);
+            message.setRegisteredReplica(associatedReplica);
 
             if(!instance.send(message, 10, 1000)) {
                 throw new Exception("Failed to send Restore Command to Replica");
@@ -89,7 +89,7 @@ public class ReplicaManager implements IReplicaManager {
                     "targetReplica: " + this.getAssociatedReplicaName() + "Command: restart replica",
                     EntityAddressBook.REPLICAS);
             // Set the Replica in message
-            message.setLocation(associatedReplica);
+            message.setRegisteredReplica(associatedReplica);
 
             if(!instance.send(message, 10, 1000)) {
                 throw new Exception("Failed to send Restore Command to Replica");

@@ -1,4 +1,4 @@
-package udp;
+package infraCommunication;
 
 import networkEntities.RegisteredReplica;
 
@@ -32,7 +32,7 @@ public class SocketWrapper {
                     throw new Exception("RUDP: Rx a message but wasnt the correct ACK OpCode");
                 }
 
-                if (hopefulAck.getLocation() != msg.getLocation()) {
+                if (hopefulAck.getRegisteredReplica() != msg.getRegisteredReplica()) {
                     throw new Exception("RUDP: Rx a message but Location did not match");
                 }
 
@@ -60,7 +60,7 @@ public class SocketWrapper {
                     continue;
                 }
 
-                msg.setLocation(loc);
+                msg.setRegisteredReplica(loc);
                 if (!send(msg, retryCounter, timeout)) {
                     retval = false;
                 }
