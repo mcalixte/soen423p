@@ -161,7 +161,7 @@ public class ClientHelper {
 
         return itemName;
     }
-    public synchronized String findItem(String customerID, String itemName, HashMap<String, List<Item>> inventory) {
+    public synchronized ReplicaResponse findItem(String customerID, String itemName, HashMap<String, List<Item>> inventory) {
         List<Item> locallyFoundItems = new ArrayList<>();
         HashMap<String, List<Item>> remotelyFoundItems = new HashMap<>();
 
@@ -172,29 +172,40 @@ public class ClientHelper {
         StringBuilder logString = new StringBuilder();
         logString.append(">>>>>>>>>>>> All Items Found <<<<<<<<<<<< \n");
         StringBuilder foundItems = new StringBuilder();
-        for (Item item : allFoundItems)
+
+        List<Item> allFoundItemsWithoutDuplicates = new ArrayList<>(
+                new HashSet<>(allFoundItems));
+
+        for (Item item : allFoundItemsWithoutDuplicates)
             foundItems.append("\t" + item.toString() + "\n");
 
-        if (allFoundItems != null)
-            if (allFoundItems.size() == 0)
-                logString.append(">>" + new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " << Task SUCCESSFUL: Find Item from local and remote Inventory CustomerID: " + customerID + " Item name: " + itemName + ". HOWEVER, No items found.");
 
-            else
-                logString.append(">>" + new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " << Task SUCCESSFUL: Find Item from local and remote Inventory CustomerID: " + customerID + " Item name: " + itemName + "." + allFoundItems.size() + " item(s) found.");
-        else
-            logString.append(">>" + new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " << Task UNSUCCESSFUL: Find Item from local and remote Inventory CustomerID: " + customerID + " Item name: " + itemName + ". No items found.");
+        //Build out the ReplicaResponse
+        ReplicaResponse replicaResponse = new ReplicaResponse();
+        replicaResponse.setSuccessResult(true);
+        replicaResponse.getResponse().put(customerID, foundItems.toString());
+//        if (allFoundItems != null)
+//            if (allFoundItems.size() == 0)
+//                logString.append(">>" + new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " << Task SUCCESSFUL: Find Item from local and remote Inventory CustomerID: " + customerID + " Item name: " + itemName + ". HOWEVER, No items found.");
+//
+//            else
+//                logString.append(">>" + new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " << Task SUCCESSFUL: Find Item from local and remote Inventory CustomerID: " + customerID + " Item name: " + itemName + "." + allFoundItems.size() + " item(s) found.");
+//        else
+//            logString.append(">>" + new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " << Task UNSUCCESSFUL: Find Item from local and remote Inventory CustomerID: " + customerID + " Item name: " + itemName + ". No items found.");
 
-        return foundItems.toString();
+        return replicaResponse;
     }
 
-    public synchronized String returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
+    public synchronized ReplicaResponse returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
         Date dateOfReturnDate = null;
-        String response = "";
+        ReplicaResponse replicaResponse = new ReplicaResponse();
+
         try {
             dateOfReturnDate = new SimpleDateFormat("mm/dd/yyyy HH:mm").parse(dateOfReturn);
         } catch (ParseException e) {
            // e.printStackTrace();
         }
+
         if (ClientUtils.verifyID(itemID, this.provinceID))
             if (store.getCustomerPurchaseLog().containsKey(customerID.toLowerCase()))
                 if (store.getCustomerPurchaseLog().get(customerID.toLowerCase()) != null) {
@@ -209,10 +220,11 @@ public class ClientHelper {
                         removeItemFromCustomerItemDetention(customerID, itemID, store);
 
                         //Handle any waitlisted customers
+                        String waitlistReplicaResponse = "";
                         Item itemFromItemLog;
                         for(Item item : store.getItemLog()) {
                             if(item.getItemID().equalsIgnoreCase(itemID))
-                                ManagerUtils.handleWaitlistedCustomers(itemID, item.getPrice(), store);
+                                waitlistReplicaResponse = ManagerUtils.handleWaitlistedCustomers(itemID, item.getPrice(), store);
                         }
 
                         //TODO APPEND PURCHASE ON WAITLIST STRING **
@@ -229,31 +241,41 @@ public class ClientHelper {
 
                         String itemIDToReturn;
                         itemIDToReturn = store.getInventory().get(itemID) != null &&  store.getInventory().get(itemID).size() > 0 ? itemID : "";
-                        response = "Task SUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+" "+true;
-                        return response;
+
+                        replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+waitlistReplicaResponse);
+                        replicaResponse.setSuccessResult(true);
+                        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                        return replicaResponse;
                     } else {
                         System.out.println("Alert: Customer has purchased this item in the past, but item purchase date exceeds 30days");
 
                         String itemIDToReturn;
                         itemIDToReturn = store.getInventory().get(itemID) != null &&  store.getInventory().get(itemID).size() > 0 ? itemID : "";
 
-                        response = "Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\nAlert: Customer has purchased this item in the past, but item purchase date exceeds 30days";
-                        return response;
+                        replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\nAlert: Customer has purchased this item in the past, but item purchase date exceeds 30days");
+                        replicaResponse.setSuccessResult(false);
+                        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                        return replicaResponse;
                     }
                 } else {
                     System.out.println("Alert: Customer has past purchases, but NOT of this item");
-                    response = "Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item";
-                    return response;
+
+                    replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item");
+                    replicaResponse.setSuccessResult(false);
+                    replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                    return replicaResponse;
                 }
             else {
                 System.out.println("Alert: Customer has no record of past purchases");
-                response = "Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item";;
-                return response;
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item");
+                replicaResponse.setSuccessResult(false);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                return replicaResponse;
             }
         else {
             System.out.println("Alert: Item does not belong to this store...");
-            response = ClientUtils.returnItemToCorrectStore(customerID, itemID, dateOfReturn, provinceID);
-            return response;
+            replicaResponse = ClientUtils.returnItemToCorrectStore(customerID, itemID, dateOfReturn, provinceID);
+            return replicaResponse;
         }
     }
 

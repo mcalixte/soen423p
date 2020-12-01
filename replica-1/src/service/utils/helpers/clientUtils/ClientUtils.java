@@ -60,38 +60,37 @@ public class ClientUtils {
             customerHasFunds = (1000 - price) >= 0.00;
         }
 
-
         return customerHasFunds;
     }
 
     public static ReplicaResponse requestItemFromCorrectStore(String customerID, String itemID, String dateOfPurchase, String provinceID) {
-        String purchaseSuccesful = "";
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         if(itemID.toLowerCase().contains("qc")){
-            purchaseSuccesful = requestItemOverUDP(quebecPurchaseItemUDPPort,customerID, itemID, dateOfPurchase,provinceID);
+            replicaResponse = requestItemOverUDP(quebecPurchaseItemUDPPort,customerID, itemID, dateOfPurchase,provinceID);
         }
         else if(itemID.toLowerCase().contains("on")){
-            purchaseSuccesful = requestItemOverUDP(ontarioPurchaseItemUDPPort,customerID, itemID, dateOfPurchase,provinceID);
+            replicaResponse = requestItemOverUDP(ontarioPurchaseItemUDPPort,customerID, itemID, dateOfPurchase,provinceID);
         }
         else if(itemID.toLowerCase().contains("bc")){
-            purchaseSuccesful = requestItemOverUDP(britishColumbiaPurchaseItemUDPPort,customerID, itemID, dateOfPurchase, provinceID);
+            replicaResponse = requestItemOverUDP(britishColumbiaPurchaseItemUDPPort,customerID, itemID, dateOfPurchase, provinceID);
         }
 
-        return purchaseSuccesful;
+        return replicaResponse;
     }
 
     public static ReplicaResponse returnItemToCorrectStore(String customerID, String itemID, String dateOfPurchase, String provinceID) {
-        String returnSuccesful = "";
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         if(itemID.toLowerCase().contains("qc")){
-            returnSuccesful = requestItemOverUDP(quebecReturnUDPPort,customerID, itemID, dateOfPurchase,provinceID);
+            replicaResponse = requestItemOverUDP(quebecReturnUDPPort,customerID, itemID, dateOfPurchase,provinceID);
         }
         else if(itemID.toLowerCase().contains("on")){
-            returnSuccesful = requestItemOverUDP(ontarioReturnUDPPort,customerID, itemID, dateOfPurchase,provinceID);
+            replicaResponse = requestItemOverUDP(ontarioReturnUDPPort,customerID, itemID, dateOfPurchase,provinceID);
         }
         else if(itemID.toLowerCase().contains("bc")){
-            returnSuccesful = requestItemOverUDP(britishColumbiaReturnUDPPort,customerID, itemID, dateOfPurchase, provinceID);
+            replicaResponse = requestItemOverUDP(britishColumbiaReturnUDPPort,customerID, itemID, dateOfPurchase, provinceID);
         }
 
-        return returnSuccesful;
+        return replicaResponse;
     }
 
 
@@ -219,10 +218,10 @@ public class ClientUtils {
         return new ArrayList<>();
     }
 
-    private static String requestItemOverUDP(int storePort, String customerID, String itemID, String dateOfPurchase, String provinceID) { //Sending out requests to purchase items
+    private static ReplicaResponse requestItemOverUDP(int storePort, String customerID, String itemID, String dateOfPurchase, String provinceID) { //Sending out requests to purchase items
         DatagramSocket socket = null;
         String requestString;
-        String responseString = "";
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         try
         {
             socket = new DatagramSocket();
@@ -243,19 +242,19 @@ public class ClientUtils {
             ByteArrayInputStream in = new ByteArrayInputStream(data);
             ObjectInputStream is = new ObjectInputStream(in);
 
-            responseString = (String) is.readObject();
+            replicaResponse = (ReplicaResponse) is.readObject();
             is.close();
-            System.out.println("Item object received and purchase successful: "+responseString);
+            System.out.println("Item object received and purchase successful: "+replicaResponse);
 
             //TODO Log the response
-            return responseString;
+            return replicaResponse;
         }
         catch(Exception e)
         {
             System.err.println("Could not effectuate request item over UDP due to a socket error... Restart process of purchase or finding...");
 
         }
-        return responseString;
+        return replicaResponse;
     }
 
     private static String packageRequestAsString(String customerID, String itemID, String date) {

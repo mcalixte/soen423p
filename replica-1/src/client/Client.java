@@ -3,6 +3,7 @@ package client;
 import org.omg.CORBA.ORB;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
+import replica.ReplicaResponse;
 import service.interfaces.StoreInterface;
 
 import javax.xml.namespace.QName;
@@ -344,32 +345,32 @@ public class Client {
     ///     CORBA remote Methods     ///
     ////////////////////////////////////
 
-    public static String addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price) {
+    public static ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price) {
         return store.addItem(managerID.toLowerCase(), itemID.toLowerCase(), itemName.toLowerCase(), quantity, price);
     }
 
-    public static String removeItem(StoreInterface store, String managerID, String itemID, int quantity) {
+    public static ReplicaResponse removeItem(StoreInterface store, String managerID, String itemID, int quantity) {
         return store.removeItem(managerID.toLowerCase(), itemID.toLowerCase(), quantity);
     }
 
-    public static String listItemAvailability(StoreInterface store, String managerID) {
+    public static ReplicaResponse listItemAvailability(StoreInterface store, String managerID) {
         return store.listItemAvailability(managerID.toLowerCase());
     }
 
-    public static String purchaseItem(StoreInterface store, String customerID, String itemID, String dateOfPurchase) {
+    public static ReplicaResponse purchaseItem(StoreInterface store, String customerID, String itemID, String dateOfPurchase) {
         return store.purchaseItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
     }
 
-    public static String findItem(StoreInterface store, String customerID, String itemID) {
+    public static ReplicaResponse findItem(StoreInterface store, String customerID, String itemID) {
         return store.findItem(customerID.toLowerCase(), itemID.toLowerCase());
     }
 
-    public static String returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn) {
-        String returnResponse = "";
+    public static ReplicaResponse returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn) {
+        ReplicaResponse returnResponse = new ReplicaResponse();
         returnResponse = store.returnItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfReturn);
 
         String provinceOfItem = itemID.substring(0, 2);
-        if(returnResponse.contains("Alert: Item does not belong to this store...")) {
+        if(returnResponse.getResponse().get(customerID.toLowerCase()).contains("Alert: Item does not belong to this store...")) {
             switch (provinceOfItem.toLowerCase()) {
                 case "qc":
                     returnResponse = quebecStore.returnItem(customerID, itemID, dateOfReturn);
@@ -385,7 +386,7 @@ public class Client {
         return returnResponse;
     }
 
-    public static String exchangeItem(StoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn) {
+    public static ReplicaResponse exchangeItem(StoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn) {
         return store.exchange(customerID.toLowerCase(), newItemID.toLowerCase(), oldItemID.toLowerCase(), dateOfReturn);
     }
 }

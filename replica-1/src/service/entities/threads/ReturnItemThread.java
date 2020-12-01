@@ -1,5 +1,6 @@
 package service.entities.threads;
 
+import replica.ReplicaResponse;
 import service.StoreImpl;
 
 import java.io.ByteArrayOutputStream;
@@ -38,14 +39,14 @@ public class ReturnItemThread extends Thread {
             String itemID = returnOrder[1];
             String dateOfPurchase = returnOrder[2];
 
-            String returnOrderSuccess;
+            ReplicaResponse replicaResponse;
 
             try {
                 InetAddress ip = InetAddress.getLocalHost();
-                returnOrderSuccess = store.returnItem(customerID, itemID, dateOfPurchase);
+                replicaResponse = store.returnItem(customerID, itemID, dateOfPurchase);
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 ObjectOutputStream os = new ObjectOutputStream(outputStream);
-                os.writeObject(returnOrderSuccess);
+                os.writeObject(replicaResponse);
 
                 byte[] data = outputStream.toByteArray();
                 DatagramPacket sendPacket = new DatagramPacket(data, data.length, ip, receivePacket.getPort());

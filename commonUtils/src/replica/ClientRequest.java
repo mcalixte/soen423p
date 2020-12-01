@@ -7,11 +7,13 @@ public class ClientRequest implements Serializable {
 
     private String method;
     private String location; // TODO Will be parsed by the replica server in order to direct the request towards a store
+    private int sequenceNumber;
     private HashMap<String, Object> methodParameters = new HashMap<>();
 
-    public ClientRequest(String method, String location) {
+    public ClientRequest(String method, String location, int sequenceNumber) {
         this.method = method;
         this.location = location;
+        this.sequenceNumber = sequenceNumber;
     }
 
     public String getMethod() {
@@ -41,5 +43,13 @@ public class ClientRequest implements Serializable {
     @Override
     public String toString() {
         return "ClientRequest [method=" + method + ", location=" + location + ", data=" + methodParameters + "]";
+    }
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
+    }
+
+    public void setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
     }
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import networkEntities.RegisteredReplica;
 import replica.ReplicaResponse;
 import service.entities.item.Item;
 import service.entities.threads.ListItemThread;
@@ -103,22 +104,23 @@ public class StoreImpl implements StoreInterface {
     @Override
     public ReplicaResponse exchange(String customerID, String newItemID, String oldItemID, String dateOfReturn) {
         String dateOfPurchase = new SimpleDateFormat("mm/dd/yyyy HH:mm").format(new Date());
-        
-        String returnResult = returnItem(customerID, oldItemID, dateOfReturn);
+
+        ReplicaResponse returnReplicaResponse = returnItem(customerID, oldItemID, dateOfReturn);
 
         boolean isReturnSuccessful = false;
         boolean isPurchaseSuccessful = false;
         String isPurchaseSuccessfulString = "";
 
-        isReturnSuccessful = returnResult.contains("Task SUCCESSFUL:");
+        isReturnSuccessful = returnReplicaResponse.getResponse().get(customerID.toLowerCase()).contains("Task SUCCESSFUL:");
         System.out.println("MKC1: isReturnSuccessful "+isReturnSuccessful);
 
         StringBuilder exchangeResult = new StringBuilder();
         exchangeResult.append("\t>>>>>>>>>>>>> Exchange Item Result <<<<<<<<<<<<<<\n");
-        exchangeResult.append(returnResult+"\n");
+        exchangeResult.append(returnReplicaResponse.toString()+"\n");
 
         if(isReturnSuccessful) {
-            isPurchaseSuccessfulString = purchaseItem(customerID, newItemID, dateOfPurchase);
+            ReplicaResponse purchaseReplicaResponse  = purchaseItem(customerID, newItemID, dateOfPurchase);
+            isPurchaseSuccessfulString = purchaseReplicaResponse.toString();
             isPurchaseSuccessful = isPurchaseSuccessfulString.contains("Task SUCCESSFUL:");
             System.out.println("MKC1: isPurchaseSuccessful"+isPurchaseSuccessful);
             if(!isPurchaseSuccessful)
@@ -137,8 +139,12 @@ public class StoreImpl implements StoreInterface {
         exchangeResult.append("\t>>>>>>>>>>>>> END <<<<<<<<<<<<<<");
 
 
+        ReplicaResponse finalReplicaResponse = new ReplicaResponse();
+        finalReplicaResponse.setSuccessResult(isExchangeSuccessful);
+        finalReplicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+        finalReplicaResponse.getResponse().put(customerID, exchangeResult.toString());
 
-        return exchangeResult.toString() ;
+        return finalReplicaResponse;
     }
 
     @Override

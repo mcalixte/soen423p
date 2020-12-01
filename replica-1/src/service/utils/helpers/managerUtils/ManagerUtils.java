@@ -46,14 +46,14 @@ public class ManagerUtils {
                 if(itemsInInventoryList.get(0).getPrice() == item.getPrice())
                     inventory.get(item.getItemID().toLowerCase()).add(item);
                 else
-                    response = "Alert: Item will not be added, this item does not have the same price as others of its kind... ";
+                    response = "Alert: Item will not be added, this item does not have the same price as others of its kind ...";
             else{
-                response = "Alert: Item will be added, this item is the first of its kind... ";
+                response = "Alert: Item will be added, this item is the first of its kind ...";
                 itemsInInventoryList.add(item);
                 inventory.put(item.getItemID().toLowerCase(), itemsInInventoryList);
             }
         else{
-            response = "Alert: Item will be added for the first time... ";
+            response = "Alert: Item will be added ...";
             List<Item> itemList = new ArrayList<>();
             itemList.add(item);
             inventory.put(item.getItemID().toLowerCase(), itemList);
@@ -113,7 +113,7 @@ public class ManagerUtils {
                         } catch (ParseException e) {
                             System.out.println("Unable to purchase item due to a malformed date string... Restart the process of purchasing");
                         }
-                        waitlistResponse = "Purchased Item from inventory Customer who was on waitlist: CustomerID:"+entry.getValue().get(i)+" itemID:"+itemID;
+                        waitlistResponse += "Purchased Item from inventory Customer who was on waitlist: CustomerID:"+entry.getValue().get(i)+" itemID:"+itemID+"\n";
                         store.purchaseItem(entry.getValue().get(i), itemID, dateString);
 
                         List<HashMap<String, Date>> list = new ArrayList<>();

@@ -11,11 +11,15 @@ import java.util.HashMap;
 public class ReplicaResponse implements Serializable {
         private RegisteredReplica replicaID;
         private boolean success;
-        private HashMap<String, String> response; // 1st entry is the id of the entity who made th erequest, 2nd is the generic log string
+        private int sequenceNumber;
+        private HashMap<String, String> response = new HashMap<>(); // 1st entry is the id of the entity who made the erequest, 2nd is the generic log string
 
-        public ReplicaResponse(RegisteredReplica replicaID, boolean success, HashMap<String, String> response) {
+        public ReplicaResponse() { }
+
+        public ReplicaResponse(RegisteredReplica replicaID, boolean success, int sequenceNumber, HashMap<String, String> response) {
             this.replicaID = replicaID;
             this.success = success;
+            this.sequenceNumber = sequenceNumber;
             this.response = response;
         }
 
@@ -47,4 +51,12 @@ public class ReplicaResponse implements Serializable {
         public String toString() {
             return "ReplicaResponse [replicaID=" + replicaID + ", success=" + success + ", response=" + response + "]";
         }
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
+    }
+
+    public void setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+    }
 }

@@ -21,5 +21,4 @@ public interface StoreInterface {
 
     public void requestUpdateOfCustomerBudgetLog(String customerID, double price);
     public boolean waitList(String customerID, String itemID, String dateOfPurchase);
-
 }

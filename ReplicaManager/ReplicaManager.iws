@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74b3f5c-f51f-46d5-96fd-4c8d4420be46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/replica/ClientRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ReplicaManager.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReplicaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReplicaManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/replica/ReplicaResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/replica/ReplicaResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/OperationCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/SocketWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/projects/fall2020/soen423/Assignment3" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -117,10 +110,10 @@
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
     <state x="525" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606687935682" />
-    <state x="748" y="297" key="FileChooserDialogImpl" timestamp="1606590292760">
+    <state x="748" y="297" key="FileChooserDialogImpl" timestamp="1606714053607">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="748" y="297" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1606590292760" />
+    <state x="748" y="297" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1606714053607" />
     <state x="635" y="290" key="IDE.errors.dialog" timestamp="1606594245622">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>

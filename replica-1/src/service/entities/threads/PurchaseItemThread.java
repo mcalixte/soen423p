@@ -58,10 +58,7 @@ public class PurchaseItemThread extends Thread {
                 System.out.println("PurchaseItem Exception: " + e);
                // e.printStackTrace();
             }
-
-
         }
-
 
     }
 
