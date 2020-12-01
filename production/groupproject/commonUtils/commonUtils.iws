@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed850a1-ddb7-444d-aa13-010e76d54258" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/udp/RequestListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/CORBA.idl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/frontend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/frontendServerInitialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonUtils.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/commonUtils.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonUtils.iws" beforeDir="false" afterPath="$PROJECT_DIR$/commonUtils.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/udp/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/udp/MessageRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/interfaces/IReplicaManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networkEntities/EntityAddressBook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networkEntities/RegisteredReplica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/udp/MessageRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/udp/OperationCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/udp/SocketWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,10 +39,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
@@ -59,22 +47,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3ed850a1-ddb7-444d-aa13-010e76d54258" name="Default Changelist" comment="" />
@@ -82,22 +55,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606589997098</updated>
-      <workItem from="1606611146806" duration="3586000" />
     </task>
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606611166895">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606611166895" />
-    <state x="389" y="115" key="FileChooserDialogImpl" timestamp="1606613442283">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="389" y="115" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606613442283" />
     <state x="454" y="174" key="SettingsEditor" timestamp="1606590198718">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
