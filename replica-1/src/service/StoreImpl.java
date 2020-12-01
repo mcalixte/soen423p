@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-
+import replica.ReplicaResponse;
 import service.entities.item.Item;
 import service.entities.threads.ListItemThread;
 import service.entities.threads.PurchaseItemThread;
@@ -70,38 +70,38 @@ public class StoreImpl implements StoreInterface {
         openAllPorts(this.provinceID);
     }
     @Override
-    public String addItem(String managerID, String itemID, String itemName, int quantity, double price) {
+    public ReplicaResponse addItem(String managerID, String itemID, String itemName, int quantity, double price) {
         //TODO For waitlisted customers, check their budget before giving them the item.
         return getManagerHelper().addItem(managerID, itemID, itemName, quantity, price, this);
     }
 
     @Override
-    public String removeItem(String managerID, String itemID, int quantity) {
+    public ReplicaResponse removeItem(String managerID, String itemID, int quantity) {
         return getManagerHelper().removeItem(managerID, itemID, quantity, getInventory());
     }
 
     @Override
-    public String listItemAvailability(String managerID) {
+    public ReplicaResponse listItemAvailability(String managerID) {
         return getManagerHelper().listItemAvailability(managerID, getInventory());
     }
 
     @Override
-    public String purchaseItem(String customerID, String itemID, String dateOfPurchase) {
+    public ReplicaResponse purchaseItem(String customerID, String itemID, String dateOfPurchase) {
         return getClientHelper().purchaseItem(customerID, itemID, dateOfPurchase, this);
     }
 
     @Override
-    public String findItem(String customerID, String itemName) {
+    public ReplicaResponse findItem(String customerID, String itemName) {
         return getClientHelper().findItem(customerID, itemName, getInventory());
     }
 
     @Override
-    public String returnItem(String customerID, String itemID, String dateOfReturn) {
+    public ReplicaResponse returnItem(String customerID, String itemID, String dateOfReturn) {
         return getClientHelper().returnItem(customerID, itemID, dateOfReturn, this);
     }
 
     @Override
-    public String exchange(String customerID, String newItemID, String oldItemID, String dateOfReturn) {
+    public ReplicaResponse exchange(String customerID, String newItemID, String oldItemID, String dateOfReturn) {
         String dateOfPurchase = new SimpleDateFormat("mm/dd/yyyy HH:mm").format(new Date());
         
         String returnResult = returnItem(customerID, oldItemID, dateOfReturn);

@@ -1,5 +1,7 @@
 package service.interfaces;
 
+import replica.ReplicaResponse;
+
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
@@ -7,15 +9,15 @@ import javax.jws.soap.SOAPBinding;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface StoreInterface {
     //Manager Invokable methods
-    public String addItem(String managerID, String itemID, String itemName, int quantity, double price);
-    public String removeItem(String managerID, String itemID, int quantity) ;
-    public String listItemAvailability(String managerID);
+    public ReplicaResponse addItem(String managerID, String itemID, String itemName, int quantity, double price);
+    public ReplicaResponse removeItem(String managerID, String itemID, int quantity) ;
+    public ReplicaResponse listItemAvailability(String managerID);
 
     //Client Invokable methods
-    public String purchaseItem(String customerID, String itemID, String dateOfPurchase);
-    public String findItem(String customerID, String itemName);
-    public String returnItem(String customerID, String itemID, String dateOfReturn) ;
-    public String exchange(String customerID, String newItemID, String oldItemID, String dateOfReturn);
+    public ReplicaResponse purchaseItem(String customerID, String itemID, String dateOfPurchase);
+    public ReplicaResponse findItem(String customerID, String itemName);
+    public ReplicaResponse returnItem(String customerID, String itemID, String dateOfReturn) ;
+    public ReplicaResponse exchange(String customerID, String newItemID, String oldItemID, String dateOfReturn);
 
     public void requestUpdateOfCustomerBudgetLog(String customerID, double price);
     public boolean waitList(String customerID, String itemID, String dateOfPurchase);

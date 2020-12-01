@@ -1,10 +1,14 @@
 package client;
 
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
 import service.interfaces.StoreInterface;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;

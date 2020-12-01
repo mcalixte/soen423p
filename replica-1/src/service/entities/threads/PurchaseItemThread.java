@@ -1,5 +1,6 @@
 package service.entities.threads;
 
+import replica.ReplicaResponse;
 import service.StoreImpl;
 
 import java.io.ByteArrayOutputStream;
@@ -8,6 +9,8 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PurchaseItemThread extends Thread {
     private DatagramSocket serverSocket;
@@ -38,14 +41,14 @@ public class PurchaseItemThread extends Thread {
             String itemID = purchaseOrder[1];
             String dateOfPurchase = purchaseOrder[2];
 
-            String purchaseOrderSuccess;
+            ReplicaResponse replicaResponse;
 
             try {
                 InetAddress ip = InetAddress.getLocalHost();
-                purchaseOrderSuccess = store.purchaseItem(customerID, itemID, dateOfPurchase);
+                replicaResponse = store.purchaseItem(customerID, itemID, dateOfPurchase);
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 ObjectOutputStream os = new ObjectOutputStream(outputStream);
-                os.writeObject(purchaseOrderSuccess);
+                os.writeObject(replicaResponse);
 
                 byte[] data = outputStream.toByteArray();
                 DatagramPacket sendPacket = new DatagramPacket(data, data.length, ip, receivePacket.getPort());

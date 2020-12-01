@@ -1,5 +1,8 @@
 package tests.main;
 
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
 import service.StoreImpl;
 import tests.threads.BCClientThread;
 import tests.threads.ManagerThread;

@@ -1,5 +1,6 @@
 package service.utils.helpers.clientUtils;
 
+import replica.ReplicaResponse;
 import service.entities.item.Item;
 import service.utils.date.DateUtils;
 
@@ -8,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ClientUtils {
@@ -62,7 +64,7 @@ public class ClientUtils {
         return customerHasFunds;
     }
 
-    public static String requestItemFromCorrectStore(String customerID, String itemID, String dateOfPurchase, String provinceID) {
+    public static ReplicaResponse requestItemFromCorrectStore(String customerID, String itemID, String dateOfPurchase, String provinceID) {
         String purchaseSuccesful = "";
         if(itemID.toLowerCase().contains("qc")){
             purchaseSuccesful = requestItemOverUDP(quebecPurchaseItemUDPPort,customerID, itemID, dateOfPurchase,provinceID);
@@ -77,7 +79,7 @@ public class ClientUtils {
         return purchaseSuccesful;
     }
 
-    public static String returnItemToCorrectStore(String customerID, String itemID, String dateOfPurchase, String provinceID) {
+    public static ReplicaResponse returnItemToCorrectStore(String customerID, String itemID, String dateOfPurchase, String provinceID) {
         String returnSuccesful = "";
         if(itemID.toLowerCase().contains("qc")){
             returnSuccesful = requestItemOverUDP(quebecReturnUDPPort,customerID, itemID, dateOfPurchase,provinceID);
@@ -231,7 +233,7 @@ public class ClientUtils {
             byte[] b = requestString.getBytes();
             DatagramPacket dp = new DatagramPacket(b, b.length, host, storePort);
             socket.send(dp);
-            //TODO Log the request
+
 
             //now receive reply
             //buffer to receive incoming data
@@ -244,10 +246,6 @@ public class ClientUtils {
             responseString = (String) is.readObject();
             is.close();
             System.out.println("Item object received and purchase successful: "+responseString);
-
-            // String logString = ">>" +new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date())+" << Task SUCCESSFUL: Purchase Item from another store CustomerID: "+customerID+" ItemID: "+itemID;
-            ////Logger.writeUserLog(customerID, logString);
-           // //Logger.writeStoreLog(provinceID, logString);
 
             //TODO Log the response
             return responseString;

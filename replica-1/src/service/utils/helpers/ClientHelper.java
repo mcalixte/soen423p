@@ -1,5 +1,6 @@
 package service.utils.helpers;
 
+import networkEntities.RegisteredReplica;
 import replica.ReplicaResponse;
 import service.StoreImpl;
 import service.entities.item.Item;
@@ -26,25 +27,29 @@ public class ClientHelper {
     public synchronized ReplicaResponse purchaseItem(String customerID, String itemID, String dateOfPurchase, StoreImpl store) {
         //TODO User can be added to a waitlist whether they have money or not for an item, but if purchase fails, try to give the item to any other person waiting and so on.
         //TODO ... If it doesn't succeed do nothing
+
+        //TODO When the item amount is zero, DO NOT REMOVE COMPLETELY FROM STORE
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         Date dateOfPurchaseDateObject =  DateUtils.createDateFromString(dateOfPurchase);
         Boolean isItemSuccessfullyPurchased = false;
         String purchasedItem;
         String response;
         if (!ClientUtils.verifyID(customerID, this.provinceID))
             if (customerHasForeignItem(customerID, itemID, store)) {
-                isItemSuccessfullyPurchased = false;
-                ClientUtils.log(isItemSuccessfullyPurchased, customerID, itemID, "purchase", this.provinceID);
-                return "Task UNSUCCESSFUL: Foreign Customer has purchased from this store once before " + customerID + "," + itemID + "," + dateOfPurchase + "," + "" + isItemSuccessfullyPurchased + "";
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Foreign Customer has a foreign item in their possession, can not purchase another. " + customerID + ", " + itemID + ", " + dateOfPurchase);
+                replicaResponse.setSuccessResult(false);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                return replicaResponse;
             }
 
         double price = getSpecificItemPrice(itemID, store);
 
         if(price != -1) {
             if (!ClientUtils.customerHasRequiredFunds(customerID, price, store.getCustomerBudgetLog())) {
-                ClientUtils.log(!isItemSuccessfullyPurchased, customerID, itemID, "purchase", this.provinceID);
-                response = "Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased;
-
-                return response;
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased);
+                replicaResponse.setSuccessResult(false);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                return replicaResponse;
             }
         }
 
@@ -56,7 +61,15 @@ public class ClientHelper {
                 store.getCustomerBudgetLog().put(customerID.toLowerCase(), store.getCustomerBudgetLog().get(customerID.toLowerCase()) - price);
 
                 Item item = new Item(itemID, getSpecificItemName(itemID, store), getSpecificItemPrice(itemID, store));
-                store.getCustomerItemDetention().get(customerID).add(item);
+
+                if( store.getCustomerItemDetention().containsKey(customerID.toLowerCase()))
+                    store.getCustomerItemDetention().get(customerID).add(item);
+                else {
+                    List<Item> itemList = new ArrayList<>();
+                    itemList.add(item);
+                    store.getCustomerItemDetention().put(customerID.toLowerCase(), itemList);
+                }
+
 
                 updateCustomerPurchaseLog(customerID, itemID, store, dateOfPurchaseDateObject);
                 store.requestUpdateOfCustomerBudgetLog(customerID.toLowerCase(), store.getCustomerBudgetLog().get(customerID.toLowerCase()));
@@ -66,36 +79,47 @@ public class ClientHelper {
                 store.getCustomerBudgetLog().put(customerID.toLowerCase(), budget);
 
                 Item item = new Item(itemID, getSpecificItemName(itemID, store), getSpecificItemPrice(itemID, store));
-                store.getCustomerItemDetention().get(customerID).add(item);
+
+                if( store.getCustomerItemDetention().containsKey(customerID.toLowerCase()))
+                    store.getCustomerItemDetention().get(customerID).add(item);
+                else {
+                    List<Item> itemList = new ArrayList<>();
+                    itemList.add(item);
+                    store.getCustomerItemDetention().put(customerID.toLowerCase(), itemList);
+                }
 
                 updateCustomerPurchaseLog(customerID, itemID, store, dateOfPurchaseDateObject);
                 store.requestUpdateOfCustomerBudgetLog(customerID.toLowerCase(), store.getCustomerBudgetLog().get(customerID.toLowerCase()));
             }
 
-            ClientUtils.log(isItemSuccessfullyPurchased, customerID, itemID, "purchase", this.provinceID);
-            response = "Task SUCCESSFUL: Customer purchased Item "+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased;
-            return response;
+            replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer purchased Item "+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased);
+            replicaResponse.setSuccessResult(true);
+            replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+            return replicaResponse;
         } else {
             if(itemID.contains(this.provinceID.toLowerCase())) {
                 store.waitList(customerID, itemID, dateOfPurchase);
-                ClientUtils.log(isItemSuccessfullyPurchased, customerID, itemID, "purchase", this.provinceID);
-                response = "Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased;
-                return response;
+
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased);
+                replicaResponse.setSuccessResult(false);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                return replicaResponse;
             }
             else{
-                response = ClientUtils.requestItemFromCorrectStore(customerID, itemID, dateOfPurchase, this.provinceID);
-                return response;
+                replicaResponse = ClientUtils.requestItemFromCorrectStore(customerID, itemID, dateOfPurchase, this.provinceID);
+
+                return replicaResponse;
             }
         }
     }
 
     private boolean customerHasForeignItem(String customerID, String itemID, StoreImpl store) {
-        String itemProvince = itemID.substring(0, 2);
+        String customerProvince = customerID.substring(0, 2);
         boolean customerHasForeignItem = false;
         for(Map.Entry<String, List<Item>> entry : store.getCustomerItemDetention().entrySet())
             if(entry.getKey().equalsIgnoreCase(customerID))
                 for(Item item : entry.getValue())
-                    if(item.getItemID().substring(0, 2).equalsIgnoreCase(itemProvince))
+                    if(!item.getItemID().substring(0, 2).equalsIgnoreCase(customerProvince))
                         customerHasForeignItem = true;
 
         return customerHasForeignItem;
@@ -137,7 +161,7 @@ public class ClientHelper {
 
         return itemName;
     }
-    public synchronized ReplicaResponse findItem(String customerID, String itemName, HashMap<String, List<Item>> inventory) {
+    public synchronized String findItem(String customerID, String itemName, HashMap<String, List<Item>> inventory) {
         List<Item> locallyFoundItems = new ArrayList<>();
         HashMap<String, List<Item>> remotelyFoundItems = new HashMap<>();
 
@@ -163,7 +187,7 @@ public class ClientHelper {
         return foundItems.toString();
     }
 
-    public synchronized ReplicaResponse returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
+    public synchronized String returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
         Date dateOfReturnDate = null;
         String response = "";
         try {
@@ -190,6 +214,10 @@ public class ClientHelper {
                             if(item.getItemID().equalsIgnoreCase(itemID))
                                 ManagerUtils.handleWaitlistedCustomers(itemID, item.getPrice(), store);
                         }
+
+                        //TODO APPEND PURCHASE ON WAITLIST STRING **
+                        //TODO ASK USER IF THEY WANT TO BE PUT ON WAITLIST **
+                        //TODO Change the 'C' for 'U' in the customer ID
 
                         Double price = 0.00;
                         for(Item item : store.getItemLog())
