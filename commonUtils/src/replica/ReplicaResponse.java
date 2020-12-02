@@ -1,8 +1,13 @@
 package replica;
 
+import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.DatagramPacket;
 import java.util.HashMap;
 
 /**
@@ -58,5 +63,15 @@ public class ReplicaResponse implements Serializable {
 
     public void setSequenceNumber(int sequenceNumber) {
         this.sequenceNumber = sequenceNumber;
+    }
+
+    public DatagramPacket getPacket(EntityAddressBook networkEntity) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(outputStream);
+        os.writeObject(this);
+
+        byte[] data = outputStream.toByteArray();
+        DatagramPacket sendPacket = new DatagramPacket(data, data.length, networkEntity.getAddress(), networkEntity.getPort());
+        return sendPacket;
     }
 }

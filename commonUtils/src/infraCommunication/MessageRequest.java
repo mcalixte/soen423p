@@ -24,7 +24,7 @@ public class MessageRequest {
             this.seqID = seq;
             this.registeredReplica = RegisteredReplica.EVERYONE;
             this.operationPrameters = operationPrameters;
-            this.addr = addrInfo.getAddr();
+            this.addr = addrInfo.getAddress();
             this.port = addrInfo.getPort();
         }
 

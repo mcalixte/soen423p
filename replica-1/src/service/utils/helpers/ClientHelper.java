@@ -46,8 +46,8 @@ public class ClientHelper {
 
         if(price != -1) {
             if (!ClientUtils.customerHasRequiredFunds(customerID, price, store.getCustomerBudgetLog())) {
-                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased);
-                replicaResponse.setSuccessResult(false);
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase);
+                replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
                 replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
                 return replicaResponse;
             }
@@ -92,16 +92,16 @@ public class ClientHelper {
                 store.requestUpdateOfCustomerBudgetLog(customerID.toLowerCase(), store.getCustomerBudgetLog().get(customerID.toLowerCase()));
             }
 
-            replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer purchased Item "+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased);
-            replicaResponse.setSuccessResult(true);
+            replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer purchased Item "+customerID + "," + itemID + "," + dateOfPurchase );
+            replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
             replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
             return replicaResponse;
         } else {
             if(itemID.contains(this.provinceID.toLowerCase())) {
                 store.waitList(customerID, itemID, dateOfPurchase);
 
-                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase + "," + isItemSuccessfullyPurchased);
-                replicaResponse.setSuccessResult(false);
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase );
+                replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
                 replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
                 return replicaResponse;
             }
