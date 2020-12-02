@@ -9,25 +9,26 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
-import java.net.InetAddress;
+import java.net.DatagramSocket;
 import java.net.MulticastSocket;
 import java.util.Map;
 
 public class frontendListener extends Thread {
 
     private ConsensusTracker consensusTracker;
-    private MulticastSocket socket;
+    private DatagramSocket socket;
     EntityAddressBook address = EntityAddressBook.FRONTEND;
-    RegisteredReplica instanceID = RegisteredReplica.EVERYONE;
+    Boolean executingRequests = false;
 
     @Override
     public void run() {
 
         createSocket();
 
-        MessageRequest request = waitForIncommingMessage();
+        while (executingRequests) {
+            MessageRequest request = waitForIncomingMessage();
 
-        MessageRequest response = processRequest(request);
+            MessageRequest response = processRequest(request);
 
             try {
                 System.out.println("Replying... " + response);
@@ -35,24 +36,25 @@ public class frontendListener extends Thread {
             } catch (IOException ex) {
                 System.out.println("Failed to send message: " + ex.getMessage());
             }
-        socket.close();
+            socket.close();
         }
+    }
 
     private void createSocket() {
         try {
-            socket = new MulticastSocket(address.getPort());
-            socket.joinGroup(address.getAddress());
+            socket = new DatagramSocket(address.getPort(),);
+            executingRequests = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private MessageRequest waitForIncommingMessage() {
+    private MessageRequest waitForIncomingMessage() {
         byte[] buf = new byte[2048];
         DatagramPacket packet = new DatagramPacket(buf, buf.length);
         try {
             socket.receive(packet);
-            System.out.println("UDP.RequestListener.waitForIncommingMessage()");
+            System.out.println("Waiting to receive message");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,7 +63,6 @@ public class frontendListener extends Thread {
     }
     private MessageRequest processRequest(MessageRequest request) {
         System.out.println("Processing new request...");
-        String responsePayload;
         OperationCode responseCode = request.getOpCode().toAck();
 
         try {
@@ -70,8 +71,6 @@ public class frontendListener extends Thread {
             e.printStackTrace();
         }
 
-        InetAddress address = request.getAddress();
-        int port = request.getPort();
         try {
             return new MessageRequest(responseCode, request.getSeqID(),"",  EntityAddressBook.MANAGER);
         } catch (Exception e) {
@@ -79,6 +78,7 @@ public class frontendListener extends Thread {
         }
         return null;
     }
+
     public void handleRequestMessage(MessageRequest msg) throws Exception {
         ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(msg.getOperationParameters().getBytes()));
         Object input = iStream.readObject();

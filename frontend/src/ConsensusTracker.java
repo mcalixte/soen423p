@@ -11,7 +11,7 @@ public class ConsensusTracker {
     final private Semaphore complete;
 
     final private LinkedList<RegisteredReplica> inError = new LinkedList<>();
-    private String currentAswer;
+    private String storedAnswers;
 
     public ConsensusTracker(int consensusCountNeeded, int sequenceID) {
         this.answers = new HashMap<>();
@@ -21,14 +21,14 @@ public class ConsensusTracker {
 
     public void addRequestConsensus(RegisteredReplica replica, int sequenceID, String answer) {
         if (answers.isEmpty()) {
-            currentAswer = answer; // save the current answer
+            storedAnswers = answer;
         }
 
         if (sequenceNumber == sequenceID && !answers.containsKey(replica)) {
             answers.put(replica, answer);
             complete.release();
         } else {
-            inError.add(replica); // bad seq or duplicate =?
+            inError.add(replica);
         }
 
         int index = 0;
@@ -52,15 +52,15 @@ public class ConsensusTracker {
         int ticker = 0;
         for (String potential : answers.values()) {
             if (max == counter[ticker]) {
-                if (!currentAswer.equals(potential)) {
+                if (!storedAnswers.equals(potential)) {
 
                     for (RegisteredReplica suspect : RegisteredReplica.values()) {
 
-                        if (answers.containsKey(suspect) && answers.get(suspect).equals(currentAswer)) {
+                        if (answers.containsKey(suspect) && answers.get(suspect).equals(storedAnswers)) {
                             inError.add(suspect);
                         }
                     }
-                    currentAswer = potential;
+                    storedAnswers = potential;
                 }
 
                 break;
@@ -70,7 +70,7 @@ public class ConsensusTracker {
         }
 
         if (answers.size() > 2
-                && !answer.equals(currentAswer)) {
+                && !answer.equals(storedAnswers)) {
             inError.add(replica);
         }
     }
@@ -84,7 +84,7 @@ public class ConsensusTracker {
     }
 
     public String getAnswer() {
-        return currentAswer;
+        return storedAnswers;
     }
 
     public LinkedList<RegisteredReplica> getFailures() {

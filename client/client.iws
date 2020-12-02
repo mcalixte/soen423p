@@ -2,19 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="247ebcc0-120a-4661-8c40-b3dc674e710f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/client.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/client.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/CORBA.idl" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/CORBA.idl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/ConsensusTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/ConsensusTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Frontend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/frontendServerInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendServerInitialization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/Frontend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendPOA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/_FrontendStub.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/main/ConcurrencyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/BCClientThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/ManagerThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/ONClientThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/QCClientThread.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +61,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8.0_202" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../commonUtils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SOEN 423" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,6 +70,34 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="client" />
+      <option name="PROGRAM_PARAMETERS" value="-ORBInitialPort 1050 -ORBInitialHost localhost" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="frontendServerInitialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="frontendServerInitialization" />
+      <module name="frontend" />
+      <option name="PROGRAM_PARAMETERS" value="-ORBInitialPort 1050 -ORBInitialHost localhost" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.frontendServerInitialization" />
+      <item itemvalue="Application.Client" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.frontendServerInitialization" />
+        <item itemvalue="Application.Client" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -82,7 +122,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606603937922</updated>
-      <workItem from="1606885153481" duration="1008000" />
+      <workItem from="1606885153481" duration="5564000" />
+      <workItem from="1606892339600" duration="7815000" />
     </task>
     <servers />
   </component>
@@ -90,26 +131,70 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="64" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606940944236">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="64" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1217.720@0.0.1217.720" timestamp="1606940944236" />
     <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606885345584">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606885345584" />
-    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606885534448">
+    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606890792536">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
-    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606885534448" />
-    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606885541950">
+    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606890792536" />
+    <state width="1173" height="73" key="GridCell.Tab.0.bottom" timestamp="1606949221238">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
-    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard/0.0.1217.720@0.0.1217.720" timestamp="1606885541950" />
-    <state x="89" y="0" key="SettingsEditor" timestamp="1606885543624">
+    <state width="1173" height="73" key="GridCell.Tab.0.bottom/0.0.1217.720@0.0.1217.720" timestamp="1606949221238" />
+    <state width="1173" height="73" key="GridCell.Tab.0.center" timestamp="1606949221238">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
-    <state x="89" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606885543624" />
+    <state width="1173" height="73" key="GridCell.Tab.0.center/0.0.1217.720@0.0.1217.720" timestamp="1606949221238" />
+    <state width="1173" height="73" key="GridCell.Tab.0.left" timestamp="1606949221237">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state width="1173" height="73" key="GridCell.Tab.0.left/0.0.1217.720@0.0.1217.720" timestamp="1606949221237" />
+    <state width="1173" height="73" key="GridCell.Tab.0.right" timestamp="1606949221238">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state width="1173" height="73" key="GridCell.Tab.0.right/0.0.1217.720@0.0.1217.720" timestamp="1606949221238" />
+    <state width="1173" height="73" key="GridCell.Tab.1.bottom" timestamp="1606949221088">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state width="1173" height="73" key="GridCell.Tab.1.bottom/0.0.1217.720@0.0.1217.720" timestamp="1606949221088" />
+    <state width="1173" height="73" key="GridCell.Tab.1.center" timestamp="1606949221088">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state width="1173" height="73" key="GridCell.Tab.1.center/0.0.1217.720@0.0.1217.720" timestamp="1606949221088" />
+    <state width="1173" height="73" key="GridCell.Tab.1.left" timestamp="1606949221088">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state width="1173" height="73" key="GridCell.Tab.1.left/0.0.1217.720@0.0.1217.720" timestamp="1606949221088" />
+    <state width="1173" height="73" key="GridCell.Tab.1.right" timestamp="1606949221088">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state width="1173" height="73" key="GridCell.Tab.1.right/0.0.1217.720@0.0.1217.720" timestamp="1606949221088" />
+    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606888599447">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard/0.0.1217.720@0.0.1217.720" timestamp="1606888599447" />
+    <state x="89" y="0" key="SettingsEditor" timestamp="1606888936549">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="89" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606888936549" />
     <state x="59" y="0" key="new project wizard" timestamp="1606885249507">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="59" y="0" key="new project wizard/0.0.1217.720@0.0.1217.720" timestamp="1606885249507" />
+    <state x="351" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1606891208295">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="351" y="0" key="refactoring.ChangeSignatureDialog/0.0.1217.720@0.0.1217.720" timestamp="1606891208295" />
+    <state x="265" y="161" key="run.anything.popup" timestamp="1606940909781">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="265" y="161" key="run.anything.popup/0.0.1217.720@0.0.1217.720" timestamp="1606940909781" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

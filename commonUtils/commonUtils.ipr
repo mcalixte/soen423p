@@ -130,6 +130,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/commonUtils.iml" filepath="$PROJECT_DIR$/commonUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../replica-1/replica-1.iml" filepath="$PROJECT_DIR$/../replica-1/replica-1.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8.0_202" project-jdk-type="JavaSDK">

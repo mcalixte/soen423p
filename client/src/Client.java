@@ -1,6 +1,6 @@
 import networkEntities.EntityAddressBook;
-import org.omg.CORBA.Frontend;
-import org.omg.CORBA.FrontendHelper;
+import org.omg.CORBA.IFrontend;
+import org.omg.CORBA.IFrontendHelper;
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.ORBPackage.InvalidName;
 import org.omg.CosNaming.NamingContextExt;
@@ -24,7 +24,7 @@ public class Client{
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-            Frontend remote = FrontendHelper.narrow(ncRef.resolve_str(EntityAddressBook.FRONTEND.getShortHandName()));
+            IFrontend remote = IFrontendHelper.narrow(ncRef.resolve_str(EntityAddressBook.FRONTEND.getShortHandName()));
 
             prepareCommandConsoleInterfaces(commandInterface);
 
@@ -38,7 +38,7 @@ public class Client{
             userID = userID.toLowerCase();
 
             while (true) {
-                        generateUserAction(scanner, remote);
+                generateUserAction(scanner, remote);
             }
         } catch (InvalidName invalidName) {
             invalidName.printStackTrace();
@@ -115,7 +115,7 @@ public class Client{
             return generateUserID(scanner);
     }
 
-    private static void generateUserAction(Scanner scanner, Frontend frontend) {
+    private static boolean generateUserAction(Scanner scanner, IFrontend frontend) {
         if (userID.substring(2, 3).equalsIgnoreCase("M")) {
             System.out.print("A Manager can enter the following commands for their own store: \n\n");
             managerTaskList();
@@ -134,6 +134,7 @@ public class Client{
 
             handleUserRequest(command, scanner, frontend);
         }
+        return true;
     }
 
     private static void managerTaskList() {
@@ -152,7 +153,7 @@ public class Client{
                 }
     }
 
-    private static void handleUserRequest(String command, Scanner scanner, Frontend frontend) {
+    private static void handleUserRequest(String command, Scanner scanner, IFrontend frontend) {
         String itemID = null;
         String itemName = null;
         String dateString = null;
@@ -204,7 +205,7 @@ public class Client{
         }
     }
 
-    private static void handleManagerRequest(String command, Scanner scanner, Frontend frontend) {
+    private static void handleManagerRequest(String command, Scanner scanner, IFrontend frontend) {
         String itemID = null;
         String itemName = null;
         int quantity = 0;
