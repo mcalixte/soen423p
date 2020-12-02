@@ -1,6 +1,11 @@
+import infraCommunication.MessageRequest;
+import infraCommunication.OperationCode;
+import infraCommunication.RequestListenerThread;
+import infraCommunication.SocketWrapper;
+import networkEntities.EntityAddressBook;
+import networkEntities.RegisteredReplica;
 import org.omg.CORBA.FrontendPOA;
-import udp.RequestListener;
-import udp.SocketWrapper;
+import replica.ClientRequest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutput;
@@ -11,107 +16,124 @@ import java.util.LinkedList;
 public class frontend extends FrontendPOA {
 
     final private SocketWrapper socket;
-    final private RequestListener m_RequestListener;
+    final private RequestListenerThread m_RequestListener;
     private int requiredAnswersForAgreement;
 
     public frontend() throws SocketException {
         this.socket = new SocketWrapper();
         requiredAnswersForAgreement = 3;
-        m_RequestListener = new RequestListener();
-        m_RequestListener.launch();
+        m_RequestListener = new RequestListenerThread();
     }
 
     @Override
-    public String createMRecord(String managerID, String firstName, String lastName, int employeeID, String mailID, Project project, String location) {
-        String mangerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("createMRecord", mangerPrefix);
+    public String createAddItem(String managerID, String itemID, String itemName, int quantity, double price) {
+        String managerPrefix = managerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("AddItem", managerPrefix);
 
-        request.addRequestDataEntry("managerID", managerID);
-        request.addRequestDataEntry("firstName", firstName);
-        request.addRequestDataEntry("lastName", lastName);
-        request.addRequestDataEntry("employeeID", employeeID);
-        request.addRequestDataEntry("mailID", mailID);
-        request.addRequestDataEntry("project", project);
-        request.addRequestDataEntry("location", location);
+        request.addRequestDataEntry("userID", managerID);
+        request.addRequestDataEntry("itemID", itemID);
+        request.addRequestDataEntry("itemName", itemName);
+        request.addRequestDataEntry("quantity", quantity);
+        request.addRequestDataEntry("price", price);
 
         try {
-            sendRequestToSequencer(OperationCode.CREATE_MANAGER_RECORD, request);
+            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
         return getResults();
     }
 
-    @Override
-    public String createERecord(String managerID, String firstName, String lastName, int employeeID, String mailID, String projectID) {
-        String mangerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("createERecord", mangerPrefix);
+    public String createRemoveItem(String managerID, String itemID, int quantity) {
+        String managerPrefix = managerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("RemoveItem", managerPrefix);
 
-        request.addRequestDataEntry("managerID", managerID);
-        request.addRequestDataEntry("firstName", firstName);
-        request.addRequestDataEntry("lastName", lastName);
-        request.addRequestDataEntry("employeeID", employeeID);
-        request.addRequestDataEntry("mailID", mailID);
-        request.addRequestDataEntry("projectID", projectID);
+        request.addRequestDataEntry("userID", managerID);
+        request.addRequestDataEntry("itemID", itemID);
+        request.addRequestDataEntry("quantity", quantity);
 
         try {
-            sendRequestToSequencer(OperationCode.CREATE_EMPLOYEE_RECORD, request);
+            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+        return getResults();
+    }
+    public String createListItems(String managerID) {
+        String mangaerPrefix = managerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("ListItem", managerPrefix);
+
+        request.addRequestDataEntry("userID", managerID);
+
+        try {
+            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+        return getResults();
+    }
+    public String createPurchaseItems(String customerID, String itemID, String dateOfPurchase) {
+        String userPrefix = customerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("PurchaseItem", userPrefix);
+
+        request.addRequestDataEntry("userID", customerID);
+        request.addRequestDataEntry("itemID", itemID);
+        request.addRequestDataEntry("purchaseDate", dateOfPurchase);
+
+        try {
+            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+        return getResults();
+    }
+    public String createReturnItems(String customerID, String itemID, String dateOfReturn) {
+        String customerPrefix = customerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("ReturnItem", customerPrefix);
+
+        request.addRequestDataEntry("userID", customerID);
+        request.addRequestDataEntry("itemID", itemID);
+        request.addRequestDataEntry("purchaseDate", dateOfReturn);
+
+        try {
+            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+        return getResults();
+    }
+    public String createFindItem(String customerID, String itemName) {
+        String customerPrefix = customerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("AddItem", customerPrefix);
+
+        request.addRequestDataEntry("userID", customerID);
+        request.addRequestDataEntry("itemName", itemName);
+
+        try {
+            sendRequestToSequencer(OperationCode.FIND_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
         return getResults();
     }
 
-    @Override
-    public String getRecordCounts(String managerID) {
-        String mangerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("getRecordCounts", mangerPrefix);
+    public String createExchangeItem(String customerID, String newItemID, String oldItemID, String dateOfExchange) {
+        String customerPrefix = customerID.substring(0, 2);
+        ClientRequest request = new ClientRequest("AddItem", customerPrefix);
+
+        request.addRequestDataEntry("userID", customerID);
+        request.addRequestDataEntry("newItem", newItemID);
+        request.addRequestDataEntry("oldItem", oldItemID);
+        request.addRequestDataEntry("dateOfExchange", dateOfExchange);
 
         try {
-            sendRequestToSequencer(OperationCode.GET_RECORD_COUNT, request);
+            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
-
         return getResults();
     }
 
-    @Override
-    public String editRecord(String managerID, String recordID, String fieldName, String newValue) {
-        String mangerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("editRecord", mangerPrefix);
-
-        request.addRequestDataEntry("managerID", managerID);
-        request.addRequestDataEntry("recordID", recordID);
-        request.addRequestDataEntry("fieldName", fieldName);
-        request.addRequestDataEntry("newValue", newValue);
-
-        try {
-            sendRequestToSequencer(OperationCode.EDIT_RECORD, request);
-        } catch (Exception ex) {
-            return ex.getMessage();
-        }
-
-        return getResults();
-    }
-
-    @Override
-    public String transferRecord(String managerID, String recordID, String location) {
-        String mangerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("transferRecord", mangerPrefix);
-
-        request.addRequestDataEntry("managerID", managerID);
-        request.addRequestDataEntry("recordID", recordID);
-        request.addRequestDataEntry("location", location);
-
-        try {
-            sendRequestToSequencer(OperationCode.TRANSFER_RECORD, request);
-        } catch (Exception ex) {
-            return ex.getMessage();
-        }
-
-        return getResults();
-    }
 
     @Override
     public void softwareFailure(String managerID) {
@@ -123,10 +145,6 @@ public class frontend extends FrontendPOA {
         requiredAnswersForAgreement--;
     }
 
-    @Override
-    public String createRecord(String userID, String projectID) {
-        return null;
-    }
 
     private void sendRequestToSequencer(OperationCode method, ClientRequest clientRequest) throws Exception {
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
@@ -138,11 +156,11 @@ public class frontend extends FrontendPOA {
         byte[] serializedClientRequest = bStream.toByteArray();
         String payload = new String(serializedClientRequest);
 
-        Message messageToSend = null;
+        MessageRequest messageToSend = null;
         try {
-            messageToSend = new Message(method, 0, payload, AddressBook.SEQUENCER);
-        } catch (Exception ex) {
-            System.out.println("Message was too big!");
+            messageToSend = new MessageRequest(method, 0, payload, EntityAddressBook.SEQUENCER);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         if (messageToSend != null) {
@@ -153,7 +171,7 @@ public class frontend extends FrontendPOA {
     }
 
     private String getResults(){
-        int seqNumber = Integer.valueOf(socket.getResponse().getData().substring("SEQ=".length()));
+        int seqNumber = Integer.valueOf(socket.getResponse().getOperationParameters().substring("SEQ=".length()));
 
         ConsensusTracker tracker = new ConsensusTracker(requiredAnswersForAgreement, seqNumber);
 
@@ -184,18 +202,17 @@ public class frontend extends FrontendPOA {
         RegisteredReplica errors[] = new RegisteredReplica[inError.size()];
         errors = inError.toArray(errors);
 
-        Message notice = null;
+        MessageRequest notice = null;
         try {
-            notice = new Message(OperationCode.FAULY_RESP_NOTIFICATION, 0, "Your replica Errored!", AddressBook.MANAGER);
+            notice = new MessageRequest(OperationCode.FAULTY_RESP_RECEIVED_NOTIFICATION, 0, "Your replica Errored!", EntityAddressBook.MANAGER);
         } catch (Exception ex) {
             // This is impossible
         }
 
         try {
             socket.sendTo(errors, notice, 10, 1000);
-        } catch (Exception ex) {
-            System.out.println("Unable to notify Replica Manager of failure due to " + ex.getMessage());
-        }
+        } catch (Exception e) {
+            e.printStackTrace();        }
     }
 
     private void processesMissingResponses(ConsensusTracker tracker) {
@@ -204,21 +221,20 @@ public class frontend extends FrontendPOA {
         RegisteredReplica errors[] = new RegisteredReplica[inError.size()];
         errors = inError.toArray(errors);
 
-        Message notice = null;
+        MessageRequest notice = null;
         try {
-            notice = new Message(OperationCode.NO_RESP_NOTIFICATION, 0, "Your replica Errored!", AddressBook.MANAGER);
-        } catch (Exception ex) {
-            // This is impossible
+            notice = new MessageRequest(OperationCode.NO_RESPONSE_RECEIVED_NOTIFICATION, 0, "Your replica Errored!", EntityAddressBook.MANAGER);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         try {
             socket.sendTo(errors, notice, 10, 1000);
-        } catch (Exception ex) {
-            System.out.println("Unable to notify Replica Manager of failure due to " + ex.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public void shutdown() throws InterruptedException {
-        m_RequestListener.shutdown();
+    public void shutdown() {
     }
 }

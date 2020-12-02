@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe9f5f7-b17f-43b4-80bc-bb99418ca887" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/RequestListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CORBA.idl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontendServerInitialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ConsensusTracker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/frontendListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/RequestListener.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CORBA.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/CORBA.idl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/Frontend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendPOA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/_FrontendStub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +28,13 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -44,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../commonUtils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SOEN 423" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -79,6 +92,7 @@
       <updated>1606603894795</updated>
       <workItem from="1606613445205" duration="3366000" />
       <workItem from="1606786732142" duration="617000" />
+      <workItem from="1606873002181" duration="5543000" />
     </task>
     <servers />
   </component>
@@ -86,14 +100,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1606873885753">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="414" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1217.720@0.0.1217.720" timestamp="1606873885753" />
     <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606613476745">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606613476745" />
-    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606614100431">
+    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606877450981">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
-    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606614100431" />
+    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606877450981" />
     <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606614124603">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
