@@ -22,7 +22,7 @@ public class ReplicaServer {
 
         IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
         RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.SEQUENCER);
-
+        requestListenerThread.start();
     }
 
 

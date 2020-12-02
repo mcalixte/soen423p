@@ -1,18 +1,29 @@
 package replica;
 
+import replica.enums.Location;
+import replica.enums.UserType;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
 public class ClientRequest implements Serializable {
 
     private String method;
-    private String location; // TODO Will be parsed by the replica server in order to direct the request towards a store
+    private Location location; // TODO Will be parsed by the replica server in order to direct the request towards a store
+    private UserType userType;
     private int sequenceNumber;
     private HashMap<String, Object> methodParameters = new HashMap<>();
 
-    public ClientRequest(String method, String location, int sequenceNumber) {
+    public ClientRequest(String method, Location location, UserType userType) {
         this.method = method;
         this.location = location;
+        this.userType = userType;
+    }
+
+    public ClientRequest(String method, Location location, UserType userType, int sequenceNumber) {
+        this.method = method;
+        this.location = location;
+        this.userType = userType;
         this.sequenceNumber = sequenceNumber;
     }
 
@@ -24,11 +35,11 @@ public class ClientRequest implements Serializable {
         this.method = method;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -51,5 +62,9 @@ public class ClientRequest implements Serializable {
 
     public void setSequenceNumber(int sequenceNumber) {
         this.sequenceNumber = sequenceNumber;
+    }
+
+    public UserType getUserType() {
+        return userType;
     }
 }
