@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe9f5f7-b17f-43b4-80bc-bb99418ca887" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ConsensusTracker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontendListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/client.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/udp/RequestListener.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CORBA.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/CORBA.idl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/Frontend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendOperations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendPOA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/_FrontendStub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontendListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SOEN 423" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../client" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -93,6 +91,7 @@
       <workItem from="1606613445205" duration="3366000" />
       <workItem from="1606786732142" duration="617000" />
       <workItem from="1606873002181" duration="5543000" />
+      <workItem from="1606879207187" duration="6902000" />
     </task>
     <servers />
   </component>
@@ -108,10 +107,10 @@
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606613476745" />
-    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606877450981">
+    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606885150676">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
-    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606877450981" />
+    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606885150676" />
     <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606614124603">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
@@ -120,6 +119,14 @@
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="89" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606614186403" />
+    <state x="265" y="161" key="run.anything.popup" timestamp="1606880179645">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="265" y="161" key="run.anything.popup/0.0.1217.720@0.0.1217.720" timestamp="1606880179645" />
+    <state x="271" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1606884916066">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="271" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1217.720@0.0.1217.720" timestamp="1606884916066" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

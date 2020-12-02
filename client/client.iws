@@ -2,17 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="247ebcc0-120a-4661-8c40-b3dc674e710f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/interfaces/IReplicaManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/OperationCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/SocketWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/client.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/client.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/OperationCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,9 +45,36 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/workspace-sts-3.9.7.RELEASE/soen423pp" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8.0_202" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../commonUtils" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="247ebcc0-120a-4661-8c40-b3dc674e710f" name="Default Changelist" comment="" />
@@ -42,8 +82,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606603937922</updated>
+      <workItem from="1606885153481" duration="1008000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606885345584">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606885345584" />
+    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606885534448">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606885534448" />
+    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606885541950">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard/0.0.1217.720@0.0.1217.720" timestamp="1606885541950" />
+    <state x="89" y="0" key="SettingsEditor" timestamp="1606885543624">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="89" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606885543624" />
+    <state x="59" y="0" key="new project wizard" timestamp="1606885249507">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="59" y="0" key="new project wizard/0.0.1217.720@0.0.1217.720" timestamp="1606885249507" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

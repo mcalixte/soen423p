@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public enum EntityAddressBook {
+        CLIENT("Front-End", "FE", "225.4.5.5", 13000),
         FRONTEND("Front-End", "FE", "225.4.5.6", 14000),
         SEQUENCER("Sequencer", "SEQ", "225.4.5.7", 15000),
         MANAGER("Replica-Manager", "RM", "225.4.5.8", 16000),

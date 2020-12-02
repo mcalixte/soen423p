@@ -1,40 +1,54 @@
-import infraCommunication.MessageRequest;
-import infraCommunication.OperationCode;
-import infraCommunication.RequestListenerThread;
-import infraCommunication.SocketWrapper;
+import infraCommunication.*;
 import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
 import org.omg.CORBA.FrontendPOA;
 import replica.ClientRequest;
+import replica.enums.Location;
+import replica.enums.ParameterType;
+import replica.enums.UserType;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.net.DatagramPacket;
 import java.net.SocketException;
 import java.util.LinkedList;
 
 public class frontend extends FrontendPOA {
 
     final private SocketWrapper socket;
-    final private RequestListenerThread m_RequestListener;
     private int requiredAnswersForAgreement;
+    RequestListenerThread requestListenerThread;
+    frontendListener frontendListener;
 
     public frontend() throws SocketException {
         this.socket = new SocketWrapper();
         requiredAnswersForAgreement = 3;
-        m_RequestListener = new RequestListenerThread();
+        byte[] receiveData = new byte[1024];
+        frontendListener.run();
+
     }
 
     @Override
     public String createAddItem(String managerID, String itemID, String itemName, int quantity, double price) {
         String managerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("AddItem", managerPrefix);
+        ClientRequest request = null;
+        if(managerPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.ADD_ITEM, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(managerPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.ADD_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(managerPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.ADD_ITEM, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", managerID);
-        request.addRequestDataEntry("itemID", itemID);
-        request.addRequestDataEntry("itemName", itemName);
-        request.addRequestDataEntry("quantity", quantity);
-        request.addRequestDataEntry("price", price);
+
+        request.addRequestDataEntry(ParameterType.MANAGERID, managerID);
+        request.addRequestDataEntry(ParameterType.ITEMID, itemID);
+        request.addRequestDataEntry(ParameterType.ITEMNAME, itemName);
+        request.addRequestDataEntry(ParameterType.QUANTITY, quantity);
+        request.addRequestDataEntry(ParameterType.PRICE, price);
 
         try {
             sendRequestToSequencer(OperationCode.ADD_ITEM, request);
@@ -46,27 +60,45 @@ public class frontend extends FrontendPOA {
 
     public String createRemoveItem(String managerID, String itemID, int quantity) {
         String managerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("RemoveItem", managerPrefix);
+        ClientRequest request = null;
+        if(managerPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.REMOVE_ITEM, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(managerPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.REMOVE_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(managerPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.REMOVE_ITEM, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", managerID);
-        request.addRequestDataEntry("itemID", itemID);
-        request.addRequestDataEntry("quantity", quantity);
+        request.addRequestDataEntry(ParameterType.MANAGERID, managerID);
+        request.addRequestDataEntry(ParameterType.ITEMID, itemID);
+        request.addRequestDataEntry(ParameterType.QUANTITY, quantity);
 
         try {
-            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+            sendRequestToSequencer(OperationCode.REMOVE_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
         return getResults();
     }
     public String createListItems(String managerID) {
-        String mangaerPrefix = managerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("ListItem", managerPrefix);
+        String managerPrefix = managerID.substring(0, 2);
+        ClientRequest request = null;
+        if(managerPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.LIST_ITEMS, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(managerPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.LIST_ITEMS, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(managerPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.LIST_ITEMS, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", managerID);
+        request.addRequestDataEntry(ParameterType.MANAGERID, managerID);
 
         try {
-            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+            sendRequestToSequencer(OperationCode.LIST_ITEMS, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
@@ -74,40 +106,67 @@ public class frontend extends FrontendPOA {
     }
     public String createPurchaseItems(String customerID, String itemID, String dateOfPurchase) {
         String userPrefix = customerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("PurchaseItem", userPrefix);
+        ClientRequest request = null;
+        if(userPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", customerID);
-        request.addRequestDataEntry("itemID", itemID);
-        request.addRequestDataEntry("purchaseDate", dateOfPurchase);
+        request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
+        request.addRequestDataEntry(ParameterType.ITEMID, itemID);
+        request.addRequestDataEntry(ParameterType.DATEOFPURCHASE, dateOfPurchase);
 
         try {
-            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+            sendRequestToSequencer(OperationCode.PURCHASE_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
         return getResults();
     }
     public String createReturnItems(String customerID, String itemID, String dateOfReturn) {
-        String customerPrefix = customerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("ReturnItem", customerPrefix);
+        String userPrefix = customerID.substring(0, 2);
+        ClientRequest request = null;
+        if(userPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", customerID);
-        request.addRequestDataEntry("itemID", itemID);
-        request.addRequestDataEntry("purchaseDate", dateOfReturn);
+        request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
+        request.addRequestDataEntry(ParameterType.ITEMID, itemID);
+        request.addRequestDataEntry(ParameterType.DATEOFRETURN, dateOfReturn);
 
         try {
-            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+            sendRequestToSequencer(OperationCode.RETURN_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
         return getResults();
     }
     public String createFindItem(String customerID, String itemName) {
-        String customerPrefix = customerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("AddItem", customerPrefix);
+        String userPrefix = customerID.substring(0, 2);
+        ClientRequest request = null;
+        if(userPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.FIND_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.FIND_ITEM, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", customerID);
-        request.addRequestDataEntry("itemName", itemName);
+        request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
+        request.addRequestDataEntry(ParameterType.ITEMNAME, itemName);
 
         try {
             sendRequestToSequencer(OperationCode.FIND_ITEM, request);
@@ -118,16 +177,25 @@ public class frontend extends FrontendPOA {
     }
 
     public String createExchangeItem(String customerID, String newItemID, String oldItemID, String dateOfExchange) {
-        String customerPrefix = customerID.substring(0, 2);
-        ClientRequest request = new ClientRequest("AddItem", customerPrefix);
+        String userPrefix = customerID.substring(0, 2);
+        ClientRequest request = null;
+        if(userPrefix.equalsIgnoreCase("qc")) {
+            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.QUEBEC, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("bc")){
+            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+        }
+        if(userPrefix.equalsIgnoreCase("on")){
+            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.ONTARIO, UserType.MANAGER);
+        }
 
-        request.addRequestDataEntry("userID", customerID);
-        request.addRequestDataEntry("newItem", newItemID);
-        request.addRequestDataEntry("oldItem", oldItemID);
-        request.addRequestDataEntry("dateOfExchange", dateOfExchange);
+        request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
+        request.addRequestDataEntry(ParameterType.NEWITEMID, newItemID);
+        request.addRequestDataEntry(ParameterType.OLDITEMID, oldItemID);
+        request.addRequestDataEntry(ParameterType.DATEOFEXCHANGE, dateOfExchange);
 
         try {
-            sendRequestToSequencer(OperationCode.ADD_ITEM, request);
+            sendRequestToSequencer(OperationCode.EXCHANGE_ITEM, request);
         } catch (Exception ex) {
             return ex.getMessage();
         }
@@ -175,7 +243,7 @@ public class frontend extends FrontendPOA {
 
         ConsensusTracker tracker = new ConsensusTracker(requiredAnswersForAgreement, seqNumber);
 
-        m_RequestListener.setTracker(tracker);
+        frontendListener.setTracker(tracker);
 
         try {
             tracker.Wait();
@@ -183,7 +251,7 @@ public class frontend extends FrontendPOA {
             return "Error: could not obtain answer";
         }
 
-        m_RequestListener.setTracker(null);
+        frontendListener.setTracker(null);
 
         processesFailures(tracker);
 

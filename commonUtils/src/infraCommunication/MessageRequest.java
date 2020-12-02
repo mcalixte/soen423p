@@ -29,7 +29,7 @@ public class MessageRequest {
         }
 
         // Re-Work logic depending on how we want to structure the strings
-        protected MessageRequest(DatagramPacket packet) {
+        public MessageRequest(DatagramPacket packet) {
 
             String payload = new String(packet.getData(), 0, packet.getLength());
 

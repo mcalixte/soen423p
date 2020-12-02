@@ -1,69 +1,110 @@
 
+import infraCommunication.MessageRequest;
 import infraCommunication.OperationCode;
-import infraCommunication.RequestListenerThread;
 import networkEntities.EntityAddressBook;
+import networkEntities.RegisteredReplica;
+import replica.ReplicaResponse;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.SocketException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.util.Map;
 
-/**
- *
- * @author cmcarthur
- */
-public class frontendListener implements RequestListenerThread{
+public class frontendListener extends Thread {
 
-    final private RequestListener m_Listener;
-    private ConsensusTracker m_ConsensusTracker;
-    private Thread m_ListenerThread;
-
-    public Listener() throws SocketException {
-        m_Listener = new RequestListener(this, EntityAddressBook.FRONTEND);
-    }
-
-    public void launch() {
-        m_ListenerThread = new Thread(m_Listener);
-        m_ListenerThread.start();
-        m_Listener.Wait(); // Make sure it's running before getting any farther
-        System.out.println("Front-End started to listen for UDP requests on port: " + EntityAddressBook.FRONTEND.getPort());
-    }
-
-    public void shutdown() throws InterruptedException {
-        m_Listener.Stop();
-        m_ListenerThread.join();
-    }
+    private ConsensusTracker consensusTracker;
+    private MulticastSocket socket;
+    EntityAddressBook address = EntityAddressBook.FRONTEND;
+    RegisteredReplica instanceID = RegisteredReplica.EVERYONE;
 
     @Override
-    public String handleRequestMessage(MessageRequest msg) throws Exception {
-        if (msg.getOpCode() == OperationCode.OPERATION_RETVAL && msg.getData().contains("ReplicaResponse")) {
-            ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(msg.getData().getBytes()));
-            Object input = iStream.readObject();
-            ReplicaResponse replicaResponse;
-            iStream.close();
+    public void run() {
 
-            if (input instanceof ReplicaResponse) {
-                replicaResponse = (ReplicaResponse) input;
-            } else {
-                throw new IOException("Data received is not valid.");
+        createSocket();
+
+        MessageRequest request = waitForIncommingMessage();
+
+        MessageRequest response = processRequest(request);
+
+            try {
+                System.out.println("Replying... " + response);
+                socket.send(response.getPacket());
+            } catch (IOException ex) {
+                System.out.println("Failed to send message: " + ex.getMessage());
             }
-
-            int sequenceID = msg.getSeqNum();
-            String answer = replicaResponse.getResponse();
-            RegisteredReplica replicaID = replicaResponse.getReplicaID();
-
-            if (m_ConsensusTracker != null) {
-                m_ConsensusTracker.addRequestConsensus(replicaID, sequenceID, answer);
-            }
+        socket.close();
         }
-        return "";
+
+    private void createSocket() {
+        try {
+            socket = new MulticastSocket(address.getPort());
+            socket.joinGroup(address.getAddress());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     *
-     * @param tracker
-     */
+    private MessageRequest waitForIncommingMessage() {
+        byte[] buf = new byte[2048];
+        DatagramPacket packet = new DatagramPacket(buf, buf.length);
+        try {
+            socket.receive(packet);
+            System.out.println("UDP.RequestListener.waitForIncommingMessage()");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new MessageRequest(packet);
+    }
+    private MessageRequest processRequest(MessageRequest request) {
+        System.out.println("Processing new request...");
+        String responsePayload;
+        OperationCode responseCode = request.getOpCode().toAck();
+
+        try {
+            handleRequestMessage(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        InetAddress address = request.getAddress();
+        int port = request.getPort();
+        try {
+            return new MessageRequest(responseCode, request.getSeqID(),"",  EntityAddressBook.MANAGER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public void handleRequestMessage(MessageRequest msg) throws Exception {
+        ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(msg.getOperationParameters().getBytes()));
+        Object input = iStream.readObject();
+        ReplicaResponse replicaResponse;
+        iStream.close();
+
+        if (input instanceof ReplicaResponse) {
+            replicaResponse = (ReplicaResponse) input;
+        } else {
+            throw new IOException("Data received is not valid.");
+        }
+
+        int sequenceID = msg.getSeqID();
+
+        String answer = "";
+        for (Map.Entry<String, String> response : replicaResponse.getResponse().entrySet()) {
+            answer = response.getValue();
+        }
+        RegisteredReplica replicaID = replicaResponse.getReplicaID();
+
+        if (consensusTracker != null) {
+            consensusTracker.addRequestConsensus(replicaID, sequenceID, answer);
+        }
+    }
+
     public void setTracker(ConsensusTracker tracker) {
-        m_ConsensusTracker = tracker;
+        consensusTracker = tracker;
     }
 }
