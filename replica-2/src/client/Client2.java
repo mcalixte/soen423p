@@ -7,7 +7,7 @@ import javax.xml.ws.Service;
 import java.net.URL;
 import java.util.Scanner;
 
-public class Client {
+public class Client2 {
     static StoreInterface store;
 
     public static void main(String[] args){

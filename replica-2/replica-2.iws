@@ -20,13 +20,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad99a7ed-35c5-423b-90f3-ef741fd3c4e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/remote/ClientRequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/remote/ReplicaServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/replica/ClientRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/replica/ClientRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commonUtils/src/replica/interfaces/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/replica/interfaces/IClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/replica-2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/replica-2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/client/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/remote/dummyfile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/StoreImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/StoreImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/entities/threads/PurchaseItemThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/entities/threads/PurchaseItemThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/entities/threads/ReturnItemThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/entities/threads/ReturnItemThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/interfaces/StoreInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/interfaces/StoreInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/ClientHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/ClientHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/ManagerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/ManagerHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/clientUtils/ClientUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/clientUtils/ClientUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/logger/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/logger/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/main/ConcurrencyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/main/ConcurrencyTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/BCClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/BCClientThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/ManagerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/ManagerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/ONClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/ONClientThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/QCClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/tests/threads/QCClientThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/remote/ReplicaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/remote/ReplicaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/BCClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/tests/threads/BCClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/infraCommunication/MessageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commonUtils/infraCommunication/MessageRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/networkEntities/EntityAddressBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commonUtils/networkEntities/EntityAddressBook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/replica/ClientRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commonUtils/replica/ClientRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/replica/IReplicaServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/replica/ReplicaResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commonUtils/replica/ReplicaResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/client/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/server/implementation/StoreServerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/server/interfaces/StoreInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/server/stores/BcStoreServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/server/stores/OnStoreServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/server/stores/QcStoreServer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/replica-2.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/replica-2.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/replica-2.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Client2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/remote/ClientRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/remote/ClientRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/remote/ReplicaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/remote/ReplicaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +90,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/remote" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../replica-1" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -64,7 +100,7 @@
       <recent name="D:\Workspace\soen423p\replica-2\src\remote" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BcStoreServer">
+  <component name="RunManager" selected="Application.Sequencer">
     <configuration name="BcStoreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="service.stores.BcStoreServer" />
       <module name="replica-2" />
@@ -78,8 +114,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.Client" />
+    <configuration name="Client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.Client2" />
       <module name="replica-2" />
       <extension name="coverage">
         <pattern>
@@ -91,12 +127,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OnStoreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="service.stores.OnStoreServer" />
+    <configuration name="MulticastReceiver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MulticastReceiver" />
+      <module name="sequencer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReplicaServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="remote.ReplicaServer" />
       <module name="replica-2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="service.stores.*" />
+          <option name="PATTERN" value="remote.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,36 +147,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QcStoreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="service.stores.QcStoreServer" />
-      <module name="replica-2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.stores.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="Sequencer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Sequencer" />
+      <module name="sequencer" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Sequencer" />
+        <item itemvalue="Application.ReplicaServer" />
+        <item itemvalue="Application.MulticastReceiver" />
+        <item itemvalue="Application.Client2" />
         <item itemvalue="Application.BcStoreServer" />
-        <item itemvalue="Application.OnStoreServer" />
-        <item itemvalue="Application.QcStoreServer" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +187,8 @@
       <updated>1606603849412</updated>
       <workItem from="1606797501925" duration="2305000" />
       <workItem from="1606801551654" duration="24994000" />
-      <workItem from="1606879518844" duration="6088000" />
+      <workItem from="1606879518844" duration="8523000" />
+      <workItem from="1606891417674" duration="9849000" />
     </task>
     <servers />
   </component>
@@ -170,30 +211,34 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="450" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1606892587542">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="450" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1440.860@0.0.1440.860" timestamp="1606892587542" />
     <state x="525" y="136" key="#com.intellij.ide.util.MemberChooser" timestamp="1606879175369">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="525" y="136" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1606879175369" />
-    <state x="500" y="139" key="FileChooserDialogImpl" timestamp="1606797847109">
+    <state x="500" y="139" key="FileChooserDialogImpl" timestamp="1606949654765">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="500" y="139" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1606797847109" />
-    <state width="1397" height="218" key="GridCell.Tab.0.bottom" timestamp="1606879502562">
+    <state x="500" y="139" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1606949654765" />
+    <state width="1397" height="174" key="GridCell.Tab.0.bottom" timestamp="1606950300962">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="218" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1606879502562" />
-    <state width="1397" height="218" key="GridCell.Tab.0.center" timestamp="1606879502562">
+    <state width="1397" height="174" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1606950300962" />
+    <state width="1397" height="174" key="GridCell.Tab.0.center" timestamp="1606950300962">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="218" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1606879502562" />
-    <state width="1397" height="218" key="GridCell.Tab.0.left" timestamp="1606879502562">
+    <state width="1397" height="174" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1606950300962" />
+    <state width="1397" height="174" key="GridCell.Tab.0.left" timestamp="1606950300962">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="218" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1606879502562" />
-    <state width="1397" height="218" key="GridCell.Tab.0.right" timestamp="1606879502562">
+    <state width="1397" height="174" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1606950300962" />
+    <state width="1397" height="174" key="GridCell.Tab.0.right" timestamp="1606950300962">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="218" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1606879502562" />
+    <state width="1397" height="174" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1606950300962" />
     <state width="1397" height="218" key="GridCell.Tab.1.bottom" timestamp="1606879502563">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -210,14 +255,18 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="218" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1606879502563" />
-    <state x="385" y="134" key="NewModule_or_Project.wizard" timestamp="1606797868366">
+    <state x="385" y="134" key="NewModule_or_Project.wizard" timestamp="1606892513563">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="385" y="134" key="NewModule_or_Project.wizard/0.0.1440.860@0.0.1440.860" timestamp="1606797868366" />
-    <state x="200" y="4" key="SettingsEditor" timestamp="1606801479275">
+    <state x="385" y="134" key="NewModule_or_Project.wizard/0.0.1440.860@0.0.1440.860" timestamp="1606892513563" />
+    <state x="200" y="4" key="SettingsEditor" timestamp="1606893858011">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="200" y="4" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1606801479275" />
+    <state x="200" y="4" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1606893858011" />
+    <state x="357" y="50" key="new project wizard" timestamp="1606892498697">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="357" y="50" key="new project wizard/0.0.1440.860@0.0.1440.860" timestamp="1606892498697" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

@@ -56,7 +56,7 @@ public class ClientRequest implements Serializable, IGenericMessage {
 
     @Override
     public String toString() {
-        return "ClientRequest [method=" + method + ", location=" + location + ", data=" + methodParameters + "]";
+        return "ClientRequest [method=" + method + ", location=" + location + ", data=" + methodParameters + ", seqeunceID="+sequenceNumber+"]";
     }
 
     public int getSequenceNumber() {

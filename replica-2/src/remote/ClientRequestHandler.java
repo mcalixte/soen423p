@@ -1,6 +1,7 @@
 package remote;
 
 import infraCommunication.IClientRequestHandler;
+import networkEntities.RegisteredReplica;
 import replica.ClientRequest;
 import replica.ReplicaResponse;
 import replica.enums.ParameterType;
@@ -46,7 +47,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
     }
 
     @Override
-    public ReplicaResponse handleRequestMessage(ClientRequest clientRequest) throws InterruptedException, FileNotFoundException {
+    public ReplicaResponse handleRequestMessage(ClientRequest clientRequest){
         switch (clientRequest.getLocation()) {
             case QUEBEC:
                 handleUserAction(clientRequest, quebecStore);
@@ -62,7 +63,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
         return null;
     }
 
-    private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) throws InterruptedException, FileNotFoundException {
+    private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) {
         ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getUserType()) {
             case CUSTOMER:
@@ -76,7 +77,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
         return replicaResponse;
     }
 
-    private ReplicaResponse handleManagerMethodInvocation(ClientRequest clientRequest, StoreInterface store) throws InterruptedException {
+    private ReplicaResponse handleManagerMethodInvocation(ClientRequest clientRequest, StoreInterface store)  {
         HashMap<ParameterType, Object> methodParameters = clientRequest.getMethodParameters();
         ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getMethod()) {
@@ -104,7 +105,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
         return replicaResponse;
     }
 
-    private ReplicaResponse handleCumstomerMethodInvocation(ClientRequest clientRequest, StoreInterface store) throws InterruptedException, FileNotFoundException {
+    private ReplicaResponse handleCumstomerMethodInvocation(ClientRequest clientRequest, StoreInterface store){
         HashMap<ParameterType, Object> methodParameters = clientRequest.getMethodParameters();
         ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getMethod()) {
@@ -126,7 +127,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
                         (String) methodParameters.get(ParameterType.DATEOFPURCHASE));
                 break;
             case EXCHANGE_ITEM:
-                replicaResponse =  exchange(store,
+                replicaResponse = exchange(store,
                         (String) methodParameters.get(ParameterType.CLIENTID),
                         (String) methodParameters.get(ParameterType.NEWITEMID),
                         (String) methodParameters.get(ParameterType.OLDITEMID),
@@ -137,11 +138,18 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
         return replicaResponse;
     }
 
-
-
     @Override
-    public ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price) throws InterruptedException {
-        return store.addItem(managerID.toLowerCase(), itemID.toLowerCase(), itemName.toLowerCase(), quantity, price);
+    public ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price) {
+        try {
+            return store.addItem(managerID.toLowerCase(), itemID.toLowerCase(), itemName.toLowerCase(), quantity, price);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        HashMap<String, String> strResponse = new HashMap<>();
+        strResponse.put(managerID,"Replica2: Unable to process addItem through the ClientRequestHandler");
+        ReplicaResponse response = new ReplicaResponse(RegisteredReplica.ReplicaS2,false,-1, strResponse);
+        return response;
     }
 
     @Override
@@ -155,23 +163,64 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
     }
 
     @Override
-    public ReplicaResponse purchaseItem(StoreInterface store, String customerID, String itemID, String dateOfPurchase) throws InterruptedException {
-        return store.runRemotePurchase(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
+    public ReplicaResponse purchaseItem(StoreInterface store, String customerID, String itemID, String dateOfPurchase) {
+        try {
+            return store.runRemotePurchase(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        HashMap<String, String> strResponse = new HashMap<>();
+        strResponse.put(customerID,"Replica2: Unable to process purchaseItem through the ClientRequestHandler");
+        ReplicaResponse response = new ReplicaResponse(RegisteredReplica.ReplicaS2,false,-1, strResponse);
+        return response;
     }
 
     @Override
-    public ReplicaResponse findItem(StoreInterface store, String customerID, String itemName) throws InterruptedException {
-        return store.findItemRequest(customerID.toLowerCase(), itemName.toLowerCase());
+    public ReplicaResponse findItem(StoreInterface store, String customerID, String itemName) {
+        try {
+            return store.findItemRequest(customerID.toLowerCase(), itemName.toLowerCase());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        HashMap<String, String> strResponse = new HashMap<>();
+        strResponse.put(customerID,"Replica2: Unable to process findItem through the ClientRequestHandler");
+        ReplicaResponse response = new ReplicaResponse(RegisteredReplica.ReplicaS2,false,-1, strResponse);
+        return response;
     }
 
     @Override
-    public ReplicaResponse returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn) throws FileNotFoundException, InterruptedException {
-       return store.returnItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfReturn);
+    public ReplicaResponse returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn){
+        try {
+            return store.returnItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfReturn);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        HashMap<String, String> strResponse = new HashMap<>();
+        strResponse.put(customerID,"Replica2: Unable to process returnItem through the ClientRequestHandler");
+        ReplicaResponse response = new ReplicaResponse(RegisteredReplica.ReplicaS2,false,-1, strResponse);
+        return response;
     }
 
     @Override
-    public ReplicaResponse exchange(StoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn) throws FileNotFoundException, InterruptedException {
-        return store.exchangeItem(customerID.toLowerCase(), newItemID.toLowerCase(), oldItemID.toLowerCase(), dateOfReturn);
+    public ReplicaResponse exchange(StoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn) {
+        try {
+            return store.exchangeItem(customerID.toLowerCase(), newItemID.toLowerCase(), oldItemID.toLowerCase(), dateOfReturn);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+        }
+
+        HashMap<String, String> strResponse = new HashMap<>();
+        strResponse.put(customerID,"Replica2: Unable to process exchangeItem through the ClientRequestHandler");
+        ReplicaResponse response = new ReplicaResponse(RegisteredReplica.ReplicaS2,false,-1, strResponse);
+        return response;
     }
 
 }
