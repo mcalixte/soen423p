@@ -1,17 +1,18 @@
 package replica.interfaces;
 
 import replica.ReplicaResponse;
+import service.interfaces.StoreInterface;
 
 public interface IClient {
     //Manager Invokable methods
-    public ReplicaResponse addItem(IStoreInterface store, String managerID, String itemID, String itemName, int quantity, double price);
-    public ReplicaResponse removeItem(IStoreInterface store, String managerID, String itemID, int quantity) ;
-    public ReplicaResponse listItemAvailability (IStoreInterface store, String managerID);
+    public ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price);
+    public ReplicaResponse removeItem(StoreInterface store, String managerID, String itemID, int quantity) ;
+    public ReplicaResponse listItemAvailability (StoreInterface store, String managerID);
 
     //Client Invokable methods
-    public ReplicaResponse purchaseItem (IStoreInterface store, String customerID, String itemID, String dateOfPurchase);
-    public ReplicaResponse findItem (IStoreInterface store, String customerID, String itemName);
-    public ReplicaResponse returnItem (IStoreInterface store, String customerID, String itemID, String dateOfReturn) ;
-    public ReplicaResponse exchange(IStoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn);
+    public ReplicaResponse purchaseItem (StoreInterface store, String customerID, String itemID, String dateOfPurchase);
+    public ReplicaResponse findItem (StoreInterface store, String customerID, String itemName);
+    public ReplicaResponse returnItem (StoreInterface store, String customerID, String itemID, String dateOfReturn) ;
+    public ReplicaResponse exchange(StoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn);
 
 }

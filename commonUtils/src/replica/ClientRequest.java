@@ -1,6 +1,8 @@
 package replica;
 
+import infraCommunication.OperationCode;
 import replica.enums.Location;
+import replica.enums.ParameterType;
 import replica.enums.UserType;
 
 import java.io.Serializable;
@@ -8,30 +10,30 @@ import java.util.HashMap;
 
 public class ClientRequest implements Serializable {
 
-    private String method;
+    private OperationCode method;
     private Location location; // TODO Will be parsed by the replica server in order to direct the request towards a store
     private UserType userType;
     private int sequenceNumber;
-    private HashMap<String, Object> methodParameters = new HashMap<>();
+    private HashMap<ParameterType, Object> methodParameters = new HashMap<>();
 
-    public ClientRequest(String method, Location location, UserType userType) {
+    public ClientRequest(OperationCode method, Location location, UserType userType) {
         this.method = method;
         this.location = location;
         this.userType = userType;
     }
 
-    public ClientRequest(String method, Location location, UserType userType, int sequenceNumber) {
+    public ClientRequest(OperationCode method, Location location, UserType userType, int sequenceNumber) {
         this.method = method;
         this.location = location;
         this.userType = userType;
         this.sequenceNumber = sequenceNumber;
     }
 
-    public String getMethod() {
+    public OperationCode getMethod() {
         return method;
     }
 
-    public void setMethod(String method) {
+    public void setMethod(OperationCode method) {
         this.method = method;
     }
 
@@ -43,11 +45,11 @@ public class ClientRequest implements Serializable {
         this.location = location;
     }
 
-    public HashMap<String, Object> getMethodParameters() {
+    public HashMap<ParameterType, Object> getMethodParameters() {
         return methodParameters;
     }
 
-    public void addRequestDataEntry(String fieldName, Object value) {
+    public void addRequestDataEntry(ParameterType fieldName, Object value) {
         methodParameters.put(fieldName, value);
     }
 

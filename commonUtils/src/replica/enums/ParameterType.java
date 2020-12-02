@@ -2,7 +2,14 @@ package replica.enums;
 
 public enum ParameterType {
     CLIENTID,
-    MANAGERID;
-
-
+    MANAGERID,
+    ITEMID,
+    ITEMNAME,
+    QUANTITY,
+    PRICE,
+    DATEOFPURCHASE,
+    DATEOFEXCHANGE,
+    DATEOFRETURN,
+    NEWITEMID,
+    OLDITEMID;
 }
