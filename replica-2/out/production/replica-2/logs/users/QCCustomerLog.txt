@@ -1,0 +1,1 @@
+PURCHASE: customerID=qcu1212, itemID=ON1000, dateOfPurchase=11112020

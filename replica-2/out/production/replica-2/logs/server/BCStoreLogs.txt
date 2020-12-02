@@ -1,0 +1,6 @@
+******************** QC STORE INVENTORY ********************
+ADDED: itemID= BC1000, itemName= Phone, quantity= 100, price= 79.99;
+ADDED: itemID= BC1050, itemName= Laptop, quantity= 150, price= 139.99;
+ADDED: itemID= BC1100, itemName= Computer, quantity= 75, price= 149.99;
+ADDED: itemID= BC1150, itemName= TV, quantity= 25, price= 279.99;
+ADDED: itemID= BC1200, itemName= Monitor, quantity= 150, price= 139.99;
