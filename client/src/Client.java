@@ -77,7 +77,7 @@ public class Client{
         Client.commandInterface.put("U", userCommandInterfaces);
     }
 
-    private static String generateUserType(Scanner scanner) {
+        private static String generateUserType(Scanner scanner) {
         String userType = scanner.nextLine();
         userType = userType.toLowerCase();
 
@@ -159,6 +159,7 @@ public class Client{
         String dateString = null;
         String newItemID = null;
         String oldItemID = null;
+        String response = null;
         switch (command.toLowerCase()) {
             case "purchase":
                 System.out.println("Enter the required item ID : ");
@@ -170,12 +171,12 @@ public class Client{
                     System.out.println("Enter the required date string, format \'dd/mm/yyyy\' hh:mm:ss: ");
                     dateString = scanner.nextLine();
                 }
-                frontend.createPurchaseItems(userID,itemID,dateString);
+                response = frontend.createPurchaseItems(userID,itemID,dateString);
                 break;
             case "find":
                 System.out.println("Enter the required item name : ");
                 itemName = scanner.nextLine();
-                frontend.createFindItem(userID,itemName);
+                response = frontend.createFindItem(userID,itemName);
                 break;
             case "return":
                 System.out.println("Enter the required item ID : ");
@@ -187,7 +188,7 @@ public class Client{
                     System.out.println("Enter the required date string, format \'dd/mm/yyyy\' hh:mm:ss: ");
                     dateString = scanner.nextLine();
                 }
-                frontend.createReturnItems(userID,itemID,dateString);
+                response = frontend.createReturnItems(userID,itemID,dateString);
                 break;
             case "exchange":
                 System.out.println("Enter the old item ID : ");
@@ -201,8 +202,9 @@ public class Client{
                     System.out.println("Enter the required date string, format \'dd/mm/yyyy\' hh:mm:ss: ");
                     dateString = scanner.nextLine();
                 }
-                frontend.createExchangeItem(userID,oldItemID,newItemID,dateString);
+                response = frontend.createExchangeItem(userID,oldItemID,newItemID,dateString);
         }
+        System.out.println(response);
     }
 
     private static void handleManagerRequest(String command, Scanner scanner, IFrontend frontend) {
@@ -210,6 +212,7 @@ public class Client{
         String itemName = null;
         int quantity = 0;
         double price = 0.00;
+        String response = "";
         switch (command.toLowerCase()) {
             case "add":
                 System.out.println("Enter the required itemID : ");
@@ -220,19 +223,20 @@ public class Client{
                 quantity = scanner.nextInt();
                 System.out.println("Enter the required price : ");
                 price = scanner.nextDouble();
-                frontend.createAddItem(userID, itemID, itemName, quantity, price);
+                response = frontend.createAddItem(userID, itemID, itemName, quantity, price);
                 break;
             case "remove":
                 System.out.println("Enter the required itemID : ");
                 itemID = scanner.nextLine();
                 System.out.println("Enter the required quantity : ");
                 quantity = scanner.nextInt();
-                frontend.createRemoveItem(userID, itemID, quantity);
+                response = frontend.createRemoveItem(userID, itemID, quantity);
                 break;
             case "list":
-                frontend.createListItems(userID);
+                response = frontend.createListItems(userID);
                 break;
         }
+        System.out.println(response);
     }
 
     private static boolean isDateFormatValid(String dateString) { // dd/mm/yyyy HH:mm

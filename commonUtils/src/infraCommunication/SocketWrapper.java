@@ -52,7 +52,7 @@ public class SocketWrapper {
 
 
         //For when you need to communicate with a location in particular
-        public boolean sendTo(RegisteredReplica[] locations, MessageRequest msg, int retryCounter, int timeout) throws Exception {
+        public boolean sendTo(List<RegisteredReplica> locations, MessageRequest msg, int retryCounter, int timeout) throws Exception {
             boolean retval = true;
 
             for (RegisteredReplica loc : locations) {

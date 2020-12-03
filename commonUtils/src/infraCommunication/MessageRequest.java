@@ -2,58 +2,54 @@ package infraCommunication;
 
 import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
+import replica.enums.ParameterType;
 
 import java.net.DatagramPacket;
 import java.net.InetAddress;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MessageRequest {
 
         private OperationCode code;
         private int seqID;
-        private RegisteredReplica registeredReplica;
-        private String operationPrameters;
         private InetAddress addr;
         private int port;
+        private RegisteredReplica registeredReplica;
+        private HashMap<ParameterType, Object> operationParameters = new HashMap<>();
 
-        public MessageRequest(OperationCode code, int seq, String operationPrameters, EntityAddressBook addrInfo) throws Exception {
-            if (operationPrameters.length() >= 2048) {
-                throw new Exception("data payload is too large!");
-            }
 
+        public MessageRequest(OperationCode code, int seq, HashMap<ParameterType, Object> operationParameters, EntityAddressBook addrInfo) throws Exception {
             this.code = code;
             this.seqID = seq;
             this.registeredReplica = RegisteredReplica.EVERYONE;
-            this.operationPrameters = operationPrameters;
+
+            HashMap<ParameterType, Object> clonedMap = new HashMap<>();
+            clonedMap.putAll(operationParameters);
+
+            this.operationParameters = clonedMap;
             this.addr = addrInfo.getAddress();
             this.port = addrInfo.getPort();
         }
 
-        // Re-Work logic depending on how we want to structure the strings
-        public MessageRequest(DatagramPacket packet) {
-
-            String payload = new String(packet.getData(), 0, packet.getLength());
-
-            this.code = OperationCode.fromString(payload.substring(0, payload.indexOf("\r\n")));
-            payload = payload.substring(payload.indexOf("\r\n") + 2);
-
-            this.seqID = Integer.valueOf(payload.substring(0, payload.indexOf("\r\n")));
-            payload = payload.substring(payload.indexOf("\r\n") + 2);
-            this.registeredReplica = RegisteredReplica.valueOf(payload.substring(0, payload.indexOf("\r\n")));
-
-            this.operationPrameters = payload.substring(payload.indexOf("\r\n\r\n"), payload.length());
-            this.addr = packet.getAddress();
-            this.port = packet.getPort();
+        public MessageRequest(OperationCode code, int seq, EntityAddressBook addrInfo) throws Exception {
+            this.code = code;
+            this.seqID = seq;
+            this.registeredReplica = RegisteredReplica.EVERYONE;
+            this.addr = addrInfo.getAddress();
+            this.port = addrInfo.getPort();
         }
 
         public DatagramPacket getPacket() {
 
             String payload = code.toString() + "\r\n" + String.valueOf(seqID) + "\r\n"
-                    + registeredReplica.toString() + "\r\n\r\n" + this.operationPrameters;
+                    + registeredReplica.toString() + "\r\n\r\n" + this.operationParameters;
             return new DatagramPacket(payload.getBytes(), payload.length(), addr, port);
         }
 
-        public String getOperationParameters() {
-            return operationPrameters;
+        public HashMap<ParameterType, Object> getOperationParameters() {
+            return operationParameters;
         }
 
         public OperationCode getOpCode() {
@@ -70,8 +66,16 @@ public class MessageRequest {
 
         @Override
         public String toString() {
-            return "Message{" + "code=" + code + ", seq=" + seqID + ", loc=" + registeredReplica + ", data=" + operationPrameters
+            return "Message{" + "code=" + code + ", seq=" + seqID + ", loc=" + registeredReplica + ", data=" + printOperationParameters()
                     + ", addr=" + addr + ", port=" + port + '}';
+        }
+
+        public String printOperationParameters() {
+            String parameters = "";
+            for(Map.Entry<ParameterType, Object> entry : operationParameters.entrySet()) {
+                 parameters += entry.getValue() + "\n";
+            }
+            return parameters;
         }
 
         public int getSeqID() {

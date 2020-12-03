@@ -21,4 +21,5 @@ public interface StoreInterface {
     public abstract ReplicaResponse addItem(String userID, String itemID, String itemName, int quantity, double price) throws RemoteException;
     public abstract ReplicaResponse removeItem(String userID, String itemID, int quantity);
     public abstract ReplicaResponse listItemAvailability(String userID) throws RemoteException;
+    public abstract ReplicaResponse exchange(String toLowerCase, String toLowerCase1, String toLowerCase2, String dateOfReturn);
 }

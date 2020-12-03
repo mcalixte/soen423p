@@ -2,32 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe9f5f7-b17f-43b4-80bc-bb99418ca887" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/client.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/ClientRequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/IClientS3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/ReplicaServer3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CORBA.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/CORBA.idl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConsensusTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsensusTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frontend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontendListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontendServerInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontendServerInitialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/Frontend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendOperations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/FrontendPOA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/omg/CORBA/_FrontendStub.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/main/ConcurrencyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/BCClientThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/ManagerThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/ONClientThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/QCClientThread.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ReplicaManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -120,6 +105,8 @@
       <workItem from="1606873002181" duration="5543000" />
       <workItem from="1606879207187" duration="10011000" />
       <workItem from="1606892342714" duration="4273000" />
+      <workItem from="1606955814244" duration="1849000" />
+      <workItem from="1606961807974" duration="146000" />
     </task>
     <servers />
   </component>

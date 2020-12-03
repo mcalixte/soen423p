@@ -10,13 +10,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.MulticastSocket;
 import java.util.Map;
 
 public class frontendListener extends Thread {
 
-    private ConsensusTracker consensusTracker;
-    private DatagramSocket socket;
+    private ReplicaErrorTracker replicaErrorTracker;
+    private SocketWrapper socketWrapper;
     EntityAddressBook address = EntityAddressBook.FRONTEND;
     Boolean executingRequests = false;
 
@@ -26,13 +25,12 @@ public class frontendListener extends Thread {
         createSocket();
 
         while (executingRequests) {
-            MessageRequest request = waitForIncomingMessage();
-
-            MessageRequest response = processRequest(request);
+            ClientRequest request = waitForIncomingMessage();
+            ReplicaResponse response = processRequest(request);
 
             try {
                 System.out.println("Replying... " + response);
-                socket.send(response.getPacket());
+                socketWrapper.sendTo(response.getPacket());
             } catch (IOException ex) {
                 System.out.println("Failed to send message: " + ex.getMessage());
             }
@@ -42,14 +40,14 @@ public class frontendListener extends Thread {
 
     private void createSocket() {
         try {
-            socket = new DatagramSocket(address.getPort(),);
+            socket = new DatagramSocket(address.getPort(), );
             executingRequests = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private MessageRequest waitForIncomingMessage() {
+    private ClientRequest waitForIncomingMessage() {
         byte[] buf = new byte[2048];
         DatagramPacket packet = new DatagramPacket(buf, buf.length);
         try {
@@ -61,17 +59,13 @@ public class frontendListener extends Thread {
 
         return new MessageRequest(packet);
     }
-    private MessageRequest processRequest(MessageRequest request) {
+    private ReplicaResponse processRequest(ClientRequest request) {
         System.out.println("Processing new request...");
         OperationCode responseCode = request.getOpCode().toAck();
 
         try {
             handleRequestMessage(request);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        try {
             return new MessageRequest(responseCode, request.getSeqID(),"",  EntityAddressBook.MANAGER);
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,12 +93,12 @@ public class frontendListener extends Thread {
         }
         RegisteredReplica replicaID = replicaResponse.getReplicaID();
 
-        if (consensusTracker != null) {
-            consensusTracker.addRequestConsensus(replicaID, sequenceID, answer);
+        if (replicaErrorTracker != null) {
+            replicaErrorTracker.trackPotentialErrors(replicaID, sequenceID, answer);
         }
     }
 
-    public void setTracker(ConsensusTracker tracker) {
-        consensusTracker = tracker;
+    public void setTracker(ReplicaErrorTracker tracker) {
+        replicaErrorTracker = tracker;
     }
 }
