@@ -26,20 +26,21 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
     @Override
     public void instantiateStoreServers() {
         try {
-            URL quebecURL = new URL("http://localhost:8080/quebecStore?wsdl");
-            QName quebecQName = new QName("http://service/", "StoreImplService");
-            Service quebecService = Service.create(quebecURL, quebecQName);
-            quebecStore = quebecService.getPort(StoreInterface.class);
+            URL qcURL = new URL("http://localhost:8083/qcStore?wsdl");
+            QName qcQName = new QName("http://implementation.service/", "StoreServerImplService");
+            Service qcService = Service.create(qcURL, qcQName);
+            quebecStore = qcService.getPort(StoreInterface.class);
 
-            URL ontarioURL = new URL("http://localhost:8081/ontarioStore?wsdl");
-            QName ontarioQName = new QName("http://service/", "StoreImplService");
-            Service ontarioService = Service.create(ontarioURL, ontarioQName);
-            ontarioStore = ontarioService.getPort(StoreInterface.class);
+            URL onURL = new URL("http://localhost:8084/onStore?wsdl");
+            QName onQName = new QName("http://implementation.service/", "StoreServerImplService");
+            Service onService = Service.create(onURL, onQName);
+            ontarioStore = onService.getPort(StoreInterface.class);
 
-            URL britishColumbiaURL = new URL("http://localhost:8082/britishColumbiaStore?wsdl");
-            QName britishColumbiaQName = new QName("http://service/", "StoreImplService");
-            Service britishColumbiaService = Service.create(britishColumbiaURL, britishColumbiaQName);
-            britishColumbiaStore = britishColumbiaService.getPort(StoreInterface.class);
+            URL bcURL = new URL("http://localhost:8085/bcStore?wsdl");
+            QName bcQName = new QName("http://implementation.service/", "StoreServerImplService");
+            Service bcService = Service.create(bcURL, bcQName);
+            britishColumbiaStore = bcService.getPort(StoreInterface.class);
+
         } catch (Exception e) {
             System.out.println("Hello Client exception: " + e);
             // e.printStackTrace();
@@ -48,19 +49,20 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
 
     @Override
     public ReplicaResponse handleRequestMessage(ClientRequest clientRequest){
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getLocation()) {
             case QUEBEC:
-                handleUserAction(clientRequest, quebecStore);
+                replicaResponse = handleUserAction(clientRequest, quebecStore);
                 break;
             case ONTARIO:
-                handleUserAction(clientRequest, ontarioStore);
+                replicaResponse = handleUserAction(clientRequest, ontarioStore);
                 break;
             case BRITISHCOLUMBIA:
-                handleUserAction(clientRequest, britishColumbiaStore);
+                replicaResponse = handleUserAction(clientRequest, britishColumbiaStore);
                 break;
 
         }
-        return null;
+        return replicaResponse;
     }
 
     private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) {

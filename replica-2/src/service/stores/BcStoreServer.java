@@ -22,7 +22,7 @@ public class BcStoreServer {
             StoreServerImpl store = new StoreServerImpl(inventory, customerLog, waitlist, customerBudget,"BC");
             inventory = startBCStore(inventory);
 
-            Endpoint endpoint = Endpoint.publish("http://localhost:8082/bcStore", store);
+            Endpoint endpoint = Endpoint.publish("http://localhost:8085/bcStore", store);
             System.out.println("BC Store ready and waiting...");
 
             DatagramSocket aSocket = null;

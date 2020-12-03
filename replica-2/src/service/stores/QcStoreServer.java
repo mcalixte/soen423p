@@ -22,7 +22,7 @@ public class QcStoreServer {
             StoreServerImpl store = new StoreServerImpl(inventory, customerLog, waitlist, customerBudget,"QC");
             inventory = startQCStore(inventory);
 
-            Endpoint endpoint = Endpoint.publish("http://localhost:8080/qcStore", store);
+            Endpoint endpoint = Endpoint.publish("http://localhost:8083/qcStore", store);
             System.out.println("QC Store ready and waiting...");
 
             DatagramSocket aSocket = null;

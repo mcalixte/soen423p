@@ -22,7 +22,7 @@ public class OnStoreServer {
             StoreServerImpl store = new StoreServerImpl(inventory, customerLog, waitlist, customerBudget,"ON");
             inventory = startONStore(inventory);
 
-            Endpoint endpoint = Endpoint.publish("http://localhost:8081/onStore", store);
+            Endpoint endpoint = Endpoint.publish("http://localhost:8084/onStore", store);
             System.out.println("ON Store ready and waiting...");
 
             DatagramSocket aSocket = null;

@@ -1,9 +1,5 @@
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
+import java.io.*;
+import java.net.*;
 import java.util.HashMap;
 
 import infraCommunication.OperationCode;
@@ -19,20 +15,31 @@ public class Sequencer {
     private static int sequenceID = 0;
 
     public static void main(String[] args) {
-        ClientRequest req = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.CUSTOMER);
-        req.addRequestDataEntry(ParameterType.CLIENTID,"QCU1212");
-        req.addRequestDataEntry(ParameterType.ITEMNAME,"RAM");
-        req.setSequenceNumber(++sequenceID);
+        /**
+         * Temp Data to test mutlicasting
+         * TODO: open port to listen for udp request by the Front End
+         */
+//        ClientRequest req = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.CUSTOMER);
+//        req.addRequestDataEntry(ParameterType.CLIENTID,"QCU1212");
+//        req.addRequestDataEntry(ParameterType.ITEMNAME,"RAM");
+//        req.setSequenceNumber(++sequenceID);
 
-        try{
-            InetAddress group = EntityAddressBook.ALLREPLICAS.getAddress();
-            MulticastSocket multicastSock = new MulticastSocket();
-            String msg = "Hello World\n";
-            DatagramPacket packet = getPacket(req, group, 5000);
-            multicastSock.send(packet);
-            multicastSock.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        while (true) {
+            ClientRequest request = awaitClientRequest();
+
+            if(request != null) {
+                try {
+                    InetAddress group = EntityAddressBook.SEQUENCER.getAddress();
+                    MulticastSocket multicastSock = new MulticastSocket();
+                    DatagramPacket packet = getPacket(request, group, EntityAddressBook.SEQUENCER.getPort());
+                    multicastSock.send(packet);
+                    
+                    //TODO: verify if this has to be closed everytime
+                    multicastSock.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -44,5 +51,36 @@ public class Sequencer {
         byte[] data = outputStream.toByteArray();
         DatagramPacket sendPacket = new DatagramPacket(data, data.length, group, port);
         return sendPacket;
+    }
+
+    public static ClientRequest awaitClientRequest(){
+        DatagramSocket aSocket;
+
+        try {
+            aSocket = new DatagramSocket(EntityAddressBook.SEQUENCER.getPort());
+
+            byte[] buffer = new byte[1000];
+            System.out.println("UDP Server started.....");
+
+            DatagramPacket request = new DatagramPacket(buffer, buffer.length);
+            aSocket.receive(request);
+
+            byte[] data = request.getData();
+            ByteArrayInputStream in = new ByteArrayInputStream(data);
+            ObjectInputStream is = new ObjectInputStream(in);
+
+            ClientRequest clientRequest = (ClientRequest) is.readObject();
+            is.close();
+            return clientRequest;
+
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

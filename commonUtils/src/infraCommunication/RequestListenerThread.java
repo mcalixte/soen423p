@@ -59,13 +59,7 @@ public class RequestListenerThread extends Thread {
         System.out.println("Processing new request...");
 
         ReplicaResponse response = null;
-        try {
-            response = clientRequestHandler.handleRequestMessage(clientRequest);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        response = clientRequestHandler.handleRequestMessage(clientRequest);
         return response;
     }
 
