@@ -125,7 +125,7 @@ public class FrontEndHelper {
         request.addRequestDataEntry(ParameterType.ITEMNAME, itemName);
         return request;
     }
-    
+
     public ClientRequest createExchangeItem(String customerID, String newItemID, String oldItemID, String dateOfExchange) {
         String userPrefix = customerID.substring(0, 2);
         ClientRequest request = null;

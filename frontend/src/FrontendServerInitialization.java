@@ -11,7 +11,7 @@ import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
 
 
-public class frontendServerInitialization {
+public class FrontendServerInitialization {
     public static void main(String[] args) {
         try {
             ORB orb = ORB.init(args, null);
