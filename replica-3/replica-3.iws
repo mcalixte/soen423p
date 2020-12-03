@@ -2,17 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4bc8d39-f9e6-49f9-879a-73030a4260d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/interfaces/IReplicaManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/OperationCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/SocketWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/remote/ClientRequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/remote/IClientS3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/remote/ReplicaServer3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/ConsensusTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/ReplicaErrorTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Frontend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Frontend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/replica-3.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/store/StoreInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/store/StoreInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,9 +53,35 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/workspace-sts-3.9.7.RELEASE/soen423pp" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\finta\Desktop\Concordia\Fall 2020\SOEN 490\groupproject\replica-3" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a4bc8d39-f9e6-49f9-879a-73030a4260d6" name="Default Changelist" comment="" />
@@ -42,8 +89,38 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606603870581</updated>
+      <workItem from="1606883771120" duration="2452000" />
+      <workItem from="1606892342714" duration="1171000" />
+      <workItem from="1606954473060" duration="1921000" />
+      <workItem from="1606961808191" duration="147000" />
+      <workItem from="1606976807888" duration="1845000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1606955077618">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="414" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1217.720@0.0.1217.720" timestamp="1606955077618" />
+    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606883847667">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606883847667" />
+    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606954493011">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606954493011" />
+    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606883877270">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard/0.0.1217.720@0.0.1217.720" timestamp="1606883877270" />
+    <state x="89" y="0" key="SettingsEditor" timestamp="1606883880566">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="89" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606883880566" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

@@ -1,0 +1,22 @@
+module CORBA {
+
+    interface Frontend {
+
+        void softwareFailure(in string userID);
+
+        void replicaCrash(in string userID);
+
+        string createAddItem (in string userID,  in string itemID, in string itemName, in long quantity, in double price);
+        string createRemoveItem (in string userID,  in string itemID, in long quantity);
+        string createListItems (in string userID);
+
+        string createPurchaseItems (in string userID,  in string itemID,  in string dateOfReturn);
+        string createReturnItems (in string userID,  in string itemID,  in string dateOfReturn);
+        string createExchangeItem (in string userID,  in string newItemID, in string oldItemID,  in string dateOfExchange);
+        string createFindItem (in string userID,  in string itemName);
+
+
+
+        oneway void shutdown();
+    };
+};

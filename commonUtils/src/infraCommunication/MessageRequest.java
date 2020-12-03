@@ -2,91 +2,113 @@ package infraCommunication;
 
 import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
+import replica.ClientRequest;
+import replica.enums.ParameterType;
 
 import java.net.DatagramPacket;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class MessageRequest {
+public class MessageRequest implements IGenericMessage {
+    // Network Fields
+    private InetAddress addr;
+    private int port;
 
-        private OperationCode code;
-        private int seqID;
-        private RegisteredReplica registeredReplica;
-        private String operationPrameters;
-        private InetAddress addr;
-        private int port;
+    // Crash related fields
+    private RegisteredReplica registeredReplica;
+    private HashMap<ParameterType, Object> operationParameters = new HashMap<>();
+    private OperationCode errorType;
 
-        public MessageRequest(OperationCode code, int seq, String operationPrameters, EntityAddressBook addrInfo) throws Exception {
-            if (operationPrameters.length() >= 2048) {
-                throw new Exception("data payload is too large!");
-            }
+    // Restoration related fields
+    private List<HashMap<OperationCode, ClientRequest>> operationHistory;
 
-            this.code = code;
-            this.seqID = seq;
-            this.registeredReplica = RegisteredReplica.EVERYONE;
-            this.operationPrameters = operationPrameters;
-            this.addr = addrInfo.getAddress();
-            this.port = addrInfo.getPort();
+    private List<RegisteredReplica> erroneousReplicas = new ArrayList<>();
+
+    public MessageRequest(OperationCode code, int seq, HashMap<ParameterType, Object> operationParameters, EntityAddressBook addrInfo, List<HashMap<OperationCode, ClientRequest>> operationHistory) throws Exception {
+        this.errorType = code;
+        this.operationHistory = operationHistory;
+        this.registeredReplica = RegisteredReplica.EVERYONE;
+
+        HashMap<ParameterType, Object> clonedMap = new HashMap<>();
+        clonedMap.putAll(operationParameters);
+
+        this.operationParameters = clonedMap;
+        this.addr = addrInfo.getAddress();
+        this.port = addrInfo.getPort();
+    }
+
+    public MessageRequest(OperationCode code) throws Exception {
+        this.errorType = code;
+        this.registeredReplica = RegisteredReplica.EVERYONE;
+    }
+
+    public MessageRequest(OperationCode faultyRespReceivedNotification, EntityAddressBook addrInfo) {
+        this.errorType = faultyRespReceivedNotification;
+        this.addr = addrInfo.getAddress();
+        this.port = addrInfo.getPort();
+
+    }
+
+    public DatagramPacket getPacket() {
+
+        String payload = errorType.toString() + registeredReplica.toString() + "\r\n\r\n" + this.operationParameters;
+        return new DatagramPacket(payload.getBytes(), payload.length(), addr, port);
+    }
+
+    public HashMap<ParameterType, Object> getOperationParameters() {
+        return operationParameters;
+    }
+
+    public OperationCode getOpCode() {
+        return errorType;
+    }
+
+    public InetAddress getAddress() {
+        return addr;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" + "code=" + errorType + ", loc=" + registeredReplica + ", data=" + printOperationParameters()
+                + ", addr=" + addr + ", port=" + port + '}';
+    }
+
+    public String printOperationParameters() {
+        String parameters = "";
+        for (Map.Entry<ParameterType, Object> entry : operationParameters.entrySet()) {
+            parameters += entry.getValue() + "\n";
         }
+        return parameters;
+    }
 
-        // Re-Work logic depending on how we want to structure the strings
-        protected MessageRequest(DatagramPacket packet) {
+    public RegisteredReplica getRegisteredReplica() {
+        return registeredReplica;
+    }
 
-            String payload = new String(packet.getData(), 0, packet.getLength());
+    public void setRegisteredReplica(RegisteredReplica registeredReplica) {
+        this.registeredReplica = registeredReplica;
+    }
 
-            this.code = OperationCode.fromString(payload.substring(0, payload.indexOf("\r\n")));
-            payload = payload.substring(payload.indexOf("\r\n") + 2);
+    public List<HashMap<OperationCode, ClientRequest>> getOperationHistory() {
+        return operationHistory;
+    }
 
-            this.seqID = Integer.valueOf(payload.substring(0, payload.indexOf("\r\n")));
-            payload = payload.substring(payload.indexOf("\r\n") + 2);
-            this.registeredReplica = RegisteredReplica.valueOf(payload.substring(0, payload.indexOf("\r\n")));
+    public void setOperationHistory(List<HashMap<OperationCode, ClientRequest>> operationHistory) {
+        this.operationHistory = operationHistory;
+    }
 
-            this.operationPrameters = payload.substring(payload.indexOf("\r\n\r\n"), payload.length());
-            this.addr = packet.getAddress();
-            this.port = packet.getPort();
-        }
+    public List<RegisteredReplica> getErroneousReplicas() {
+        return erroneousReplicas;
+    }
 
-        public DatagramPacket getPacket() {
-
-            String payload = code.toString() + "\r\n" + String.valueOf(seqID) + "\r\n"
-                    + registeredReplica.toString() + "\r\n\r\n" + this.operationPrameters;
-            return new DatagramPacket(payload.getBytes(), payload.length(), addr, port);
-        }
-
-        public String getOperationParameters() {
-            return operationPrameters;
-        }
-
-        public OperationCode getOpCode() {
-            return code;
-        }
-
-        public InetAddress getAddress() {
-            return addr;
-        }
-
-        public int getPort() {
-            return port;
-        }
-
-        @Override
-        public String toString() {
-            return "Message{" + "code=" + code + ", seq=" + seqID + ", loc=" + registeredReplica + ", data=" + operationPrameters
-                    + ", addr=" + addr + ", port=" + port + '}';
-        }
-
-        public int getSeqID() {
-            return seqID;
-        }
-
-        public void setSeqID(int seqID) {
-            this.seqID = seqID;
-        }
-
-        public RegisteredReplica getRegisteredReplica() {
-            return registeredReplica;
-        }
-
-        public void setRegisteredReplica(RegisteredReplica registeredReplica) {
-            this.registeredReplica = registeredReplica;
-        }
+    public void setErroneousReplicas(List<RegisteredReplica> erroneousReplicas) {
+        this.erroneousReplicas = erroneousReplicas;
+    }
 }

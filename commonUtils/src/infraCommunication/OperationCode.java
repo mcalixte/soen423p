@@ -13,6 +13,9 @@ public enum OperationCode {
         RETURN_ITEM(1006),
         EXCHANGE_ITEM(1007),
 
+        //FOR CL-FE
+        REQUEST_RETURN_VAL(2000),
+
         // For FE-RM
         NO_RESPONSE_RECEIVED_NOTIFICATION(3000),
         ACK_NO_RESPONSE_RECEIVED_NOTIFICATION(3002),

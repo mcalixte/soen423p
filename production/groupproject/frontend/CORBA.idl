@@ -1,0 +1,15 @@
+module CORBA {
+
+    interface Frontend {
+
+        void softwareFailure(in string userID);
+
+        void replicaCrash(in string userID);
+
+        string createRecord (in string userID,  in string projectID);
+
+        string getRecordCounts(in string userID);
+
+        oneway void shutdown();
+    };
+};

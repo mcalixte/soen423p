@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed850a1-ddb7-444d-aa13-010e76d54258" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/interfaces/IReplicaManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/networkEntities/EntityAddressBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/networkEntities/RegisteredReplica.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/udp/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/udp/OperationCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/udp/SocketWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonUtils.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/commonUtils.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonUtils.iws" beforeDir="false" afterPath="$PROJECT_DIR$/commonUtils.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -39,7 +44,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../replica-1" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
@@ -47,7 +58,22 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3ed850a1-ddb7-444d-aa13-010e76d54258" name="Default Changelist" comment="" />
@@ -55,18 +81,47 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606589997098</updated>
+      <workItem from="1606611146806" duration="3586000" />
+      <workItem from="1606888450229" duration="97000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="454" y="174" key="SettingsEditor" timestamp="1606590198718">
-      <screen x="0" y="24" width="1920" height="1056" />
+    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606611166895">
+      <screen x="0" y="0" width="1217" height="720" />
     </state>
+    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606611166895" />
+    <state x="389" y="107" key="FileChooserDialogImpl" timestamp="1606888507434">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="389" y="107" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606888507434" />
+    <state x="372" y="59" width="713" height="602" key="NewModule_or_Project.wizard" timestamp="1606888517436">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="372" y="59" width="713" height="602" key="NewModule_or_Project.wizard/0.0.1217.720@0.0.1217.720" timestamp="1606888517436" />
+    <state x="179" y="0" key="SettingsEditor" timestamp="1606888520016">
+      <screen x="0" y="0" width="1217" height="720" />
+    </state>
+    <state x="179" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606888520016" />
     <state x="454" y="174" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1606590198718" />
     <state x="274" y="141" key="new project wizard" timestamp="1606590118047">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
     <state x="274" y="141" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1606590118047" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/replica/interfaces/IClient.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

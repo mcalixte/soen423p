@@ -1,5 +1,6 @@
 package replica;
 
+import infraCommunication.IGenericMessage;
 import infraCommunication.OperationCode;
 import replica.enums.Location;
 import replica.enums.ParameterType;
@@ -8,7 +9,7 @@ import replica.enums.UserType;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class ClientRequest implements Serializable {
+public class ClientRequest implements Serializable, IGenericMessage {
 
     private OperationCode method;
     private Location location; // TODO Will be parsed by the replica server in order to direct the request towards a store

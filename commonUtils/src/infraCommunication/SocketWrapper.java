@@ -1,85 +1,83 @@
 package infraCommunication;
 
+import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
+import replica.ClientRequest;
+import replica.ReplicaResponse;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.List;
 
 public class SocketWrapper {
 
-        private DatagramSocket socket;
-        private MessageRequest response;
+    private DatagramSocket socket;
+    private MessageRequest response;
 
-        public SocketWrapper() throws SocketException {
-            this.socket = new DatagramSocket();
-        }
+    public SocketWrapper() throws SocketException {
+        this.socket = new DatagramSocket();
+    }
 
-        public MessageRequest getResponse() {
-            return response;
-        }
+    public MessageRequest getResponse() {
+        return response;
+    }
 
-        public boolean send(MessageRequest msg, int tries, int timeout) throws IOException {
-            System.out.println("Trying to send Sending... " + msg);
-            sendRaw(msg); // Dont catch this exception, likely to be the internal socket is bad
+//    public boolean send(MessageRequest msg, int tries, int timeout) throws IOException {
+//        System.out.println("Trying to send Sending... " + msg);
+//        sendRaw(msg); // Dont catch this exception, likely to be the internal socket is bad
+//
+//        try {
+//            MessageRequest hopefulAck = receiveRaw(timeout);
+//            System.out.println("Obtained the response... " + hopefulAck);
+//
+//            if (hopefulAck.getOpCode() != msg.getOpCode().toAck()) {
+//                throw new Exception("RUDP: Rx a message but wasnt the correct ACK OpCode");
+//            }
+//
+//            if (hopefulAck.getRegisteredReplica() != msg.getRegisteredReplica()) {
+//                throw new Exception("RUDP: Rx a message but Location did not match");
+//            }
+//
+//            response = hopefulAck;
+//
+//        } catch (Exception ex) {
+//            if (--tries > 0) {
+//                System.out.println(" Attempt #" + tries + " failed due to: " + ex.getMessage());
+//                return send(msg, tries, timeout);
+//            } else {
+//                System.out.println("Failed to communicate after 10 successive tries ...");
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
 
-            try {
-                MessageRequest hopefulAck = receiveRaw(timeout);
-                System.out.println("Obtained the response... " + hopefulAck);
 
-                if (hopefulAck.getOpCode() != msg.getOpCode().toAck()) {
-                    throw new Exception("RUDP: Rx a message but wasnt the correct ACK OpCode");
-                }
+    public void send(IGenericMessage request, EntityAddressBook entity) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ObjectOutput os = new ObjectOutputStream(outputStream);
+        os.writeObject(request);
+        os.close();
+        os.flush();
 
-                if (hopefulAck.getRegisteredReplica() != msg.getRegisteredReplica()) {
-                    throw new Exception("RUDP: Rx a message but Location did not match");
-                }
+        byte[] data = outputStream.toByteArray();
+        DatagramPacket sendPacket = new DatagramPacket(data, data.length, entity.getAddress(), entity.getPort());
 
-                response = hopefulAck;
+        socket.send(sendPacket);
+    }
 
-            } catch (Exception ex) {
-                if (--tries > 0) {
-                    System.out.println(" Attempt #" + tries + " failed due to: " + ex.getMessage());
-                    return send(msg, tries, timeout);
-                } else {
-                    System.out.println("Failed to communicate after 10 successive tries ...");
-                    return false;
-                }
-            }
-            return true;
-        }
+    public ObjectInputStream receive(int timeout) throws IOException {
+        byte[] incomingData = new byte[1024];
+        DatagramPacket receivePacket = new DatagramPacket(incomingData, incomingData.length);
 
+        socket.receive(receivePacket);
 
-        //For when you need to communicate with a location in particular
-        public boolean sendTo(RegisteredReplica[] locations, MessageRequest msg, int retryCounter, int timeout) throws Exception {
-            boolean retval = true;
+        ByteArrayInputStream in = new ByteArrayInputStream(incomingData);
+        ObjectInputStream is = new ObjectInputStream(in);
 
-            for (RegisteredReplica loc : locations) {
-                if (loc == RegisteredReplica.EVERYONE) {
-                    continue;
-                }
-
-                msg.setRegisteredReplica(loc);
-                if (!send(msg, retryCounter, timeout)) {
-                    retval = false;
-                }
-            }
-
-            return retval;
-        }
-
-        private void sendRaw(MessageRequest request) throws IOException {
-            socket.send(request.getPacket());
-        }
-
-        private MessageRequest receiveRaw(int timeout) throws IOException {
-            byte[] buf = new byte[2048];
-            DatagramPacket packet = new DatagramPacket(buf, buf.length);
-
-            socket.setSoTimeout(timeout); // Set timeout in case packet is dropped by network, which shouldnt happen locally
-            socket.receive(packet);
-
-            return new MessageRequest(packet);
-        }
+        return is;
+    }
 }
