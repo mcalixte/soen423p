@@ -11,9 +11,10 @@ import java.net.*;
 public class TempFEClient {
     public static void main(String[] args) {
 
-        ClientRequest req = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.CUSTOMER);
-        req.addRequestDataEntry(ParameterType.CLIENTID,"QCU1212");
-        req.addRequestDataEntry(ParameterType.ITEMNAME,"RAM");
+        ClientRequest req = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.BRITISHCOLUMBIA, UserType.CUSTOMER);
+        req.addRequestDataEntry(ParameterType.CLIENTID,"BCU1212");
+        req.addRequestDataEntry(ParameterType.ITEMID,"QC1100");
+        req.addRequestDataEntry(ParameterType.DATEOFPURCHASE,"12/3/2020");
 
         DatagramSocket aSocket;
 

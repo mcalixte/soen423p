@@ -17,7 +17,7 @@ public class Sequencer {
     public static void main(String[] args) {
         while(true) {
             ClientRequest request = awaitClientRequest();
-            System.out.print(request);
+            //System.out.print(request);
             if(request != null) {
                 try {
                     InetAddress group = EntityAddressBook.ALLREPLICAS.getAddress();
@@ -47,12 +47,12 @@ public class Sequencer {
 
         try {
             //TODO update address
-            aSocket = new DatagramSocket();
+            aSocket = new DatagramSocket(EntityAddressBook.SEQUENCER.getPort());
 
             byte[] buffer = new byte[1024];
-            System.out.println("UDP Server started.....");
+            System.out.println("UDP Server started..... awaiting request #"+(sequenceID+1));
 
-            DatagramPacket request = new DatagramPacket(buffer, buffer.length, InetAddress.getByName("127.0.0.1"), 10000);
+            DatagramPacket request = new DatagramPacket(buffer, buffer.length);
             aSocket.receive(request);
 
             byte[] data = request.getData();
@@ -65,7 +65,7 @@ public class Sequencer {
             return clientRequest;
 
         } catch (SocketException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

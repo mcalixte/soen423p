@@ -19,11 +19,4 @@ public class ReplicaServer {
         RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS);
         requestListenerThread.start();
     }
-
-
-    ///////////////////////////////////////////
-    ///     Web Services remote Methods     ///
-    ///////////////////////////////////////////
-
-
 }

@@ -70,8 +70,8 @@ public class QcStoreServer {
     public static HashMap<String, Items> startQCStore(HashMap<String, Items> inventory){
         Items item1 = new Items("QC1000","Keyboard", 100, 79.99);
         Items item2 = new Items("QC1050","Monitor", 150, 139.99);
-        Items item3 = new Items("QC1100","CPU", 75, 149.99);
-        Items item4 = new Items("QC1150","GPU", 0, 279.99);
+        Items item3 = new Items("qc1100","CPU", 75, 149.99);
+        Items item4 = new Items("qc1150","GPU", 0, 279.99);
         Items item5 = new Items("QC1200","RAM", 200, 999.99);
         Items item6 = new Items("QC1250","RAM", 120, 59.99);
 
