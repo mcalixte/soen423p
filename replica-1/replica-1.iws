@@ -3,28 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4e687ecb-cf90-4a0d-ab4d-6074f4e41857" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/utils/helpers/managerUtils/ManagerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/utils/helpers/managerUtils/ManagerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/QCStoreLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/src/logs/server/BCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/logs/server/BCStoreLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/src/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/logs/server/QCStoreLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/implementation/StoreServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/implementation/StoreServerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/BcStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/BcStoreServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/OnStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/OnStoreServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/QcStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/QcStoreServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/ManagerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/ManagerHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ListItemConnectionThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ListItemConnectionThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$PurchaseConnectionThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$PurchaseConnectionThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ReturnItemThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ReturnItemThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerBudgetLogThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerBudgetLogThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerPurchaseLogThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerPurchaseLogThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/ManagerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/ManagerHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +61,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.ReplicaServer">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BritishColumbiaServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="servers.bc.BritishColumbiaServer" />
       <module name="replica-1" />
@@ -131,17 +124,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ReplicaServer" />
@@ -175,81 +157,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1302" y="272" key="#com.intellij.ide.util.MemberChooser" timestamp="1606876151963">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="1302" y="272" key="#com.intellij.ide.util.MemberChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1606876151963" />
-    <state x="196" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606857482875">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="196" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606857482875" />
-    <state x="474" y="158" key="FileChooserDialogImpl" timestamp="1606955811365">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="474" y="158" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606955811365" />
-    <state x="748" y="256" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1606712903857" />
-    <state width="1397" height="624" key="GridCell.Tab.0.bottom" timestamp="1607077606357">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="624" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607077606357" />
-    <state width="1397" height="624" key="GridCell.Tab.0.center" timestamp="1607077606357">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="624" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1607077606357" />
-    <state width="1397" height="624" key="GridCell.Tab.0.left" timestamp="1607077606356">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="624" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1607077606356" />
-    <state width="1397" height="624" key="GridCell.Tab.0.right" timestamp="1607077606357">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="624" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1607077606357" />
-    <state width="1397" height="308" key="GridCell.Tab.1.bottom" timestamp="1607068314670">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="308" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607068314670" />
-    <state width="1397" height="308" key="GridCell.Tab.1.center" timestamp="1607068314670">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="308" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1607068314670" />
-    <state width="1397" height="308" key="GridCell.Tab.1.left" timestamp="1607068314669">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="308" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1607068314669" />
-    <state width="1397" height="308" key="GridCell.Tab.1.right" timestamp="1607068314670">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1397" height="308" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1607068314670" />
-    <state x="570" y="238" width="826" height="600" key="NewModule_or_Project.wizard" timestamp="1606712912957">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="570" y="238" width="826" height="600" key="NewModule_or_Project.wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1606712912957" />
-    <state x="448" y="117" key="SettingsEditor" timestamp="1606878637679">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="448" y="117" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1606878637679" />
-    <state x="621" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1606787452904">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="621" y="367" key="com.intellij.ide.util.TipDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606787452904" />
-    <state x="1633" y="246" width="756" height="707" key="dock-window-1" timestamp="1606788099307">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="1633" y="246" width="756" height="707" key="dock-window-1/0.24.1920.1056@0.24.1920.1056" timestamp="1606788099307" />
-    <state x="290" y="307" key="extract.method.dialog" timestamp="1606858606513">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="290" y="307" key="extract.method.dialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606858606513" />
-    <state x="471" y="140" key="new project wizard" timestamp="1606712189317">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="471" y="140" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1606712189317" />
-    <state x="302" y="172" key="refactoring.ChangeSignatureDialog" timestamp="1606864705012">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="302" y="172" key="refactoring.ChangeSignatureDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606864705012" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -27,7 +27,7 @@ public class MessageRequest implements IGenericMessage {
 
     private List<RegisteredReplica> erroneousReplicas = new ArrayList<>();
 
-    public MessageRequest(OperationCode code, int seq, HashMap<ParameterType, Object> operationParameters, EntityAddressBook addrInfo, List<HashMap<OperationCode, ClientRequest>> operationHistory) throws Exception {
+    public MessageRequest(OperationCode code, HashMap<ParameterType, Object> operationParameters, EntityAddressBook addrInfo, List<HashMap<OperationCode, ClientRequest>> operationHistory) throws Exception {
         this.errorType = code;
         this.operationHistory = operationHistory;
         this.registeredReplica = RegisteredReplica.EVERYONE;
@@ -49,7 +49,6 @@ public class MessageRequest implements IGenericMessage {
         this.errorType = faultyRespReceivedNotification;
         this.addr = addrInfo.getAddress();
         this.port = addrInfo.getPort();
-
     }
 
     public DatagramPacket getPacket() {

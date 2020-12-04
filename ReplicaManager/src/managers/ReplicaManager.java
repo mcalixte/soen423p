@@ -1,21 +1,30 @@
+package managers;
+
 import interfaces.IReplicaManager;
 import networkEntities.EntityAddressBook;
 import networkEntities.RegisteredReplica;
 import infraCommunication.MessageRequest;
 import infraCommunication.OperationCode;
 import infraCommunication.SocketWrapper;
+import replica.ClientRequest;
 
 import java.net.SocketException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Stack;
 
 public class ReplicaManager implements IReplicaManager {
 
     private RegisteredReplica associatedReplica;
+    private EntityAddressBook replicaInEntityForm;
 	private static final int nonByzantineFailureTolerance = 3;
 	private Stack<Integer> nonByzantineFailureStack;
 
-	public ReplicaManager(RegisteredReplica associatedReplica) {
+    private List<HashMap<OperationCode, ClientRequest >> operationHistory;
+
+	public ReplicaManager(RegisteredReplica associatedReplica, EntityAddressBook entity) {
 		this.associatedReplica = associatedReplica;
+		this.replicaInEntityForm = entity;
 		this.nonByzantineFailureStack = new Stack<Integer>();
         nonByzantineFailureStack.setSize(nonByzantineFailureTolerance);
 
@@ -56,21 +65,14 @@ public class ReplicaManager implements IReplicaManager {
     @Override
     public String restoreReplica(int seqID) {
         try {
-            SocketWrapper instance = new SocketWrapper();
+            SocketWrapper socketWrapper = new SocketWrapper(replicaInEntityForm);
             MessageRequest message = new MessageRequest(
                     OperationCode.RESTORE_DATA_WITH_ORDERED_REQUESTS_NOTIFICATION,
-                    seqID,
-                    "targetReplica: " + this.getAssociatedReplicaName() + "Command: restore from log from RM",
+                    List<HashMap<OperationCode, ClientRequest >> operationHistory,
                     EntityAddressBook.SEQUENCER);
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);
-
-            if(!instance.send(message, 10, 1000)) {
-                throw new Exception("Failed to send Restore Command to Replica");
-            }else {
-                return "Restore order sent";
-            }
-
+            socketWrapper.send(message, replicaInEntityForm);
         } catch (SocketException e) {
             return e.getMessage();
         } catch (Exception e) {
@@ -82,7 +84,7 @@ public class ReplicaManager implements IReplicaManager {
     @Override
     public String restartReplica(int seqID) {
         try {
-            SocketWrapper instance = new SocketWrapper();
+            SocketWrapper socketWrapper = new SocketWrapper(replicaInEntityForm);
             MessageRequest message = new MessageRequest(
                     OperationCode.RESTART_ORDER_NOTIFICATION,
                     seqID,
@@ -90,12 +92,7 @@ public class ReplicaManager implements IReplicaManager {
                     EntityAddressBook.REPLICAS);
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);
-
-            if(!instance.send(message, 10, 1000)) {
-                throw new Exception("Failed to send Restore Command to Replica");
-            }else {
-                return "Restart order sent";
-            }
+            socketWrapper.send(message, replicaInEntityForm);
 
         } catch (SocketException e) {
             return e.getMessage();

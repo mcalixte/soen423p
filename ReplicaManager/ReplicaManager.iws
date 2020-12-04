@@ -2,32 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74b3f5c-f51f-46d5-96fd-4c8d4420be46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ReplicaManager.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/ReplicaManager.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/manager1/ReplicaManagerServer1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/manager2/ReplicaManagerServer2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/manager3/ReplicaManagerServer3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ReplicaManager.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/client.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/networkEntities/EntityAddressBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/networkEntities/RegisteredReplica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/MessageRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/OperationCode$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/OperationCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/SocketWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReplicaManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/commonUtils.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/CORBA.idl" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/CORBA.idl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/ConsensusTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/ConsensusTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Frontend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/frontendServerInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendServerInitialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/Frontend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendOperations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/FrontendPOA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/org/omg/CORBA/_FrontendStub.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/main/ConcurrencyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/BCClientThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/ManagerThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/ONClientThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/src/tests/threads/QCClientThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,55 +69,10 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="replicaManager" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="replicaManager" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="managers" />
+      <recent name="managers.manager2" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -139,7 +86,7 @@
       </list>
     </option>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -156,40 +103,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606938974153">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606938974153" />
-    <state x="525" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606687935682">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="525" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606687935682" />
-    <state x="748" y="297" key="FileChooserDialogImpl" timestamp="1606714053607">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="748" y="297" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1606714053607" />
-    <state x="635" y="290" key="IDE.errors.dialog" timestamp="1606594245622">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="635" y="290" key="IDE.errors.dialog/0.24.1920.1056@0.24.1920.1056" timestamp="1606594245622" />
-    <state x="998" y="299" key="NewModule_or_Project.wizard" timestamp="1606590453142">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="998" y="299" key="NewModule_or_Project.wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1606590453142" />
-    <state x="819" y="205" key="SettingsEditor" timestamp="1606594490326">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="819" y="205" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1606594490326" />
-    <state x="273" y="140" width="1372" height="794" key="new project wizard" timestamp="1606603894566">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="273" y="140" width="1372" height="794" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1606603894566" />
-    <state x="624" y="246" key="run.anything.popup" timestamp="1606611462377">
-      <screen x="0" y="24" width="1920" height="1056" />
-    </state>
-    <state x="624" y="246" key="run.anything.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1606611462377" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
