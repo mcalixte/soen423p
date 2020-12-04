@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class ClientRequest implements Serializable, IGenericMessage {
 
+    final private static long serialVersionUID = 8927347896578L;
     private OperationCode method;
     private Location location; // TODO Will be parsed by the replica server in order to direct the request towards a store
     private UserType userType;

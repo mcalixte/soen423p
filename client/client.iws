@@ -2,21 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="247ebcc0-120a-4661-8c40-b3dc674e710f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/ClientRequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/IClientS3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/ReplicaServer3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/client.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/ConsensusTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/ReplicaErrorTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Frontend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Frontend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/frontendListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/service/utils/helpers/managerUtils/ManagerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/service/utils/helpers/managerUtils/ManagerUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/QCStoreLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/logs/server/BCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/logs/server/BCStoreLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/logs/server/QCStoreLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/implementation/StoreServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/implementation/StoreServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/BcStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/BcStoreServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/OnStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/OnStoreServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/QcStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/QcStoreServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/ManagerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/ManagerHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ListItemConnectionThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ListItemConnectionThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$PurchaseConnectionThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$PurchaseConnectionThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ReturnItemThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ReturnItemThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerBudgetLogThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerBudgetLogThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerPurchaseLogThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerPurchaseLogThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/ManagerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/ManagerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreImplementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +65,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8.0_202" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../replica-3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -68,7 +77,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.FrontendServerInitialization">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="client" />
@@ -77,38 +86,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="frontendServerInitialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="frontendServerInitialization" />
+    <configuration name="FrontendServerInitialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FrontendServerInitialization" />
       <module name="frontend" />
-      <option name="PROGRAM_PARAMETERS" value="-ORBInitialPort 1050 -ORBInitialHost localhost" />
+      <option name="PROGRAM_PARAMETERS" value="start java FrontendServerInitialization -ORBInitialPort 1050 -ORBInitialHost localhost" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.frontendServerInitialization" />
       <item itemvalue="Application.Client" />
+      <item itemvalue="Application.FrontendServerInitialization" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.frontendServerInitialization" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.FrontendServerInitialization" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -123,17 +131,19 @@
       <workItem from="1606892339600" duration="10146000" />
       <workItem from="1606954305277" duration="1264000" />
       <workItem from="1606961808703" duration="17433000" />
+      <workItem from="1607068380911" duration="8514000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="64" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606940944236">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state x="76" y="18" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607068958363">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="64" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1217.720@0.0.1217.720" timestamp="1606940944236" />
+    <state x="76" y="18" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1607068958363" />
     <state x="353" y="163" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606964085248">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
@@ -150,38 +160,46 @@
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606976803872" />
-    <state width="1173" height="24" key="GridCell.Tab.0.bottom" timestamp="1606954287140">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="461" key="GridCell.Tab.0.bottom" timestamp="1607074926221">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.0.bottom/0.0.1217.720@0.0.1217.720" timestamp="1606954287140" />
-    <state width="1173" height="24" key="GridCell.Tab.0.center" timestamp="1606954287139">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="461" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607074926221" />
+    <state width="1397" height="461" key="GridCell.Tab.0.center" timestamp="1607074926221">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.0.center/0.0.1217.720@0.0.1217.720" timestamp="1606954287139" />
-    <state width="1173" height="24" key="GridCell.Tab.0.left" timestamp="1606954287139">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="461" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1607074926221" />
+    <state width="1397" height="461" key="GridCell.Tab.0.left" timestamp="1607074926221">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.0.left/0.0.1217.720@0.0.1217.720" timestamp="1606954287139" />
-    <state width="1173" height="24" key="GridCell.Tab.0.right" timestamp="1606954287140">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="461" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1607074926221" />
+    <state width="1397" height="461" key="GridCell.Tab.0.right" timestamp="1607074926221">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.0.right/0.0.1217.720@0.0.1217.720" timestamp="1606954287140" />
-    <state width="1173" height="24" key="GridCell.Tab.1.bottom" timestamp="1606954287140">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="461" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1607074926221" />
+    <state width="1397" height="492" key="GridCell.Tab.1.bottom" timestamp="1607074077302">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.1.bottom/0.0.1217.720@0.0.1217.720" timestamp="1606954287140" />
-    <state width="1173" height="24" key="GridCell.Tab.1.center" timestamp="1606954287140">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="492" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607074077302" />
+    <state width="1397" height="492" key="GridCell.Tab.1.center" timestamp="1607074077302">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.1.center/0.0.1217.720@0.0.1217.720" timestamp="1606954287140" />
-    <state width="1173" height="24" key="GridCell.Tab.1.left" timestamp="1606954287140">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="492" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1607074077302" />
+    <state width="1397" height="492" key="GridCell.Tab.1.left" timestamp="1607074077302">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.1.left/0.0.1217.720@0.0.1217.720" timestamp="1606954287140" />
-    <state width="1173" height="24" key="GridCell.Tab.1.right" timestamp="1606954287140">
-      <screen x="0" y="0" width="1217" height="720" />
+    <state width="1397" height="492" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1607074077302" />
+    <state width="1397" height="492" key="GridCell.Tab.1.right" timestamp="1607074077302">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1173" height="24" key="GridCell.Tab.1.right/0.0.1217.720@0.0.1217.720" timestamp="1606954287140" />
+    <state width="1397" height="492" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1607074077302" />
     <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606888599447">
       <screen x="0" y="0" width="1217" height="720" />
     </state>
@@ -202,6 +220,132 @@
       <screen x="0" y="0" width="1217" height="720" />
     </state>
     <state x="265" y="161" key="run.anything.popup/0.0.1217.720@0.0.1217.720" timestamp="1606965208808" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>162</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>192</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>196</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>178</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>212</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>218</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>241</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>236</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>251</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../frontend/src/Frontend.java</url>
+          <line>256</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Client.java</url>
+          <line>225</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

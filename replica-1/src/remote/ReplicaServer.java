@@ -28,6 +28,6 @@ public class ReplicaServer {
 
         IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
         RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS);
-        requestListenerThread.start();
+        requestListenerThread.run();
     }
 }

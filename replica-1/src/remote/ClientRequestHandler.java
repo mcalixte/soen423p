@@ -23,19 +23,20 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
 
     @Override
     public ReplicaResponse handleRequestMessage(ClientRequest clientRequest) {
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getLocation()) {
             case QUEBEC:
-                handleUserAction(clientRequest, quebecStore);
+                replicaResponse = handleUserAction(clientRequest, quebecStore);
                 break;
             case ONTARIO:
-                handleUserAction(clientRequest, ontarioStore);
+                replicaResponse = handleUserAction(clientRequest, ontarioStore);
                 break;
             case BRITISHCOLUMBIA:
-                handleUserAction(clientRequest, britishColumbiaStore);
+                replicaResponse = handleUserAction(clientRequest, britishColumbiaStore);
                 break;
 
         }
-        return null;
+        return replicaResponse;
     }
 
     private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) {

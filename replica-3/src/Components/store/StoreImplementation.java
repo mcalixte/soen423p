@@ -121,6 +121,7 @@ public class StoreImplementation implements StoreInterface {
         String actionMessage = "";
         int i = 0;
         int j = quantity;
+        String returnMessage = "";
         ReplicaResponse itemPurchased;
         for (Map.Entry<String, List<String>> entry : waitList.entrySet()) {
             for (String waitListItemID : entry.getValue()) {
@@ -132,7 +133,7 @@ public class StoreImplementation implements StoreInterface {
                         actionMessage = response.getValue();
                     }
                     if (actionMessage.contains("\"Item was successfully purchased\"")) {
-                        actionMessage = "Purchased Item from inventory Customer who was on waitlist: CustomerID:"+entry.getValue().get(i)+" itemID:"+itemID+"\n";
+                        returnMessage = "Purchased Item from inventory Customer who was on waitlist: CustomerID:"+entry.getValue().get(i)+" itemID:"+itemID+"\n";
                         j--;
                         waitList.remove(itemID);
                     } else {
@@ -141,7 +142,7 @@ public class StoreImplementation implements StoreInterface {
                 }
             }
         }
-        return actionMessage;
+        return returnMessage;
     }
 
     public Boolean waitList(String userID, String itemID, Date dateOfPurchase) {

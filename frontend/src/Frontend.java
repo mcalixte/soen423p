@@ -20,7 +20,7 @@ public class Frontend extends IFrontendPOA {
 
     //Final Fields
     private int requiredAnswersForAgreement = 3;
-    private final SocketWrapper socket = new SocketWrapper();
+    private SocketWrapper socket;
 
     private ORB orb;
     private FrontEndHelper frontEndHelper = new FrontEndHelper();
@@ -28,7 +28,14 @@ public class Frontend extends IFrontendPOA {
     private HashMap<OperationCode, ClientRequest> requestOperation = new HashMap<>();
     private List<HashMap<OperationCode, ClientRequest>> operationHistory = new ArrayList<>();
 
-    public Frontend() throws SocketException {
+    public Frontend() {
+        try{
+            this.socket = new SocketWrapper(EntityAddressBook.FRONTEND);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -40,6 +47,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+         System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -51,6 +59,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+         System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -62,6 +71,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+         System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -73,6 +83,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+         System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -84,6 +95,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+        System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -95,6 +107,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+        System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -106,6 +119,7 @@ public class Frontend extends IFrontendPOA {
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnMessage = entry.getValue();
         }
+        System.out.print("Return Message"+returnMessage.toString());
         return returnMessage;
     }
 
@@ -146,11 +160,13 @@ public class Frontend extends IFrontendPOA {
             while (index > 0) {
                 ObjectInputStream is = replicaSocket.receive(3000);
                 ReplicaResponse replicaResponse = (ReplicaResponse) is.readObject();
+                 System.out.print("Collecting Message "+replicaResponse.toString());
                 receivedResponses.add(replicaResponse);
                 index--;
             }
         } catch (Exception e) {
             int seqID = receivedResponses.get(0).getSequenceNumber();
+            System.out.print("Collecting Message "+receivedResponses.size());
             for (ReplicaResponse r : receivedResponses) {
                 if (seqID != r.getSequenceNumber()) {
                     receivedResponses.remove(r);
@@ -160,7 +176,7 @@ public class Frontend extends IFrontendPOA {
             return receivedResponses; //TODO Needs to be tested
         }
 
-
+        System.out.print("Collecting Message line 180"+receivedResponses.size());
         int seqID = receivedResponses.get(0).getSequenceNumber();
         for (ReplicaResponse r : receivedResponses) {
             if (seqID != r.getSequenceNumber()) {
@@ -168,17 +184,21 @@ public class Frontend extends IFrontendPOA {
                 receivedResponses.remove(r);
             }
         }
+
         return receivedResponses;
     }
 
 
     private ReplicaResponse handleReceivedResponses(List<ReplicaResponse> replicaResponseList) {
+        System.out.print("MKC1");
         if (replicaResponseList == null || replicaResponseList.size() == 0) {
             HashMap<String, String> stringResponses = new HashMap<>();
             stringResponses.put("", "No replica has answered your request, try again...");
+            System.out.print("MKC2");
             return new ReplicaResponse(RegisteredReplica.NONE, false, 0, stringResponses);
         }
 
+        System.out.print("MKC3");
         int seqNumber = replicaResponseList.get(0).getSequenceNumber();
         ReplicaErrorTracker tracker = new ReplicaErrorTracker(seqNumber);
 
@@ -188,15 +208,19 @@ public class Frontend extends IFrontendPOA {
         List<RegisteredReplica> erroneousReplicas = tracker.getErroneousReplicas();
 
         HashMap<String, String> stringResponses = new HashMap<>();
-
-        if (crashedReplicas.size() == 0 && erroneousReplicas.size() == 0)
-            return replicaResponseList.get(0);
+        System.out.print("MKC4");
+        if (crashedReplicas.size() == 0 && erroneousReplicas.size() == 0) {
+            System.out.print("MKC6");
+             return replicaResponseList.get(0);
+        }
         else if (crashedReplicas.size() != 0) {
             processesMissingResponses(crashedReplicas);
             stringResponses.put("", "System needs to be restarted and restored , wait for acknowledgment of restart and restoration...");
+            System.out.print("MKC7");
             return new ReplicaResponse(RegisteredReplica.NONE, false, 0, stringResponses);
         } else if (erroneousReplicas.size() != 0) {
             processesFailuresBadResponses(erroneousReplicas);
+            System.out.print("MKC8");
             return tracker.getValidReplicas().get(0);
         }
         return new ReplicaResponse();
@@ -210,11 +234,12 @@ public class Frontend extends IFrontendPOA {
             errorMessage = new MessageRequest(OperationCode.FAULTY_RESP_RECEIVED_NOTIFICATION); // 4. Who to send this to ==> manager    // 2. What type of failure happened
             errorMessage.setOperationHistory(operationHistory); // 1. List of all ClientRequests atm
             errorMessage.setErroneousReplicas(erroneousReplicas); // 3. Which replica is suspected
-
+            System.out.print("MKC11");
             socket.send(errorMessage, EntityAddressBook.MANAGER);
         } catch (Exception e) {
             e.printStackTrace();
         }
+         System.out.print("MKC14");
     }
 
     private void processesMissingResponses(List<RegisteredReplica> crashedReplicas) {
@@ -224,10 +249,12 @@ public class Frontend extends IFrontendPOA {
             errorMessage = new MessageRequest(OperationCode.NO_RESPONSE_RECEIVED_NOTIFICATION);
             errorMessage.setOperationHistory(operationHistory); // 1. List of all ClientRequests atm
             errorMessage.setErroneousReplicas(crashedReplicas); // 3. Which replica is suspected
+            System.out.print("MKC10");
             socket.send(errorMessage, EntityAddressBook.MANAGER);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.print("MKC13");
     }
 
     public void shutdown() {

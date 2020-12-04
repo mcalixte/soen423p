@@ -24,23 +24,23 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
 
     @Override
     public ReplicaResponse handleRequestMessage(ClientRequest clientRequest) {
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         try {
         switch (clientRequest.getLocation()) {
             case QUEBEC:
-
-                    handleUserAction(clientRequest, quebecStore);
+                replicaResponse = handleUserAction(clientRequest, quebecStore);
                 break;
             case ONTARIO:
-                handleUserAction(clientRequest, ontarioStore);
+                replicaResponse = handleUserAction(clientRequest, ontarioStore);
                 break;
             case BRITISHCOLUMBIA:
-                handleUserAction(clientRequest, britishColumbiaStore);
+                replicaResponse = handleUserAction(clientRequest, britishColumbiaStore);
                 break;
         }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        return null;
+        return replicaResponse;
     }
 
     private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) throws RemoteException {
@@ -120,18 +120,18 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
 
     public void instantiateStoreServers() {
         try {
-            URL quebecURL = new URL("http://localhost:9082/quebecStore?wsdl");
-            QName quebecQName = new QName("http://service/", "StoreImplService");
+            URL quebecURL = new URL("http://localhost:8002/quebecStore?wsdl");
+            QName quebecQName = new QName("http://store.Components/", "StoreImplementationService");
             Service quebecService = Service.create(quebecURL, quebecQName);
             quebecStore = quebecService.getPort(StoreInterface.class);
 
-            URL ontarioURL = new URL("http://localhost:9081/ontarioStore?wsdl");
-            QName ontarioQName = new QName("http://service/", "StoreImplService");
+            URL ontarioURL = new URL("http://localhost:8001/ontarioStore?wsdl");
+            QName ontarioQName = new QName("http://store.Components/", "StoreImplementationService");
             Service ontarioService = Service.create(ontarioURL, ontarioQName);
             ontarioStore = ontarioService.getPort(StoreInterface.class);
 
-            URL britishColumbiaURL = new URL("http://localhost:9080/britishColumbiaStore?wsdl");
-            QName britishColumbiaQName = new QName("http://service/", "StoreImplService");
+            URL britishColumbiaURL = new URL("http://localhost:8000/britishColumbiaStore?wsdl");
+            QName britishColumbiaQName = new QName("http://store.Components/", "StoreImplementationService");
             Service britishColumbiaService = Service.create(britishColumbiaURL, britishColumbiaQName);
             britishColumbiaStore = britishColumbiaService.getPort(StoreInterface.class);
         } catch (Exception e) {

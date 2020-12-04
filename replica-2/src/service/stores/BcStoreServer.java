@@ -74,11 +74,11 @@ public class BcStoreServer {
         Items item4 = new Items("BC1150","TV", 25, 279.99);
         Items item5 = new Items("BC1200","Monitor", 150, 139.99);
 
-        inventory.put(item1.getItemID(),item1);
-        inventory.put(item2.getItemID(),item2);
-        inventory.put(item3.getItemID(),item3);
-        inventory.put(item4.getItemID(),item4);
-        inventory.put(item5.getItemID(),item5);
+//        inventory.put(item1.getItemID(),item1);
+//        inventory.put(item2.getItemID(),item2);
+//        inventory.put(item3.getItemID(),item3);
+//        inventory.put(item4.getItemID(),item4);
+//        inventory.put(item5.getItemID(),item5);
 
 
         try {

@@ -91,10 +91,11 @@ public class ManagerUtils {
     }
 
     public static String listItems(HashMap<String, List<Item>> inventory) {
-        StringBuilder returnMessage = new StringBuilder("This store contains the following items: \r\n"+"\t");
+        StringBuilder returnMessage = new StringBuilder("This store contains the following items: \r\n");
         for(Map.Entry<String, List<Item>> entry : inventory.entrySet()){
             for(Item item : entry.getValue()) {
-                returnMessage.append("\t"+item.toString()+" "+ entry.getValue().size() +"\n");
+                returnMessage.append(item.toString()+" "+ entry.getValue().size() +"\n");
+                break;
             }
         }
         return returnMessage.toString();

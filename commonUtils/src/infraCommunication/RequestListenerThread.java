@@ -6,10 +6,13 @@ import replica.ReplicaResponse;
 
 import java.io.*;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.MulticastSocket;
+import java.util.Arrays;
 
 public class RequestListenerThread extends Thread {
     private MulticastSocket serverSocket;
+    private DatagramSocket datagramSocket;
     private DatagramPacket incomingPacket;
     private IClientRequestHandler clientRequestHandler;
     private EntityAddressBook targetNetworkEntity;
@@ -24,7 +27,7 @@ public class RequestListenerThread extends Thread {
 
 
     public void run() {
-        createMulticastSocket();
+        createSockets();
         while (true) {
             ClientRequest clientRequest = receiveIncomingClientRequest();
 
@@ -35,19 +38,20 @@ public class RequestListenerThread extends Thread {
             try {
                 System.out.println("Replying... " + replicaResponse);
 
-                if(replicaResponse != null)
-                     serverSocket.send(replicaResponse.getPacket(targetNetworkEntity));
-
-            } catch (IOException ex) {
-                System.out.println("Failed to send message: " + ex.getMessage());
+                if (replicaResponse != null) {
+                    datagramSocket.send(replicaResponse.getPacket(targetNetworkEntity));
+                }
+                } catch(IOException ex){
+                    System.out.println("Failed to send message: " + ex.getMessage());
+                }
             }
-
         }
 
-    }
 
-    private void createMulticastSocket() {
+
+    private void createSockets() {
         try {
+            datagramSocket = new DatagramSocket();
             serverSocket = new MulticastSocket(sourceNetworkEntity.getPort());
             serverSocket.joinGroup(sourceNetworkEntity.getAddress());
         } catch (IOException ex) {
@@ -59,7 +63,11 @@ public class RequestListenerThread extends Thread {
         System.out.println("Processing new request...");
 
         ReplicaResponse response = null;
-        response = clientRequestHandler.handleRequestMessage(clientRequest);
+        try {
+            response = clientRequestHandler.handleRequestMessage(clientRequest);
+        } catch(Exception e){
+          e.printStackTrace();
+        }
         response.setSequenceNumber(clientRequest.getSequenceNumber());
         return response;
     }
@@ -72,15 +80,15 @@ public class RequestListenerThread extends Thread {
 
             byte[] data = incomingPacket.getData();
             ByteArrayInputStream in = new ByteArrayInputStream(data);
-            ObjectInputStream is = new ObjectInputStream(in);
 
+            ObjectInputStream is = new ObjectInputStream(in);
             clientRequest = (ClientRequest) is.readObject();
             is.close();
             return clientRequest;
 
         } catch (Exception e) {
-            System.out.println("PurchaseItem Exception: " + e);
-            // e.printStackTrace();
+//            System.out.println("PurchaseItem Exception: " + e);
+             e.printStackTrace();
         }
         return null;
     }

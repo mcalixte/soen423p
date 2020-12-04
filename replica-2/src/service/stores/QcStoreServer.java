@@ -75,12 +75,12 @@ public class QcStoreServer {
         Items item5 = new Items("QC1200","RAM", 200, 999.99);
         Items item6 = new Items("QC1250","RAM", 120, 59.99);
 
-        inventory.put(item1.getItemID(),item1);
-        inventory.put(item2.getItemID(),item2);
-        inventory.put(item3.getItemID(),item3);
-        inventory.put(item4.getItemID(),item4);
-        inventory.put(item5.getItemID(),item5);
-        inventory.put(item6.getItemID(),item6);
+//        inventory.put(item1.getItemID(),item1);
+//        inventory.put(item2.getItemID(),item2);
+//        inventory.put(item3.getItemID(),item3);
+//        inventory.put(item4.getItemID(),item4);
+//        inventory.put(item5.getItemID(),item5);
+//        inventory.put(item6.getItemID(),item6);
 
         try {
             FileWriter writer = new FileWriter("src\\logs\\server\\QCStoreLogs.txt");
