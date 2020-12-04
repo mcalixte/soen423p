@@ -100,7 +100,7 @@ public class ClientHelper {
             if(itemID.contains(this.provinceID.toLowerCase())) {
                 store.waitList(customerID, itemID, dateOfPurchase);
 
-                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase );
+                replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase);
                 replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
                 replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
                 return replicaResponse;
@@ -201,7 +201,7 @@ public class ClientHelper {
         ReplicaResponse replicaResponse = new ReplicaResponse();
 
         try {
-            dateOfReturnDate = new SimpleDateFormat("mm/dd/yyyy HH:mm").parse(dateOfReturn);
+            dateOfReturnDate = new SimpleDateFormat("mm/dd/yyyy").parse(dateOfReturn);
         } catch (ParseException e) {
            // e.printStackTrace();
         }
@@ -242,7 +242,7 @@ public class ClientHelper {
                         String itemIDToReturn;
                         itemIDToReturn = store.getInventory().get(itemID) != null &&  store.getInventory().get(itemID).size() > 0 ? itemID : "";
 
-                        replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+waitlistReplicaResponse);
+                        replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n");
                         replicaResponse.setSuccessResult(true);
                         replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
                         return replicaResponse;
@@ -288,10 +288,10 @@ public class ClientHelper {
     }
 
     private Date findDateFromCustomerPurchaseLog(String customerID, String itemID, StoreImpl store) {
-        String dateOfPurchase = new SimpleDateFormat("dd/mm/yyyy HH:mm").format(new Date());
+        String dateOfPurchase = new SimpleDateFormat("dd/mm/yyyy").format(new Date());
         Date dateOfPurchaseDate = new Date();
         try {
-            dateOfPurchaseDate = new SimpleDateFormat("dd/mm/yyyy HH:mm").parse(dateOfPurchase);
+            dateOfPurchaseDate = new SimpleDateFormat("dd/mm/yyyy").parse(dateOfPurchase);
         } catch (ParseException e) {
            // e.printStackTrace();
         }

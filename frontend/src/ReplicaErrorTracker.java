@@ -77,8 +77,13 @@ public class ReplicaErrorTracker {
                     validReplicas.add(replicaResponses.get(0));
                     validReplicas.add(replicaResponses.get(1));
                     erroneousReplicas.add(replicaResponses.get(2).getReplicaID());
+                } else if(responses.get(0).equalsIgnoreCase(responses.get(2))){
+                    validReplicas.add(replicaResponses.get(0));
+                    validReplicas.add(replicaResponses.get(1));
+                    validReplicas.add(replicaResponses.get(2));
                 }
             }
+            System.out.print("result");
         }
     }
 
