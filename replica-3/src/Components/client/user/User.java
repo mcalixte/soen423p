@@ -2,9 +2,7 @@ package Components.client.user;
 
 import Components.store.StoreImplementation;
 
-import StoreApp.Store;
-import StoreApp.StoreHelper;
-
+import Components.store.StoreInterface;
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.ORBPackage.InvalidName;
 import org.omg.CosNaming.NamingContextExt;
@@ -18,23 +16,36 @@ import java.rmi.NotBoundException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+import java.net.URL;
+
 public class User extends UserInterface {
 
     public static String userID = null;
     public static double budget = 1000.00;
+    private static StoreInterface QCStore;
+    private static StoreInterface BCStore;
+    private static StoreInterface ONStore;
 
     private static HashMap<String, HashMap<String, String>> commandInterface = new HashMap<>();
 
     public static void main(String[] args) {
         try {
-            ORB orb = ORB.init(args, null);
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+            URL quebecURL = new URL("http://localhost:8002/quebecStore?wsdl");
+            QName quebecQName = new QName("http://store.Components/", "StoreImplementationService");
+            Service quebecService = Service.create(quebecURL, quebecQName);
+            QCStore = quebecService.getPort(StoreInterface.class);
 
-            Store QCStore = StoreHelper.narrow(ncRef.resolve_str("quebecStore"));
-            Store BCStore = StoreHelper.narrow(ncRef.resolve_str("britishColumbiaStore"));
-            Store ONStore = StoreHelper.narrow(ncRef.resolve_str("ontarioStore"));
+            URL ontarioURL = new URL("http://localhost:8001/ontarioStore?wsdl");
+            QName ontarioQName = new QName("http://store.Components/", "StoreImplementationService");
+            Service ontarioService = Service.create(ontarioURL, ontarioQName);
+            ONStore = ontarioService.getPort(StoreInterface.class);
 
+            URL britishColumbiaURL = new URL("http://localhost:8000/britishColumbiaStore?wsdl");
+            QName britishColumbiaQName = new QName("http://store.Components/", "StoreImplementationService");
+            Service britishColumbiaService = Service.create(britishColumbiaURL, britishColumbiaQName);
+            BCStore = britishColumbiaService.getPort(StoreInterface.class);
             prepareCommandConsoleInterfaces(commandInterface);
 
             Scanner scanner = new Scanner(System.in);
@@ -59,14 +70,8 @@ public class User extends UserInterface {
                         break;
                 }
             }
-        } catch (InvalidName invalidName) {
-            invalidName.printStackTrace();
-        } catch (CannotProceed cannotProceed) {
-            cannotProceed.printStackTrace();
-        } catch (org.omg.CosNaming.NamingContextPackage.InvalidName invalidName) {
-            invalidName.printStackTrace();
-        } catch (NotFound notFound) {
-            notFound.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -134,7 +139,7 @@ public class User extends UserInterface {
             return generateUserID(scanner);
     }
 
-    private static void generateUserAction(Scanner scanner, Store store) {
+    private static void generateUserAction(Scanner scanner, StoreInterface store) {
         if (userID.substring(2, 3).equalsIgnoreCase("M")) {
 
             System.out.print("A Manager can enter the following commands for their own store: \n\n");
@@ -172,7 +177,7 @@ public class User extends UserInterface {
                 }
     }
 
-    private static void handleUserRequest(String command, Scanner scanner, Store store) {
+    private static void handleUserRequest(String command, Scanner scanner, StoreInterface store) {
         String itemID = null;
         String itemName = null;
         String dateString = null;
@@ -224,7 +229,7 @@ public class User extends UserInterface {
         }
     }
 
-    public static void purchaseItem(Store store, String userID, String itemID, String dateOfPurchase) {
+    public static void purchaseItem(StoreInterface store, String userID, String itemID, String dateOfPurchase) {
         try {
             System.out.println(store.purchaseItem(userID, itemID, dateOfPurchase.toString()));
         } catch (Exception e) {
@@ -232,7 +237,7 @@ public class User extends UserInterface {
         return;
     }
 
-    public static void findItem(Store store, String userID, String itemID) {
+    public static void findItem(StoreInterface store, String userID, String itemID) {
         try {
             System.out.println(store.findItem(userID, itemID));
         } catch (Exception e) {
@@ -240,7 +245,7 @@ public class User extends UserInterface {
         return;
     }
 
-    public static void returnItem(Store store, String customerID, String itemID, String dateOfReturn) {
+    public static void returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn) {
         try {
             System.out.println(store.returnItem(customerID, itemID, dateOfReturn.toString()));
         } catch (Exception e) {
@@ -248,11 +253,11 @@ public class User extends UserInterface {
         return;
     }
 
-    public static void exchangeItem(Store store, String customerID, String oldItemID, String newItemID,String dateofExchange){
+    public static void exchangeItem(StoreInterface store, String customerID, String oldItemID, String newItemID,String dateofExchange){
         System.out.println(store.exchange(customerID,newItemID,oldItemID,dateofExchange));
     }
 
-    private static void handleManagerRequest(String command, Scanner scanner, Store store) {
+    private static void handleManagerRequest(String command, Scanner scanner, StoreInterface store) {
         String itemID = null;
         String itemName = null;
         int quantity = 0;
@@ -282,21 +287,21 @@ public class User extends UserInterface {
         }
     }
 
-    public static void addItem(Store store, String userID, String itemID, String itemName, int quantity, double price) {
+    public static void addItem(StoreInterface store, String userID, String itemID, String itemName, int quantity, double price) {
         try {
             System.out.println(store.addItem(userID, itemID, itemName, quantity, price));
         } catch (Exception e) {
         }
     }
 
-    public static void removeItem(Store store, String userID, String itemID, int quantity) {
+    public static void removeItem(StoreInterface store, String userID, String itemID, int quantity) {
         try {
             System.out.print(store.removeItem(userID, itemID, quantity));
         } catch (Exception e) {
         }
     }
 
-    public static void listItemAvailability(Store store, String userID) {
+    public static void listItemAvailability(StoreInterface store, String userID) {
         try {
             System.out.println(store.listItemAvailability(userID));
         } catch (Exception e) {
@@ -304,7 +309,7 @@ public class User extends UserInterface {
         return;
     }
 
-    private static boolean isDateFormatValid(String dateString) { // dd/mm/yyyy HH:mm
+    private static boolean isDateFormatValid(String dateString) { // dd/mm/yyyy HH:mm:ss
         String strDateRegEx = "([012][0-9]|[3][01])\\/(0[1-9]|1[012])\\/\\d{4} ([01][0-9]|2[0123]):([0-5][0-9]):([0-5][0-9])";
         return dateString.matches(strDateRegEx);
     }

@@ -6,7 +6,6 @@ import infraCommunication.IClientRequestHandler;
 
 import java.net.DatagramPacket;
 
-
 public class ReplicaServer3 {
 
         public static void main(String[] args) {
@@ -16,7 +15,7 @@ public class ReplicaServer3 {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
             IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
-            RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.SEQUENCER);
+            RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS);
             requestListenerThread.start();
         }
     }
