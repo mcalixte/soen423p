@@ -1,21 +1,61 @@
 package remote;
 
+import infraCommunication.MessageRequest;
+import infraCommunication.OperationCode;
 import infraCommunication.RequestListenerThread;
 import networkEntities.EntityAddressBook;
 import infraCommunication.IClientRequestHandler;
+import replica.ClientRequest;
 
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.util.HashMap;
 
 public class ReplicaServer3 {
 
-        public static void main(String[] args) {
-            System.out.println("Replica Server Started...");
+    public static void main(String[] args) {
+        System.out.println("Replica Server Started...");
 
-            byte[] receiveData = new byte[1024];
-            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+        byte[] receiveData = new byte[1024];
+        DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
-            IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
-            RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS);
-            requestListenerThread.start();
+        IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
+        RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS, EntityAddressBook.REPLICA3);
+        requestListenerThread.run();
+
+        sendRestorationRequestAndRestore();
+    }
+
+    private static void sendRestorationRequestAndRestore() {
+        try {
+            DatagramSocket datagramSocket = new DatagramSocket(EntityAddressBook.REPLICA3.getPort());
+
+            MessageRequest messageRequest = new MessageRequest(OperationCode.RESTORE_DATA_WITH_ORDERED_REQUESTS_NOTIFICATION);
+            DatagramPacket senderPacket = messageRequest.getPacket(EntityAddressBook.MANAGER3);
+            datagramSocket.send(senderPacket);
+
+            byte[] data = new byte[1024];
+            DatagramPacket datagramPacket = new DatagramPacket(data, data.length);
+            datagramSocket.receive(datagramPacket);
+
+            ByteArrayInputStream in = new ByteArrayInputStream(data);
+            ObjectInputStream is = new ObjectInputStream(in);
+            messageRequest = (MessageRequest) is.readObject();
+
+            replayAllClientRequests(messageRequest);
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+    }
+
+    private static void replayAllClientRequests(MessageRequest messageRequest) {
+        for(HashMap<OperationCode, ClientRequest> operation: messageRequest.getOperationHistory()) {
+            ClientRequest clientRequest = operation.get(operation);
+
+        }
+    }
     }

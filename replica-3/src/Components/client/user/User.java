@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.URL;
 
-public class User extends UserInterface {
+public class User {
 
     public static String userID = null;
     public static double budget = 1000.00;

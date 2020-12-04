@@ -1,6 +1,6 @@
 package Components.store;
 
-import Components.store.item.Item;
+import Components.store.item.*;
 import javafx.util.Pair;
 import networkEntities.RegisteredReplica;
 import replica.ReplicaResponse;
