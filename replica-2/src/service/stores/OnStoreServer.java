@@ -75,10 +75,10 @@ public class OnStoreServer {
         Items item4 = new Items("ON1150","GPU", 25, 279.99);
 
 
-        inventory.put(item1.getItemID(),item1);
-        inventory.put(item2.getItemID(),item2);
-        inventory.put(item3.getItemID(),item3);
-        inventory.put(item4.getItemID(),item4);
+//        inventory.put(item1.getItemID(),item1);
+//        inventory.put(item2.getItemID(),item2);
+//        inventory.put(item3.getItemID(),item3);
+//        inventory.put(item4.getItemID(),item4);
 
 
         try {

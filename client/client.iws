@@ -3,26 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="247ebcc0-120a-4661-8c40-b3dc674e710f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/client.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/SocketWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Frontend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Frontend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/orb.db/NC0" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/orb.db/NC0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/infraCommunication/RequestListenerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/infraCommunication/RequestListenerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/infraCommunication/SocketWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/infraCommunication/SocketWrapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/networkEntities/EntityAddressBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/networkEntities/EntityAddressBook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/out/production/commonUtils/infraCommunication/RequestListenerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/out/production/commonUtils/infraCommunication/RequestListenerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/BCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/BCStoreLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/service/utils/helpers/managerUtils/ManagerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/service/utils/helpers/managerUtils/ManagerUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/out/production/replica-2/logs/server/QCStoreLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/logs/server/BCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/logs/server/BCStoreLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-2/src/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/logs/server/QCStoreLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/infraCommunication/RequestListenerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/infraCommunication/RequestListenerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/infraCommunication/SocketWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/infraCommunication/SocketWrapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/networkEntities/EntityAddressBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/networkEntities/EntityAddressBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-1/remote/ClientRequestHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-1/remote/ClientRequestHandler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-1/remote/ClientRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-1/remote/ClientRequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/implementation/StoreServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/implementation/StoreServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/BcStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/BcStoreServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/OnStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/OnStoreServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/src/service/stores/QcStoreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/src/service/stores/QcStoreServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-1/service/utils/helpers/managerUtils/ManagerUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/ManagerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/ManagerHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ListItemConnectionThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ListItemConnectionThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$PurchaseConnectionThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$PurchaseConnectionThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ReturnItemThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$ReturnItemThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerBudgetLogThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerBudgetLogThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerPurchaseLogThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation$UpdateCustomerPurchaseLogThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/Components/store/StoreImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/ManagerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/ManagerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreImplementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,7 @@
       <workItem from="1606892339600" duration="10146000" />
       <workItem from="1606954305277" duration="1264000" />
       <workItem from="1606961808703" duration="17433000" />
-      <workItem from="1607068380911" duration="6781000" />
+      <workItem from="1607068380911" duration="8514000" />
     </task>
     <servers />
   </component>

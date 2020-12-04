@@ -70,7 +70,6 @@ public class StoreServerImpl implements StoreInterface {
         HashMap<String, String> response = new HashMap<>();
         response.put("id",managerID);
 
-
         if(isManager(managerID).equals("true")){
             if(inventory.containsKey(itemID)){
                 inventory.get(itemID).setItemName(itemName);
@@ -106,7 +105,7 @@ public class StoreServerImpl implements StoreInterface {
                 }
 
                 returnResponse.setSuccessResult(true);
-                response.put(managerID,"Alert: Item will be added, this item is the first of its kind ...");
+                response.put(managerID,"Alert: Item will be added ...");
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
@@ -274,7 +273,7 @@ public class StoreServerImpl implements StoreInterface {
 
         for (HashMap.Entry<String, Items> entry: inventory.entrySet()) {
             if(entry.getValue().getItemName().equalsIgnoreCase(itemName)){
-                response = response.concat(inventory.get(entry.getValue().getItemID()).toString() + "/");
+                response = response.concat(inventory.get(entry.getValue().getItemID()).toString() +" " + inventory.get(entry.getValue().getItemID()).getQuantity()+"/");
             }
         }
 
@@ -571,9 +570,10 @@ public class StoreServerImpl implements StoreInterface {
         String strResponse = findItem(customerID,itemName) + udpResponse[0] + udpResponse[1];
         String [] resArr = strResponse.split("/");
         StringBuilder foundItems = new StringBuilder();
+        foundItems.append("This store contains the following items: \r\n");
 
         for (String item : resArr)
-            foundItems.append("\t" + item.toString() + "\n");
+            foundItems.append("\t" + item.toString() +"\n");
 
         returnResponse.setSuccessResult(true);
         response.put(customerID,foundItems.toString());

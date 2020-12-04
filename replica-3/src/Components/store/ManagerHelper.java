@@ -38,7 +38,7 @@ public class ManagerHelper {
         while (index != 0) {
             if (store.getInventory().get(itemID) == null || store.getInventory().get(itemID).size() == 0) {
 
-                actionMessage = "Alert: Item will be added, this item is the first of its kind ...";
+                actionMessage = "Alert: Item will be added ...";
                 ArrayList<Item> itemList = new ArrayList<Item>();
                 store.getInventory().put(itemID, itemList);
                 store.getInventory().get(itemID).add(item);
@@ -96,7 +96,7 @@ public class ManagerHelper {
         int index = quantity;
         if (quantity == -1 && store.getInventory().containsKey(itemID) == true) {
             store.getInventory().get(itemID).clear();
-            System.out.print("All " + itemID + " was removed from inventoory");
+            System.out.print("All " + itemID + " was removed from inventory");
             Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task SUCCESSFUL: Remove Item from Inventory ManagerID: "
                     + userID + " ItemID: " + itemID + " Quantity: ALL");
             Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task SUCCESSFUL: Remove Item from Inventory ManagerID: "
@@ -140,9 +140,9 @@ public class ManagerHelper {
         StringBuilder returnMessage = new StringBuilder("This store contains the following items: \r\n");
         if (store.getInventory() != null) {
             for (Map.Entry<String, ArrayList<Item>> entry : store.getInventory().entrySet()) {
-                returnMessage.append(entry.getKey() + " : \r\n");
                 for (Item item : entry.getValue()) {
                     returnMessage.append("\t"+item.toString()+" "+ entry.getValue().size() +"\n");
+                    break;
                 }
             }
             Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task SUCCESSFUL: Listing Inventory ManagerID: "
@@ -151,7 +151,6 @@ public class ManagerHelper {
                     + userID);
         }
         else {
-            returnMessage.append("no items are availible\n");
             Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Listing Inventory ManagerID: "
                     + userID);
             Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Listing Inventory ManagerID: "
