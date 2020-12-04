@@ -6,11 +6,13 @@ import replica.ReplicaResponse;
 
 import java.io.*;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.MulticastSocket;
 import java.util.Arrays;
 
 public class RequestListenerThread extends Thread {
     private MulticastSocket serverSocket;
+    private DatagramSocket datagramSocket;
     private DatagramPacket incomingPacket;
     private IClientRequestHandler clientRequestHandler;
     private EntityAddressBook targetNetworkEntity;
@@ -25,7 +27,7 @@ public class RequestListenerThread extends Thread {
 
 
     public void run() {
-        createMulticastSocket();
+        createSockets();
         while (true) {
             ClientRequest clientRequest = receiveIncomingClientRequest();
 
@@ -36,19 +38,20 @@ public class RequestListenerThread extends Thread {
             try {
                 System.out.println("Replying... " + replicaResponse);
 
-                if(replicaResponse != null)
-                     serverSocket.send(replicaResponse.getPacket(targetNetworkEntity));
-
-            } catch (IOException ex) {
-                System.out.println("Failed to send message: " + ex.getMessage());
+                if (replicaResponse != null) {
+                    datagramSocket.send(replicaResponse.getPacket(targetNetworkEntity));
+                }
+                } catch(IOException ex){
+                    System.out.println("Failed to send message: " + ex.getMessage());
+                }
             }
-
         }
 
-    }
 
-    private void createMulticastSocket() {
+
+    private void createSockets() {
         try {
+            datagramSocket = new DatagramSocket();
             serverSocket = new MulticastSocket(sourceNetworkEntity.getPort());
             serverSocket.joinGroup(sourceNetworkEntity.getAddress());
         } catch (IOException ex) {
