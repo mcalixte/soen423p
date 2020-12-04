@@ -58,7 +58,9 @@ public class RequestListenerThread extends Thread {
     private ReplicaResponse processRequest(ClientRequest clientRequest) {
         System.out.println("Processing new request...");
 
-        ReplicaResponse response = clientRequestHandler.handleRequestMessage(clientRequest);
+        ReplicaResponse response = null;
+        response = clientRequestHandler.handleRequestMessage(clientRequest);
+        response.setSequenceNumber(clientRequest.getSequenceNumber());
         return response;
     }
 

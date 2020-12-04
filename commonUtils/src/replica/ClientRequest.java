@@ -17,6 +17,8 @@ public class ClientRequest implements Serializable, IGenericMessage {
     private int sequenceNumber;
     private HashMap<ParameterType, Object> methodParameters = new HashMap<>();
 
+    public ClientRequest() {}
+
     public ClientRequest(OperationCode method, Location location, UserType userType) {
         this.method = method;
         this.location = location;
@@ -56,7 +58,7 @@ public class ClientRequest implements Serializable, IGenericMessage {
 
     @Override
     public String toString() {
-        return "ClientRequest [method=" + method + ", location=" + location + ", data=" + methodParameters + "]";
+        return "ClientRequest [method=" + method + ", location=" + location + ", data=" + methodParameters + ", seqeunceID="+sequenceNumber+"]";
     }
 
     public int getSequenceNumber() {

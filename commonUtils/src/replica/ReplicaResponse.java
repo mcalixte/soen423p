@@ -54,7 +54,7 @@ public class ReplicaResponse implements Serializable {
 
         @Override
         public String toString() {
-            return "ReplicaResponse [replicaID=" + replicaID + ", success=" + success + ", response=" + response + "]";
+            return "ReplicaResponse [replicaID=" + replicaID + ", success=" + success + ", response=" + response + ", sequenceID="+sequenceNumber+"]" ;
         }
 
     public int getSequenceNumber() {

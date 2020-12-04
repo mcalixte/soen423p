@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ad99a7ed-35c5-423b-90f3-ef741fd3c4e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/interfaces/IReplicaManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/RegisteredReplica.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/OperationCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../commonUtils/src/udp/SocketWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/remote/ReplicaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/remote/ReplicaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/replica-2/service/implementation/StoreServerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/replica-2/service/implementation/StoreServerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sequencer/Sequencer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sequencer/Sequencer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sequencer/TempFEClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sequencer/TempFEClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/replica-2.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/remote/ReplicaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/remote/ReplicaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/implementation/StoreServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/implementation/StoreServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/src/Sequencer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/src/Sequencer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/src/TempFEClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/src/TempFEClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -24,13 +53,103 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectId" id="1l2aAwzoOJ3MvGAOWOkTxC8P4fG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/workspace-sts-3.9.7.RELEASE/soen423pp" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../replica-1" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\soen423p\replica-2\src\remote" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.BcStoreServer">
+    <configuration name="BcStoreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="service.stores.BcStoreServer" />
+      <module name="replica-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.stores.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnStoreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="service.stores.OnStoreServer" />
+      <module name="replica-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.stores.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QcStoreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="service.stores.QcStoreServer" />
+      <module name="replica-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.stores.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Sequencer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Sequencer" />
+      <module name="sequencer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TempFEClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TempFEClient" />
+      <module name="sequencer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TempFEClient" />
+        <item itemvalue="Application.Sequencer" />
+        <item itemvalue="Application.QcStoreServer" />
+        <item itemvalue="Application.OnStoreServer" />
+        <item itemvalue="Application.BcStoreServer" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -40,8 +159,99 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606603849412</updated>
+      <workItem from="1606797501925" duration="2305000" />
+      <workItem from="1606801551654" duration="24994000" />
+      <workItem from="1606879518844" duration="8523000" />
+      <workItem from="1606891417674" duration="45998000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.txt" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="450" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1606892587542">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="450" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1440.860@0.0.1440.860" timestamp="1606892587542" />
+    <state x="525" y="136" key="#com.intellij.ide.util.MemberChooser" timestamp="1606879175369">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="525" y="136" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1606879175369" />
+    <state x="500" y="139" key="FileChooserDialogImpl" timestamp="1607048749775">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="500" y="139" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1607048749775" />
+    <state width="1397" height="250" key="GridCell.Tab.0.bottom" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.0.center" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.0.left" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.0.right" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.1.bottom" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.1.center" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.1.left" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state width="1397" height="250" key="GridCell.Tab.1.right" timestamp="1607055016423">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="250" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1607055016423" />
+    <state x="385" y="134" key="NewModule_or_Project.wizard" timestamp="1606892513563">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="385" y="134" key="NewModule_or_Project.wizard/0.0.1440.860@0.0.1440.860" timestamp="1606892513563" />
+    <state x="200" y="4" key="SettingsEditor" timestamp="1606893858011">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="200" y="4" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1606893858011" />
+    <state x="357" y="50" key="new project wizard" timestamp="1606892498697">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="357" y="50" key="new project wizard/0.0.1440.860@0.0.1440.860" timestamp="1606892498697" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/implementation/StoreServerImpl.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

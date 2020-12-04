@@ -3,6 +3,8 @@ package replica.interfaces;
 import replica.ReplicaResponse;
 import service.interfaces.StoreInterface;
 
+import java.io.FileNotFoundException;
+
 public interface IClient {
     //Manager Invokable methods
     public ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price);
@@ -12,7 +14,7 @@ public interface IClient {
     //Client Invokable methods
     public ReplicaResponse purchaseItem (StoreInterface store, String customerID, String itemID, String dateOfPurchase);
     public ReplicaResponse findItem (StoreInterface store, String customerID, String itemName);
-    public ReplicaResponse returnItem (StoreInterface store, String customerID, String itemID, String dateOfReturn) ;
+    public ReplicaResponse returnItem (StoreInterface store, String customerID, String itemID, String dateOfReturn);
     public ReplicaResponse exchange(StoreInterface store, String customerID, String newItemID, String oldItemID, String dateOfReturn);
 
 }
