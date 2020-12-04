@@ -28,7 +28,7 @@ public class ManagerHelper {
 
             String waitListResponse = ManagerUtils.handleWaitlistedCustomers(itemID, price, store);
 
-            replicaResponse.getResponse().put(managerID, addToStockResponse+"\n"+item.toString()+"\n"+waitListResponse);
+            replicaResponse.getResponse().put(managerID, addToStockResponse+ " " + item.toString()+ ", quantity: "+ quantity +"\n"+waitListResponse);
             replicaResponse.setSuccessResult(true);
             replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
             return replicaResponse;

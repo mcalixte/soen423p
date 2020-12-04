@@ -9,7 +9,7 @@ public class DateUtils {
         Date localdatetime = null;
 
         try {
-            localdatetime = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dateString);
+            localdatetime = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
             return localdatetime;
         }catch(Exception e) {
             System.out.println("Error in creating the Date object, restart request creation...");

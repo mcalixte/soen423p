@@ -239,7 +239,7 @@ public class Client{
         System.out.println(response);
     }
 
-    private static boolean isDateFormatValid(String dateString) { // dd/mm/yyyy HH:mm
+    private static boolean isDateFormatValid(String dateString) { // dd/mm/yyyy
         String strDateRegEx = "([012][0-9]|[3][01])\\/(0[1-9]|1[012])\\/\\d{4} ([01][0-9]|2[0123]):([0-5][0-9]):([0-5][0-9])";
         return dateString.matches(strDateRegEx);
     }

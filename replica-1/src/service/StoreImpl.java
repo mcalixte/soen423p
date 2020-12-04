@@ -103,7 +103,7 @@ public class StoreImpl implements StoreInterface {
 
     @Override
     public ReplicaResponse exchange(String customerID, String newItemID, String oldItemID, String dateOfReturn) {
-        String dateOfPurchase = new SimpleDateFormat("mm/dd/yyyy HH:mm").format(new Date());
+        String dateOfPurchase = new SimpleDateFormat("mm/dd/yyyy").format(new Date());
 
         ReplicaResponse returnReplicaResponse = returnItem(customerID, oldItemID, dateOfReturn);
 

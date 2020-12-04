@@ -78,13 +78,13 @@ public class ManagerHelper {
                 Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Add Item to Inventory UserID: "
                         + userID + " ItemID: " + itemID + " ItemName: " + itemName + " Quantity: " + quantity + " Price: " + price);
 
-                replicaResponse.getResponse().put(userID, actionMessage+"\n"+item.toString()+"\n"+waitListResponse);
+                replicaResponse.getResponse().put(userID, actionMessage+ " " + item.toString()+ ", quantity: "+ quantity +"\n"+waitListResponse);
                 replicaResponse.setSuccessResult(false);
                 replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                 return replicaResponse;
             }
         }
-        replicaResponse.getResponse().put(userID, actionMessage+"\n"+item.toString()+"\n"+waitListResponse);
+        replicaResponse.getResponse().put(userID, actionMessage+ " " + item.toString()+ ", quantity: "+ quantity +"\n"+waitListResponse);
         replicaResponse.setSuccessResult(true);
         replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
         return replicaResponse;
@@ -146,7 +146,7 @@ public class ManagerHelper {
         if (store.getInventory() != null) {
             for (Map.Entry<String, ArrayList<Item>> entry : store.getInventory().entrySet()) {
                 for (Item item : entry.getValue()) {
-                    returnMessage.append("\t"+item.toString()+" "+ entry.getValue().size() +"\n");
+                    returnMessage.append(item.toString()+ ", quantity: "+ entry.getValue().size() +"\n");
                     break;
                 }
             }
@@ -163,7 +163,7 @@ public class ManagerHelper {
         }
         replicaResponse.getResponse().put(userID,  returnMessage.toString());
         replicaResponse.setSuccessResult(true);
-        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS2);
+        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
         return replicaResponse;
     }
 }

@@ -201,7 +201,7 @@ public class ClientHelper {
         ReplicaResponse replicaResponse = new ReplicaResponse();
 
         try {
-            dateOfReturnDate = new SimpleDateFormat("mm/dd/yyyy HH:mm").parse(dateOfReturn);
+            dateOfReturnDate = new SimpleDateFormat("mm/dd/yyyy").parse(dateOfReturn);
         } catch (ParseException e) {
            // e.printStackTrace();
         }
@@ -288,10 +288,10 @@ public class ClientHelper {
     }
 
     private Date findDateFromCustomerPurchaseLog(String customerID, String itemID, StoreImpl store) {
-        String dateOfPurchase = new SimpleDateFormat("dd/mm/yyyy HH:mm").format(new Date());
+        String dateOfPurchase = new SimpleDateFormat("dd/mm/yyyy").format(new Date());
         Date dateOfPurchaseDate = new Date();
         try {
-            dateOfPurchaseDate = new SimpleDateFormat("dd/mm/yyyy HH:mm").parse(dateOfPurchase);
+            dateOfPurchaseDate = new SimpleDateFormat("dd/mm/yyyy").parse(dateOfPurchase);
         } catch (ParseException e) {
            // e.printStackTrace();
         }

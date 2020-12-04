@@ -42,7 +42,7 @@ public class ClientHelper {
         ReplicaResponse replicaResponse = new ReplicaResponse();
         String actionMessage = "";
         double price = 0.00;
-        Date dateOfPurchase = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dateOfPurchaseString);
+        Date dateOfPurchase = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfPurchaseString);
         if (store.getUserPurchaseLog().containsKey(userID) && store.getUserPurchaseLog().get(userID) != null && !store.getUserPurchaseLog().get(userID).values().isEmpty() &&!userID.substring(0, 2).equalsIgnoreCase(branchID)) {
             if (checkBudget(store, userID, price)) {
                 System.out.print(store.getUserPurchaseLog().get(userID).values());
@@ -128,29 +128,30 @@ public class ClientHelper {
         return null;
     }
 
-    public synchronized ReplicaResponse FindItem(String userID, String itemName,StoreImplementation store) {
-        ArrayList<Item> foundItems = new ArrayList<>();
-        String actionMessage = ">>>>>>>>>>>> All Items Found <<<<<<<<<<<< \n";
+    public synchronized ReplicaResponse findItem(String userID, String itemName,StoreImplementation store) {
+        ArrayList<Item> itemList2 = new ArrayList<>();
+        StringBuilder foundItems = new StringBuilder();
+        foundItems.append(">>>>>>>>>>>> All Items Found <<<<<<<<<<<< \n");
 
 
         for (Map.Entry<String, ArrayList<Item>> itemList : store.getInventory().entrySet()) {
             for (Item item : itemList.getValue()) {
                 if (item.getItemName().equalsIgnoreCase(itemName)) {
-                    foundItems.add(item);
+                    itemList2.add(item);
                 }
             }
         }
-        foundItems.addAll(getRemoteItemsByName(itemName, userID));
+        itemList2.addAll(getRemoteItemsByName(itemName, userID));
 
-        for (Item item : foundItems) {
-            actionMessage = actionMessage +foundItems.append("\t" + item.toString() + "\n");;
+        for (Item item : itemList2) {
+             foundItems.append("\t" + item.toString() + "\n");;
         }
 
         ReplicaResponse replicaResponse = new ReplicaResponse();
         replicaResponse.setSuccessResult(true);
-        replicaResponse.getResponse().put(userID, actionMessage);
-        Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task SUCCESSFUL: Find Items Inventory ");
-        Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task SUCCESSFUL: Find Items Inventory ");
+        replicaResponse.getResponse().put(userID, foundItems.toString());
+        Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy").format(new Date()) + " Task SUCCESSFUL: Find Items Inventory ");
+        Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy").format(new Date()) + " Task SUCCESSFUL: Find Items Inventory ");
         return replicaResponse;
     }
 
@@ -158,7 +159,7 @@ public class ClientHelper {
         String actionMessage = "";
         ReplicaResponse replicaResponse = new ReplicaResponse();
         try {
-            Date dateOfReturn = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(dateOfReturnString);
+            Date dateOfReturn = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfReturnString);
             if(branchID.equalsIgnoreCase(itemID.substring(0,2))) {
                 if (store.getUserPurchaseLog().containsKey(userID) && store.getUserPurchaseLog().get(userID).containsKey(itemID)) {
                     if (isReturnable((store.getUserPurchaseLog().get(userID).get(itemID)), dateOfReturn)) {
@@ -233,7 +234,7 @@ public class ClientHelper {
                 }
                 if (purchaseItemMessage.contains("Item was successfully purchased")) {}
                 else {
-                    purchaseItem(userID, oldItemID, new SimpleDateFormat("dd/MM/yyyy HH:mm:ssZ").format(new Date()), store);
+                    purchaseItem(userID, oldItemID, new SimpleDateFormat("dd/MM/yyyy").format(new Date()), store);
                 }
                 return purchaseResult;
             } catch (ParseException e) {

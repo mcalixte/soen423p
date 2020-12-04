@@ -43,8 +43,10 @@ public class ManagerUtils {
         List<Item> itemsInInventoryList = inventory.get(formattedItemID);
         if(itemsInInventoryList != null)
             if(itemsInInventoryList.size() > 0)
-                if(itemsInInventoryList.get(0).getPrice() == item.getPrice())
+                if(itemsInInventoryList.get(0).getPrice() == item.getPrice()) {
                     inventory.get(item.getItemID().toLowerCase()).add(item);
+                    response = "Alert: Item will be added ...";
+                }
                 else
                     response = "Alert: Item will not be added, this item does not have the same price as others of its kind ...";
             else{
@@ -94,7 +96,7 @@ public class ManagerUtils {
         StringBuilder returnMessage = new StringBuilder("This store contains the following items: \r\n");
         for(Map.Entry<String, List<Item>> entry : inventory.entrySet()){
             for(Item item : entry.getValue()) {
-                returnMessage.append(item.toString()+" "+ entry.getValue().size() +"\n");
+                returnMessage.append(item.toString()+", quantity: "+ entry.getValue().size() +"\n");
                 break;
             }
         }
