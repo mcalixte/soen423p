@@ -11,6 +11,7 @@ public class ReplicaErrorTracker {
 
     private List<RegisteredReplica> crashedReplicas = new ArrayList<>();
     private List<RegisteredReplica> erroneousReplicas  = new ArrayList<>();
+    private List<ReplicaResponse> validReplicas  = new ArrayList<>();
 
     private String storedAnswers;
 
@@ -63,12 +64,18 @@ public class ReplicaErrorTracker {
             if (!responses.get(0).equalsIgnoreCase(responses.get(1))) {
                 if (!responses.get(0).equalsIgnoreCase(responses.get(2))) {
                     erroneousReplicas.add(replicaResponses.get(0).getReplicaID());
+                    validReplicas.add(replicaResponses.get(1));
+                    validReplicas.add(replicaResponses.get(2));
                 } else if (responses.get(0).equalsIgnoreCase(responses.get(2))) {
+                    validReplicas.add(replicaResponses.get(0));
                     erroneousReplicas.add(replicaResponses.get(1).getReplicaID());
+                    validReplicas.add(replicaResponses.get(2));
                 }
             }
             if (responses.get(0).equalsIgnoreCase(responses.get(1))) {
                 if (!responses.get(0).equalsIgnoreCase(responses.get(2))) {
+                    validReplicas.add(replicaResponses.get(0));
+                    validReplicas.add(replicaResponses.get(1));
                     erroneousReplicas.add(replicaResponses.get(2).getReplicaID());
                 }
             }
@@ -82,4 +89,6 @@ public class ReplicaErrorTracker {
     public List<RegisteredReplica> getErroneousReplicas(){
         return erroneousReplicas;
     }
+
+    public List<ReplicaResponse> getValidReplicas() {return validReplicas;}
 }

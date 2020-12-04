@@ -197,8 +197,7 @@ public class Frontend extends IFrontendPOA {
             return new ReplicaResponse(RegisteredReplica.NONE, false, 0, stringResponses);
         } else if (erroneousReplicas.size() != 0) {
             processesFailuresBadResponses(erroneousReplicas);
-            stringResponses.put("", "System needs to be  restored due to erroneous answers, wait for acknowledgment of restoration...");
-            return new ReplicaResponse(RegisteredReplica.NONE, false, 0, stringResponses);
+            return tracker.getValidReplicas().get(0);
         }
         return new ReplicaResponse();
     }
