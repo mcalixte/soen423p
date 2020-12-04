@@ -1,8 +1,11 @@
+.idea
+replica-1/out
+replica-2/out
+replica-3/out
+*.iml
+*.ipr
+*iws
 
 *.class
 
-*.iws
-
 *.txt
-
-frontend/src/orb.db/NC0
