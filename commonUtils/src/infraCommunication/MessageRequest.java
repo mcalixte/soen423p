@@ -5,6 +5,9 @@ import networkEntities.RegisteredReplica;
 import replica.ClientRequest;
 import replica.enums.ParameterType;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -27,7 +30,7 @@ public class MessageRequest implements IGenericMessage {
 
     private List<RegisteredReplica> erroneousReplicas = new ArrayList<>();
 
-    public MessageRequest(OperationCode code, int seq, HashMap<ParameterType, Object> operationParameters, EntityAddressBook addrInfo, List<HashMap<OperationCode, ClientRequest>> operationHistory) throws Exception {
+    public MessageRequest(OperationCode code, HashMap<ParameterType, Object> operationParameters, EntityAddressBook addrInfo, List<HashMap<OperationCode, ClientRequest>> operationHistory) throws Exception {
         this.errorType = code;
         this.operationHistory = operationHistory;
         this.registeredReplica = RegisteredReplica.EVERYONE;
@@ -40,6 +43,18 @@ public class MessageRequest implements IGenericMessage {
         this.port = addrInfo.getPort();
     }
 
+    public MessageRequest(OperationCode code, EntityAddressBook addrInfo, List<HashMap<OperationCode, ClientRequest>> operationHistory) throws Exception {
+        this.errorType = code;
+        this.operationHistory = operationHistory;
+        this.registeredReplica = RegisteredReplica.EVERYONE;
+
+        HashMap<ParameterType, Object> clonedMap = new HashMap<>();
+        clonedMap.putAll(operationParameters);
+
+        this.operationParameters = clonedMap;
+        this.addr = addrInfo.getAddress();
+        this.port = addrInfo.getPort();
+    }
     public MessageRequest(OperationCode code) throws Exception {
         this.errorType = code;
         this.registeredReplica = RegisteredReplica.EVERYONE;
@@ -49,13 +64,16 @@ public class MessageRequest implements IGenericMessage {
         this.errorType = faultyRespReceivedNotification;
         this.addr = addrInfo.getAddress();
         this.port = addrInfo.getPort();
-
     }
 
-    public DatagramPacket getPacket() {
+    public DatagramPacket getPacket(EntityAddressBook networkEntity) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(outputStream);
+        os.writeObject(this);
 
-        String payload = errorType.toString() + registeredReplica.toString() + "\r\n\r\n" + this.operationParameters;
-        return new DatagramPacket(payload.getBytes(), payload.length(), addr, port);
+        byte[] data = outputStream.toByteArray();
+        DatagramPacket sendPacket = new DatagramPacket(data, data.length, networkEntity.getAddress(), networkEntity.getPort());
+        return sendPacket;
     }
 
     public HashMap<ParameterType, Object> getOperationParameters() {

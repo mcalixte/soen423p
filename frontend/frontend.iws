@@ -2,17 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe9f5f7-b17f-43b4-80bc-bb99418ca887" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/ClientRequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/IClientS3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../replica-3/src/remote/ReplicaServer3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/managers/manager1/ReplicaManagerServer1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/managers/manager2/ReplicaManagerServer2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReplicaManager/src/managers/manager3/ReplicaManagerServer3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/out/production/commonUtils/networkEntities/EntityAddressBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/out/production/commonUtils/networkEntities/RegisteredReplica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/out/production/commonUtils/udp/MessageRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/out/production/commonUtils/udp/OperationCode$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/out/production/commonUtils/udp/OperationCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/out/production/commonUtils/udp/SocketWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/src/ReplicaManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontendListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontendListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/Components/store/StoreInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ReplicaManager" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -89,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -112,40 +119,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="64" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606889900457">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="64" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1217.720@0.0.1217.720" timestamp="1606889900457" />
-    <state x="414" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1606873885753">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="414" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1217.720@0.0.1217.720" timestamp="1606873885753" />
-    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606613476745">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="458" y="249" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1217.720@0.0.1217.720" timestamp="1606613476745" />
-    <state x="389" y="53" key="FileChooserDialogImpl" timestamp="1606938952902">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="389" y="53" key="FileChooserDialogImpl/0.0.1217.720@0.0.1217.720" timestamp="1606938952902" />
-    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard" timestamp="1606614124603">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="282" y="59" width="739" height="602" key="NewModule_or_Project.wizard/0.0.1217.720@0.0.1217.720" timestamp="1606614124603" />
-    <state x="89" y="0" key="SettingsEditor" timestamp="1606938935757">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="89" y="0" key="SettingsEditor/0.0.1217.720@0.0.1217.720" timestamp="1606938935757" />
-    <state x="265" y="161" key="run.anything.popup" timestamp="1606880179645">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="265" y="161" key="run.anything.popup/0.0.1217.720@0.0.1217.720" timestamp="1606880179645" />
-    <state x="271" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1606884916066">
-      <screen x="0" y="0" width="1217" height="720" />
-    </state>
-    <state x="271" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1217.720@0.0.1217.720" timestamp="1606884916066" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
