@@ -76,11 +76,9 @@ public class RequestListenerThread extends Thread {
 
 
             byte[] data = incomingPacket.getData();
-            System.out.println(new String(data));
             ByteArrayInputStream in = new ByteArrayInputStream(data);
 
             ObjectInputStream is = new ObjectInputStream(in);
-            System.out.println(is.readObject().toString());
             clientRequest = (ClientRequest) is.readObject();
             is.close();
             return clientRequest;

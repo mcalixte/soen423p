@@ -8,3 +8,4 @@ ADDED: itemID='bc1100, itemName='finn, quantity=69, price=69.0
 STOCK INCREASE: itemID='bc1100, itemName='finn, quantity=69, price=69.0
 STOCK INCREASE: itemID='bc1100, itemName='finn, quantity=69, price=69.0
 STOCK INCREASE: itemID='bc1100, itemName='finn, quantity=69, price=69.0
+STOCK INCREASE: itemID='bc1100, itemName='finn, quantity=69, price=69.0

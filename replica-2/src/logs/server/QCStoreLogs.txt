@@ -5,4 +5,3 @@ ADDED: ItemID: qc1100 Item Name: CPU Price: 149.99
 ADDED: ItemID: qc1150 Item Name: GPU Price: 279.99
 ADDED: ItemID: QC1200 Item Name: RAM Price: 999.99
 ADDED: ItemID: QC1250 Item Name: RAM Price: 59.99
-ITEM PURCHASE: itemID='qc1100, itemName='CPU, quantity=74, price=149.99

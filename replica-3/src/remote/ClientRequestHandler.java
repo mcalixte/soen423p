@@ -40,7 +40,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ReplicaResponse();
     }
 
     private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) throws RemoteException {
