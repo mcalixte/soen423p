@@ -24,23 +24,23 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
 
     @Override
     public ReplicaResponse handleRequestMessage(ClientRequest clientRequest) {
+        ReplicaResponse replicaResponse = new ReplicaResponse();
         try {
         switch (clientRequest.getLocation()) {
             case QUEBEC:
-
-                    handleUserAction(clientRequest, quebecStore);
+                replicaResponse = handleUserAction(clientRequest, quebecStore);
                 break;
             case ONTARIO:
-                handleUserAction(clientRequest, ontarioStore);
+                replicaResponse = handleUserAction(clientRequest, ontarioStore);
                 break;
             case BRITISHCOLUMBIA:
-                handleUserAction(clientRequest, britishColumbiaStore);
+                replicaResponse = handleUserAction(clientRequest, britishColumbiaStore);
                 break;
         }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        return new ReplicaResponse();
+        return replicaResponse;
     }
 
     private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) throws RemoteException {

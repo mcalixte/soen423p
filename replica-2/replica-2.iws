@@ -20,19 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad99a7ed-35c5-423b-90f3-ef741fd3c4e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commonUtils/src/replica/ClientRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/replica/ClientRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/infraCommunication/RequestListenerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/infraCommunication/RequestListenerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/replica/ClientRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/commonUtils/replica/ClientRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/remote/ClientRequestHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/remote/ClientRequestHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/out/production/replica-1/remote/ClientRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/out/production/replica-1/remote/ClientRequestHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/infraCommunication/RequestListenerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commonUtils/infraCommunication/RequestListenerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-1/src/remote/ClientRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/src/remote/ClientRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/replica-2/logs/server/BCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/replica-2/logs/server/BCStoreLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/replica-2/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/replica-2/logs/server/QCStoreLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/replica-2.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logs/server/QCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/logs/server/QCStoreLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/infraCommunication/RequestListenerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/infraCommunication/RequestListenerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/replica/ClientRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/commonUtils/replica/ClientRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-1/remote/ReplicaServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-1/remote/ReplicaServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logs/server/BCStoreLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/logs/server/BCStoreLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/remote/ClientRequestHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/remote/ClientRequestHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../replica-3/out/production/replica-3/remote/ClientRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/out/production/replica-3/remote/ClientRequestHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../replica-3/src/remote/ClientRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/src/remote/ClientRequestHandler.java" afterDir="false" />
     </list>
@@ -148,8 +144,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TempFEClient" />
-        <item itemvalue="Application.ReplicaServer" />
         <item itemvalue="Application.Sequencer" />
+        <item itemvalue="Application.ReplicaServer" />
         <item itemvalue="Application.BcStoreServer" />
         <item itemvalue="Application.OnStoreServer" />
       </list>
@@ -167,7 +163,7 @@
       <workItem from="1606801551654" duration="24994000" />
       <workItem from="1606879518844" duration="8523000" />
       <workItem from="1606891417674" duration="45998000" />
-      <workItem from="1607059665281" duration="7211000" />
+      <workItem from="1607059665281" duration="8252000" />
     </task>
     <servers />
   </component>
@@ -202,22 +198,22 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="500" y="139" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1607048749775" />
-    <state width="1397" height="240" key="GridCell.Tab.0.bottom" timestamp="1607067163059">
+    <state width="1397" height="240" key="GridCell.Tab.0.bottom" timestamp="1607068336444">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="240" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607067163059" />
-    <state width="1397" height="240" key="GridCell.Tab.0.center" timestamp="1607067163059">
+    <state width="1397" height="240" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1607068336444" />
+    <state width="1397" height="240" key="GridCell.Tab.0.center" timestamp="1607068336443">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="240" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1607067163059" />
-    <state width="1397" height="240" key="GridCell.Tab.0.left" timestamp="1607067163059">
+    <state width="1397" height="240" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1607068336443" />
+    <state width="1397" height="240" key="GridCell.Tab.0.left" timestamp="1607068336443">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="240" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1607067163059" />
-    <state width="1397" height="240" key="GridCell.Tab.0.right" timestamp="1607067163059">
+    <state width="1397" height="240" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1607068336443" />
+    <state width="1397" height="240" key="GridCell.Tab.0.right" timestamp="1607068336443">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="240" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1607067163059" />
+    <state width="1397" height="240" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1607068336443" />
     <state width="1397" height="250" key="GridCell.Tab.1.bottom" timestamp="1607066881425">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
