@@ -44,10 +44,7 @@ public class Items {
 
     @Override
     public String toString() {
-        return  "itemID= " + itemID  +
-                ", itemName= " + itemName  +
-                ", quantity= " + quantity +
-                ", price= " + price + ";";
+        return "ItemID: "+this.itemID+ " Item Name: "+ this.itemName +  " Price: "+this.price;
     }
 
     public void setPrice(double price) {

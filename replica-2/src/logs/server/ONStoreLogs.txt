@@ -1,5 +1,5 @@
 ******************** ON STORE INVENTORY ********************
-ADDED: itemID= ON1000, itemName= Keyboard, quantity= 100, price= 79.99;
-ADDED: itemID= ON1050, itemName= Monitor, quantity= 150, price= 139.99;
-ADDED: itemID= ON1100, itemName= CPU, quantity= 75, price= 149.99;
-ADDED: itemID= ON1150, itemName= GPU, quantity= 25, price= 279.99;
+ADDED: ItemID: ON1000 Item Name: Keyboard Price: 79.99
+ADDED: ItemID: ON1050 Item Name: Monitor Price: 139.99
+ADDED: ItemID: ON1100 Item Name: CPU Price: 149.99
+ADDED: ItemID: ON1150 Item Name: GPU Price: 279.99

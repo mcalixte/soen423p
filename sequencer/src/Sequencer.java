@@ -15,27 +15,16 @@ public class Sequencer {
     private static int sequenceID = 0;
 
     public static void main(String[] args) {
-        /**
-         * Temp Data to test mutlicasting
-         * TODO: open port to listen for udp request by the Front End
-         */
-//        ClientRequest req = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.CUSTOMER);
-//        req.addRequestDataEntry(ParameterType.CLIENTID,"QCU1212");
-//        req.addRequestDataEntry(ParameterType.ITEMNAME,"RAM");
-//        req.setSequenceNumber(++sequenceID);
-
-        while (true) {
+        while(true) {
             ClientRequest request = awaitClientRequest();
-
+            System.out.print(request);
             if(request != null) {
                 try {
-                    InetAddress group = EntityAddressBook.SEQUENCER.getAddress();
+                    InetAddress group = EntityAddressBook.ALLREPLICAS.getAddress();
                     MulticastSocket multicastSock = new MulticastSocket();
-                    DatagramPacket packet = getPacket(request, group, EntityAddressBook.SEQUENCER.getPort());
+                    DatagramPacket packet = getPacket(request, group, EntityAddressBook.ALLREPLICAS.getPort());
                     multicastSock.send(packet);
-                    
-                    //TODO: verify if this has to be closed everytime
-                    multicastSock.close();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -57,12 +46,13 @@ public class Sequencer {
         DatagramSocket aSocket;
 
         try {
-            aSocket = new DatagramSocket(EntityAddressBook.SEQUENCER.getPort());
+            //TODO update address
+            aSocket = new DatagramSocket();
 
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[1024];
             System.out.println("UDP Server started.....");
 
-            DatagramPacket request = new DatagramPacket(buffer, buffer.length);
+            DatagramPacket request = new DatagramPacket(buffer, buffer.length, InetAddress.getByName("127.0.0.1"), 10000);
             aSocket.receive(request);
 
             byte[] data = request.getData();
@@ -70,6 +60,7 @@ public class Sequencer {
             ObjectInputStream is = new ObjectInputStream(in);
 
             ClientRequest clientRequest = (ClientRequest) is.readObject();
+            clientRequest.setSequenceNumber(++sequenceID);
             is.close();
             return clientRequest;
 

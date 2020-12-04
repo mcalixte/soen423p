@@ -60,6 +60,7 @@ public class RequestListenerThread extends Thread {
 
         ReplicaResponse response = null;
         response = clientRequestHandler.handleRequestMessage(clientRequest);
+        response.setSequenceNumber(clientRequest.getSequenceNumber());
         return response;
     }
 

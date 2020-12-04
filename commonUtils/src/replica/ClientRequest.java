@@ -17,6 +17,8 @@ public class ClientRequest implements Serializable, IGenericMessage {
     private int sequenceNumber;
     private HashMap<ParameterType, Object> methodParameters = new HashMap<>();
 
+    public ClientRequest() {}
+
     public ClientRequest(OperationCode method, Location location, UserType userType) {
         this.method = method;
         this.location = location;

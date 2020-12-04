@@ -16,7 +16,7 @@ public class ReplicaServer {
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
         IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
-        RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.SEQUENCER);
+        RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS);
         requestListenerThread.start();
     }
 

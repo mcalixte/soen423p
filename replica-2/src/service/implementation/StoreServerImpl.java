@@ -88,7 +88,7 @@ public class StoreServerImpl implements StoreInterface {
                 }
 
                 returnResponse.setSuccessResult(true);
-                response.put("response","The following item has been successfully updated in the store's inventory: " + itemID + " - " + inventory.get(itemID).getItemName());
+                response.put("response","Alert: Item will be added ...");
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
@@ -106,14 +106,14 @@ public class StoreServerImpl implements StoreInterface {
                 }
 
                 returnResponse.setSuccessResult(true);
-                response.put("response","The following item has been successfully added into the store's inventory: " + itemID + " - " + itemName);
+                response.put("response","Alert: Item will be added, this item is the first of its kind ...");
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
         }
         else{
             returnResponse.setSuccessResult(false);
-            response.put("response","You do not have the authorization to perform this task");
+            response.put("response","Alert: You do not have the authorization to perform this task ...");
             returnResponse.setResponse(response);
             return(returnResponse);
         }
@@ -134,13 +134,13 @@ public class StoreServerImpl implements StoreInterface {
                     FileWriter writer = new FileWriter("src\\logs\\server\\" + getStore() +"StoreLogs.txt", true);
                     writer.write("REMOVED: " + "itemID='" + itemID + ", quantity=" + quantity + "\r\n");
                     writer.close();
-                    System.out.println("Item Added");
+                    System.out.println("Item Removed");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
                 returnResponse.setSuccessResult(true);
-                response.put("response","The following item was removed from the store's inventory: " + itemID);
+                response.put("response","Successful: Completely Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity);
                 returnResponse.setResponse(response);
                 return(returnResponse);
 
@@ -161,13 +161,13 @@ public class StoreServerImpl implements StoreInterface {
                 }
 
                 returnResponse.setSuccessResult(true);
-                response.put("response","The following item was removed from the store's inventory: " + itemID);
+                response.put("response",inventory.get(itemID).toString());
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
             else{
                 returnResponse.setSuccessResult(false);
-                response.put("response","The following item was not found in the store's inventory: " + itemID);
+                response.put("response","\nAn item of that ID does not exist in this store\n");
                 returnResponse.setResponse(response);
                 return(returnResponse);
 
@@ -175,7 +175,7 @@ public class StoreServerImpl implements StoreInterface {
         }
         else{
             returnResponse.setSuccessResult(false);
-            response.put("response","You do not have the authorization to perform this task");
+            response.put("response","Task UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity+"\nALERT: You are not permitted to do this action on this store\n");
             returnResponse.setResponse(response);
             return(returnResponse);
         }
@@ -196,8 +196,12 @@ public class StoreServerImpl implements StoreInterface {
                 return(returnResponse);
             }
             else{
+                StringBuilder returnMessage = new StringBuilder("This store contains the following items: \r\n"+"\t");
+                for(Map.Entry<String, Items> entry : inventory.entrySet()){
+                    returnMessage.append("\t"+entry.getValue().toString() +"\n");
+                }
                 returnResponse.setSuccessResult(true);
-                response.put("response",inventory.values().toString());
+                response.put("response",returnMessage.toString());
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
@@ -228,7 +232,7 @@ public class StoreServerImpl implements StoreInterface {
 
             if(hasMadeRemotePurchase(customerID,itemID)){
                 returnResponse.setSuccessResult(false);
-                response.put("response","You have already made a purchase from this store.");
+                response.put("response","Task UNSUCCESSFUL: Foreign Customer has a foreign item in their possession, can not purchase another. " + customerID + ", " + itemID + ", " + dateOfPurchase);
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
@@ -252,13 +256,13 @@ public class StoreServerImpl implements StoreInterface {
             }
 
             returnResponse.setSuccessResult(true);
-            response.put("response","The following item has been successfully purchased: " + itemID);
+            response.put("response","Task SUCCESSFUL: Customer purchased Item "+customerID + "," + itemID + "," + dateOfPurchase);
             returnResponse.setResponse(response);
             return(returnResponse);
         }
         else {
             returnResponse.setSuccessResult(false);
-            response.put("response","Item was not found.");
+            response.put("response","An item of that name does not exist in this store or has been removed");
             returnResponse.setResponse(response);
             return(returnResponse);
         }
@@ -270,8 +274,7 @@ public class StoreServerImpl implements StoreInterface {
 
         for (HashMap.Entry<String, Items> entry: inventory.entrySet()) {
             if(entry.getValue().getItemName().equalsIgnoreCase(itemName)){
-                response = response.concat(entry.getValue().getItemID() + " " +
-                        entry.getValue().getPrice() + " " + entry.getValue().getQuantity()+ ",");
+                response = response.concat(inventory.get(entry.getValue().getItemID()).toString() + "/");
             }
         }
 
@@ -303,7 +306,7 @@ public class StoreServerImpl implements StoreInterface {
 
                     if (!(within30Days(purchaseDate, dateOfReturn))){
                         returnResponse.setSuccessResult(false);
-                        response.put("response","Cannot return item, purchase was made more than 30 days ago.");
+                        response.put("response","Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\nAlert: Customer has purchased this item in the past, but item purchase date exceeds 30days");
                         returnResponse.setResponse(response);
                         return(returnResponse);
                     }
@@ -338,20 +341,20 @@ public class StoreServerImpl implements StoreInterface {
                             updateBudget(customerID,itemID,'r');
 
                         returnResponse.setSuccessResult(true);
-                        response.put("response","Return successful. The money will be transferred back to your account.");
+                        response.put("response","Task SUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n");
                         returnResponse.setResponse(response);
                         return(returnResponse);
                     }
                 }
             }
             returnResponse.setSuccessResult(false);
-            response.put("response","You have not made this purchase, with this user id.");
+            response.put("response","Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item");
             returnResponse.setResponse(response);
             return(returnResponse);
         }
         else{
             returnResponse.setSuccessResult(false);
-            response.put("response","You have not made this purchase, with this user id.");
+            response.put("response","Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item");
             returnResponse.setResponse(response);
             return(returnResponse);
         }
@@ -568,8 +571,15 @@ public class StoreServerImpl implements StoreInterface {
             currentThread.wait();
         }
 
+        String strResponse = findItem(customerID,itemName) + udpResponse[0] + udpResponse[1];
+        String [] resArr = strResponse.split("/");
+        StringBuilder foundItems = new StringBuilder();
+
+        for (String item : resArr)
+            foundItems.append("\t" + item.toString() + "\n");
+
         returnResponse.setSuccessResult(true);
-        response.put("response",findItem(customerID,itemName) + udpResponse[0] + udpResponse[1]);
+        response.put("response",foundItems.toString());
         returnResponse.setResponse(response);
         return(returnResponse);
     }
@@ -688,6 +698,24 @@ public class StoreServerImpl implements StoreInterface {
 
         if(!customerBudget.containsKey(customerID))
             addToBudget(customerID);
+
+        if(isSameStore(itemID)){
+            if(customerBudget.get(customerID)<inventory.get(itemID).getPrice()){
+                returnResponse.setSuccessResult(false);
+                response.put("response","Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase);
+                returnResponse.setResponse(response);
+                return(returnResponse);
+            }
+        }
+        else{
+            if(customerBudget.get(customerID) < getRemotePrice(itemID)){
+                returnResponse.setSuccessResult(false);
+                response.put("response","Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase);
+                returnResponse.setResponse(response);
+                return(returnResponse);
+            }
+        }
+
 
         String strResponse = purchaseItem(customerID, itemID, dateOfPurchase).getResponse().get("response");
 
