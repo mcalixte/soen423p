@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.MulticastSocket;
+import java.util.Arrays;
 
 public class RequestListenerThread extends Thread {
     private EntityAddressBook replica;
@@ -88,6 +89,7 @@ public class RequestListenerThread extends Thread {
 
 
             byte[] data = incomingPacket.getData();
+            System.out.println(new String(data));
             ByteArrayInputStream in = new ByteArrayInputStream(data);
 
             ObjectInputStream is = new ObjectInputStream(in);
