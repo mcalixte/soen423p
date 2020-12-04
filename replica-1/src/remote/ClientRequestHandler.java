@@ -35,7 +35,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
                 break;
 
         }
-        return null;
+        return new ReplicaResponse();
     }
 
     private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) {

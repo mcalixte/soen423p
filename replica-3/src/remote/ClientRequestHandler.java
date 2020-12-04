@@ -120,18 +120,18 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
 
     public void instantiateStoreServers() {
         try {
-            URL quebecURL = new URL("http://localhost:9082/quebecStore?wsdl");
-            QName quebecQName = new QName("http://service/", "StoreImplService");
+            URL quebecURL = new URL("http://localhost:8002/quebecStore?wsdl");
+            QName quebecQName = new QName("http://store.Components/", "StoreImplementationService");
             Service quebecService = Service.create(quebecURL, quebecQName);
             quebecStore = quebecService.getPort(StoreInterface.class);
 
-            URL ontarioURL = new URL("http://localhost:9081/ontarioStore?wsdl");
-            QName ontarioQName = new QName("http://service/", "StoreImplService");
+            URL ontarioURL = new URL("http://localhost:8001/ontarioStore?wsdl");
+            QName ontarioQName = new QName("http://store.Components/", "StoreImplementationService");
             Service ontarioService = Service.create(ontarioURL, ontarioQName);
             ontarioStore = ontarioService.getPort(StoreInterface.class);
 
-            URL britishColumbiaURL = new URL("http://localhost:9080/britishColumbiaStore?wsdl");
-            QName britishColumbiaQName = new QName("http://service/", "StoreImplService");
+            URL britishColumbiaURL = new URL("http://localhost:8000/britishColumbiaStore?wsdl");
+            QName britishColumbiaQName = new QName("http://store.Components/", "StoreImplementationService");
             Service britishColumbiaService = Service.create(britishColumbiaURL, britishColumbiaQName);
             britishColumbiaStore = britishColumbiaService.getPort(StoreInterface.class);
         } catch (Exception e) {

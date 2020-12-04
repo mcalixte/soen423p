@@ -7,6 +7,7 @@ import replica.ReplicaResponse;
 import java.io.*;
 import java.net.DatagramPacket;
 import java.net.MulticastSocket;
+import java.util.Arrays;
 
 public class RequestListenerThread extends Thread {
     private MulticastSocket serverSocket;
@@ -59,7 +60,11 @@ public class RequestListenerThread extends Thread {
         System.out.println("Processing new request...");
 
         ReplicaResponse response = null;
-        response = clientRequestHandler.handleRequestMessage(clientRequest);
+        try {
+            response = clientRequestHandler.handleRequestMessage(clientRequest);
+        } catch(Exception e){
+          e.printStackTrace();
+        }
         response.setSequenceNumber(clientRequest.getSequenceNumber());
         return response;
     }
@@ -71,16 +76,18 @@ public class RequestListenerThread extends Thread {
 
 
             byte[] data = incomingPacket.getData();
+            System.out.println(new String(data));
             ByteArrayInputStream in = new ByteArrayInputStream(data);
-            ObjectInputStream is = new ObjectInputStream(in);
 
+            ObjectInputStream is = new ObjectInputStream(in);
+            System.out.println(is.readObject().toString());
             clientRequest = (ClientRequest) is.readObject();
             is.close();
             return clientRequest;
 
         } catch (Exception e) {
-            System.out.println("PurchaseItem Exception: " + e);
-            // e.printStackTrace();
+//            System.out.println("PurchaseItem Exception: " + e);
+             e.printStackTrace();
         }
         return null;
     }
