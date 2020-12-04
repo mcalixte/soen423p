@@ -1,14 +1,18 @@
 package interfaces;
 
+import infraCommunication.MessageRequest;
+
+import javax.swing.*;
+
 public interface IReplicaManager {
 
         public String getAssociatedReplicaName();
 
-        public String registerNonByzFailure(int seqId);
+        public void registerNonMaliciousByzantineFailure(MessageRequest messageRequest);
 
-        public String registerCrashFailure(int seqId) ;
+        public void registerCrashFailure(MessageRequest messageRequest) ;
 
-        public String restoreReplica(int seqID);
+        public void restoreReplica(MessageRequest messageRequest);
 
-        public String restartReplica(int seqID);
+        public void restartReplica(MessageRequest messageRequest);
 }

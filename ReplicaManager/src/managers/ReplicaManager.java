@@ -7,6 +7,8 @@ import infraCommunication.MessageRequest;
 import infraCommunication.OperationCode;
 import infraCommunication.SocketWrapper;
 import replica.ClientRequest;
+import replica.ReplicaResponse;
+import replica.enums.ParameterType;
 
 import java.net.SocketException;
 import java.util.HashMap;
@@ -17,15 +19,16 @@ public class ReplicaManager implements IReplicaManager {
 
     private RegisteredReplica associatedReplica;
     private EntityAddressBook replicaInEntityForm;
-	private static final int nonByzantineFailureTolerance = 3;
-	private Stack<Integer> nonByzantineFailureStack;
+	private static final int nonByzantineFailureTolerance = 1;
+	private Stack<MessageRequest> nonByzantineFailureStack;
 
     private List<HashMap<OperationCode, ClientRequest >> operationHistory;
 
 	public ReplicaManager(RegisteredReplica associatedReplica, EntityAddressBook entity) {
 		this.associatedReplica = associatedReplica;
 		this.replicaInEntityForm = entity;
-		this.nonByzantineFailureStack = new Stack<Integer>();
+
+		this.nonByzantineFailureStack = new Stack<>();
         nonByzantineFailureStack.setSize(nonByzantineFailureTolerance);
 
 	}
@@ -36,69 +39,90 @@ public class ReplicaManager implements IReplicaManager {
     }
 
     @Override
-    public String registerNonByzFailure(int seqID) {
+    public void registerNonMaliciousByzantineFailure(MessageRequest messageRequest) {
         try {
             //TODO: Add logging here
-            nonByzantineFailureStack.push(seqID);
-            return "Failure registrered";
+            nonByzantineFailureStack.push(messageRequest);
+            System.out.println("Failure registrered");
         }catch(StackOverflowError stackOver) {
-            // It means the stack is full we should restart the Replica
+            // It means the stack is full we should restore the incorrect Replica
             nonByzantineFailureStack.empty();
-            return restoreReplica(seqID);
+            restoreReplica(messageRequest);
 
         }catch(Exception ee) {
             System.out.println("Error while registering Non Byzantine Failure " + ee.getMessage());
         }
-        return null;
     }
 
     @Override
-    public String registerCrashFailure(int seqID) {
+    public void registerCrashFailure(MessageRequest messageRequest) {
         try {
-            return restartReplica(seqID);
+            restartReplica(messageRequest);
         }catch(Exception ee) {
             System.out.println("Error while registerCrashFailure " + ee.getMessage());
-            return ee.getMessage();
         }
     }
 
+
+
+    private EntityAddressBook returnProperEntity(RegisteredReplica registeredReplica) {
+	    switch (registeredReplica) {
+            case ReplicaS1:
+                return EntityAddressBook.REPLICA1;
+
+            case ReplicaS2:
+                return EntityAddressBook.REPLICA2;
+            case ReplicaS3:
+                return EntityAddressBook.REPLICA3;
+        }
+	    return EntityAddressBook.ALLREPLICAS;
+    }
+
     @Override
-    public String restoreReplica(int seqID) {
+    public void restoreReplica(MessageRequest messageRequest) {
         try {
             SocketWrapper socketWrapper = new SocketWrapper(replicaInEntityForm);
+
             MessageRequest message = new MessageRequest(
                     OperationCode.RESTORE_DATA_WITH_ORDERED_REQUESTS_NOTIFICATION,
-                    List<HashMap<OperationCode, ClientRequest >> operationHistory,
-                    EntityAddressBook.SEQUENCER);
+                    returnProperEntity(messageRequest.getRegisteredReplica()),
+                    messageRequest.getOperationHistory());
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);
             socketWrapper.send(message, replicaInEntityForm);
         } catch (SocketException e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
-            return e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
-
     @Override
-    public String restartReplica(int seqID) {
+    public void restartReplica(MessageRequest messageRequest) {
         try {
             SocketWrapper socketWrapper = new SocketWrapper(replicaInEntityForm);
             MessageRequest message = new MessageRequest(
                     OperationCode.RESTART_ORDER_NOTIFICATION,
-                    seqID,
-                    "targetReplica: " + this.getAssociatedReplicaName() + "Command: restart replica",
-                    EntityAddressBook.REPLICAS);
+                    returnProperEntity(messageRequest.getRegisteredReplica()),
+                    messageRequest.getOperationHistory());
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);
             socketWrapper.send(message, replicaInEntityForm);
 
         } catch (SocketException e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
-            return e.getMessage();
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void handleRequestMessage(MessageRequest messageRequest) {
+	    switch(messageRequest.getOpCode()) {
+            case RESTART_ORDER_NOTIFICATION:
+                registerCrashFailure(messageRequest);
+                break;
+            case RESTORE_DATA_WITH_ORDERED_REQUESTS_NOTIFICATION:
+                restoreReplica(messageRequest);
+                break;
         }
     }
 }

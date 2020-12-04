@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74b3f5c-f51f-46d5-96fd-4c8d4420be46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/managers/manager1/ReplicaManagerServer1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/managers/manager2/ReplicaManagerServer2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/managers/manager3/ReplicaManagerServer3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/utils/FrontendListenerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/utils/ReplicaRestorationListenerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ReplicaManager.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/networkEntities/EntityAddressBook.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/networkEntities/RegisteredReplica.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/MessageRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/OperationCode$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/OperationCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/commonUtils/udp/SocketWrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReplicaManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/IReplicaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IReplicaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/ReplicaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/ReplicaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/manager1/ReplicaManagerServer1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/manager1/ReplicaManagerServer1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/manager2/ReplicaManagerServer2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/manager2/ReplicaManagerServer2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/manager3/ReplicaManagerServer3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/manager3/ReplicaManagerServer3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/MessageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-1/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-1/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +58,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="managers.utils" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
