@@ -123,13 +123,18 @@ public class ManagerHelper {
                 }
             }
             else if (store.getInventory().get(itemID).size() == 0) {
-                replicaResponse.getResponse().put(userID, "\tTask UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+userID+" ItemID: "+itemID + " Quantity: "+quantity+"\n\tAlert: Can not remove items greater then its availability\n");
+                replicaResponse.getResponse().put(userID, "\tTask UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+userID+" ItemID: "+itemID + " Quantity: "+quantity+"\n");
                 replicaResponse.setSuccessResult(false);
-                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                 Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Remove Item from Inventory ManagerID: "
                         + userID + " ItemID: " + itemID + " Quantity: " + quantity);
                 Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Remove Item from Inventory ManagerID: "
                         + userID + " ItemID: " + itemID + " Quantity: " + quantity);
+            }
+            else if(store.getInventory().containsKey(itemID) == false){
+                replicaResponse.getResponse().put(userID, "\tTask UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+userID+" ItemID: "+itemID + " Quantity: "+quantity+"\n");
+                replicaResponse.setSuccessResult(false);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
             }
         }
         return replicaResponse;

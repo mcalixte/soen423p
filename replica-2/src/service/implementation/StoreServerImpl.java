@@ -160,13 +160,13 @@ public class StoreServerImpl implements StoreInterface {
                 }
 
                 returnResponse.setSuccessResult(true);
-                response.put(managerID,inventory.get(itemID).toString());
+                response.put(managerID,"Successful: Completely Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity);
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
             else{
                 returnResponse.setSuccessResult(false);
-                response.put(managerID,"\nAn item of that ID does not exist in this store\n");
+                response.put(managerID,"\tTask UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity+"\n");
                 returnResponse.setResponse(response);
                 return(returnResponse);
 
@@ -261,7 +261,7 @@ public class StoreServerImpl implements StoreInterface {
         }
         else {
             returnResponse.setSuccessResult(false);
-            response.put(customerID,"An item of that name does not exist in this store or has been removed");
+            response.put(customerID,"Task UNSUCCESSFUL: An item of that name does not exist in this store or has been removed");
             returnResponse.setResponse(response);
             return(returnResponse);
         }
@@ -570,7 +570,7 @@ public class StoreServerImpl implements StoreInterface {
         String strResponse = findItem(customerID,itemName) + udpResponse[0] + udpResponse[1];
         String [] resArr = strResponse.split("/");
         StringBuilder foundItems = new StringBuilder();
-        foundItems.append("This store contains the following items: \r\n");
+        foundItems.append(">>>>>>>>>>>> All Items Found <<<<<<<<<<<< \n");
 
         for (String item : resArr)
             foundItems.append("\t" + item.toString() +"\n");

@@ -65,7 +65,7 @@ public class ClientHelper {
             return replicaResponse;
         }
 
-        if (store.getInventory().containsKey(itemID) && store.getInventory().get(itemID) != null) {
+        if (store.getInventory().containsKey(itemID) && store.getInventory().get(itemID) != null && store.getInventory().get(itemID).isEmpty()==false) {
             for (Map.Entry<String, ArrayList<Item>> entry : store.getInventory().entrySet())
                 if (entry.getKey().equalsIgnoreCase(itemID)&&entry.getKey() != null) {
                     price = entry.getValue().get(0).getPrice();
@@ -128,9 +128,9 @@ public class ClientHelper {
         return null;
     }
 
-    public synchronized ReplicaResponse findItem(String userID, String itemName, StoreImplementation store) {
-        ArrayList<Item> foundItems = new ArrayList<Item>();
-        String actionMessage = "List of " + itemName + " in inventory:\n";
+    public synchronized ReplicaResponse FindItem(String userID, String itemName,StoreImplementation store) {
+        ArrayList<Item> foundItems = new ArrayList<>();
+        String actionMessage = ">>>>>>>>>>>> All Items Found <<<<<<<<<<<< \n";
 
 
         for (Map.Entry<String, ArrayList<Item>> itemList : store.getInventory().entrySet()) {
@@ -143,7 +143,7 @@ public class ClientHelper {
         foundItems.addAll(getRemoteItemsByName(itemName, userID));
 
         for (Item item : foundItems) {
-            actionMessage = actionMessage +item.getItemID() + " : " + item.getItemName() + " , " + item.getPrice() + "\n";
+            actionMessage = actionMessage +foundItems.append("\t" + item.toString() + "\n");;
         }
 
         ReplicaResponse replicaResponse = new ReplicaResponse();
@@ -183,9 +183,9 @@ public class ClientHelper {
                         replicaResponse.getResponse().put(userID,"Task UNSUCCESSFUL: Customer "+ userID+ " returned Item" + itemID+" on "+ dateOfReturn+"\nAlert: Customer has purchased this item in the past, but item purchase date exceeds 30days");
                         replicaResponse.setSuccessResult(false);
                         replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
-                        Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Return Item to Inventory CustomerID: "
+                        Components.Logger.writeUserLog(userID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Return Item to Inventory userID: "
                                 + userID + " ItemID: " + itemID);
-                        Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Return Item to Inventory CustomerID: "
+                        Components.Logger.writeStoreLog(branchID, new SimpleDateFormat("MM/dd/yyyy HH:mm:ssZ").format(new Date()) + " Task UNSUCCESSFUL: Return Item to Inventory userID: "
                                 + userID + " ItemID: " + itemID);
                     }
                 } else {
@@ -215,25 +215,25 @@ public class ClientHelper {
         return replicaResponse;
     }
 
-    public ReplicaResponse exchangeItem(String customerID, String newItemID, String oldItemID, String dateOfExchangeString, StoreImplementation store) {
+    public ReplicaResponse exchangeItem(String userID, String newItemID, String oldItemID, String dateOfExchangeString, StoreImplementation store) {
         ReplicaResponse replicaResponse = new ReplicaResponse();
         String returnItemMessage = "";
         String purchaseItemMessage = "";
 
-        ReplicaResponse response = returnItem(customerID, oldItemID, dateOfExchangeString, store);
+        ReplicaResponse response = returnItem(userID, oldItemID, dateOfExchangeString, store);
         for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
             returnItemMessage = entry.getValue();
         }
 
         if (returnItemMessage.contains("has been returned")) {
             try {
-                ReplicaResponse purchaseResult = purchaseItem(customerID, newItemID, dateOfExchangeString, store);
+                ReplicaResponse purchaseResult = purchaseItem(userID, newItemID, dateOfExchangeString, store);
                 for (Map.Entry<String, String> entry : purchaseResult.getResponse().entrySet()) {
                     purchaseItemMessage = entry.getValue();
                 }
                 if (purchaseItemMessage.contains("Item was successfully purchased")) {}
                 else {
-                    purchaseItem(customerID, oldItemID, new SimpleDateFormat("dd/MM/yyyy HH:mm:ssZ").format(new Date()), store);
+                    purchaseItem(userID, oldItemID, new SimpleDateFormat("dd/MM/yyyy HH:mm:ssZ").format(new Date()), store);
                 }
                 return purchaseResult;
             } catch (ParseException e) {
@@ -373,19 +373,19 @@ public class ClientHelper {
         }
     }
 
-    public void updateRemoteCustomerBudget(String customerID, double price, StoreImplementation store) {
-        requestCustomerBudgetUpdate(quebecBudgetPort, customerID, price, store);
-        requestCustomerBudgetUpdate(ontarioBudgetPort, customerID, price, store);
-        requestCustomerBudgetUpdate(britishColumbiaBudgetPort, customerID, price, store);
+    public void updateRemoteCustomerBudget(String userID, double price, StoreImplementation store) {
+        requestCustomerBudgetUpdate(quebecBudgetPort, userID, price, store);
+        requestCustomerBudgetUpdate(ontarioBudgetPort, userID, price, store);
+        requestCustomerBudgetUpdate(britishColumbiaBudgetPort, userID, price, store);
     }
 
-    private void requestCustomerBudgetUpdate(int customerBudgetPort, String customerID, double price, StoreImplementation store) {
+    private void requestCustomerBudgetUpdate(int customerBudgetPort, String userID, double price, StoreImplementation store) {
         DatagramSocket serverSocket = null;
         Pair<String,Double> requestMap= null;
         Double userBudget = null;
 
-        if (store.getUserBudgetLog().containsKey(customerID.toLowerCase())) {
-            userBudget = store.getUserBudgetLog().get(customerID) - price;
+        if (store.getUserBudgetLog().containsKey(userID.toLowerCase())) {
+            userBudget = store.getUserBudgetLog().get(userID) - price;
         }
         else {
             userBudget = 1000.00 - price;
@@ -394,7 +394,7 @@ public class ClientHelper {
             serverSocket = new DatagramSocket();
             InetAddress ip = InetAddress.getLocalHost();
 
-            requestMap= new Pair<String,Double>(customerID, userBudget);
+            requestMap= new Pair<String,Double>(userID, userBudget);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ObjectOutputStream os = new ObjectOutputStream(outputStream);
@@ -424,22 +424,22 @@ public class ClientHelper {
                         }
     }
 
-    public void updateRemoteCustomerPurchaseLog(String customerID, String itemID, StoreImplementation store) {
+    public void updateRemoteCustomerPurchaseLog(String userID, String itemID, StoreImplementation store) {
         if(store.branchID.substring(0,2).toLowerCase().contains("qc")) {
-            requestCustomerPurchaseUpdate(britishColombiaPurchasePort, customerID, itemID);
-            requestCustomerPurchaseUpdate(ontarioPurchasePort, customerID, itemID);
+            requestCustomerPurchaseUpdate(britishColombiaPurchasePort, userID, itemID);
+            requestCustomerPurchaseUpdate(ontarioPurchasePort, userID, itemID);
         }
         if(store.branchID.substring(0,2).toLowerCase().contains("on")) {
-            requestCustomerPurchaseUpdate(quebecPurchasePort, customerID, itemID);
-            requestCustomerPurchaseUpdate(britishColombiaPurchasePort, customerID, itemID);
+            requestCustomerPurchaseUpdate(quebecPurchasePort, userID, itemID);
+            requestCustomerPurchaseUpdate(britishColombiaPurchasePort, userID, itemID);
         }
         if(store.branchID.substring(0,2).toLowerCase().contains("bc")){
-            requestCustomerPurchaseUpdate(quebecPurchasePort, customerID, itemID);
-            requestCustomerPurchaseUpdate(ontarioPurchasePort, customerID, itemID);
+            requestCustomerPurchaseUpdate(quebecPurchasePort, userID, itemID);
+            requestCustomerPurchaseUpdate(ontarioPurchasePort, userID, itemID);
         }
     }
 
-    private void requestCustomerPurchaseUpdate(int customerPurchasePort, String customerID, String itemID) {
+    private void requestCustomerPurchaseUpdate(int customerPurchasePort, String userID, String itemID) {
         DatagramSocket serverSocket = null;
         Pair<String,String> requestMap= null;
 
@@ -447,7 +447,7 @@ public class ClientHelper {
             serverSocket = new DatagramSocket();
             InetAddress ip = InetAddress.getLocalHost();
 
-            requestMap= new Pair<String,String>(customerID, itemID);
+            requestMap= new Pair<String,String>(userID, itemID);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ObjectOutputStream os = new ObjectOutputStream(outputStream);

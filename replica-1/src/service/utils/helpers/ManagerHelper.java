@@ -52,7 +52,7 @@ public class ManagerHelper {
                     for(int i = 0; i < quantity ; i++)
                         item = ManagerUtils.removeSingularItem(itemID, inventory);
 
-                    replicaResponse.getResponse().put(managerID, item);
+                    replicaResponse.getResponse().put(managerID,  "Successful: Completely Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity);
                     replicaResponse.setSuccessResult(true);
                     replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
                     return replicaResponse;
@@ -60,7 +60,7 @@ public class ManagerHelper {
                 else {
                     System.out.println("\nAlert: Can not remove items greater then its availability\n");
 
-                    replicaResponse.getResponse().put(managerID, "\tTask UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity+"\n\tAlert: Can not remove items greater then its availability\n");
+                    replicaResponse.getResponse().put(managerID, "\tTask UNSUCCESSFUL: Remove Item from Inventory ManagerID: "+managerID+" ItemID: "+itemID + " Quantity: "+quantity+"\n");
                     replicaResponse.setSuccessResult(false);
                     replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
                     return replicaResponse;
