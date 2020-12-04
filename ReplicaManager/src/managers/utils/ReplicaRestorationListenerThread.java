@@ -60,13 +60,7 @@ public class ReplicaRestorationListenerThread extends Thread{
     }
 
     private void processRequest(MessageRequest messageRequest) {
-        System.out.println("Processing new request...");
-
-        try {
-             replicaManager.handleRequestMessage(messageRequest);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        replicaManager.handleRequestMessage(messageRequest);
     }
 
     private MessageRequest receiveIncomingMessageRequest() {

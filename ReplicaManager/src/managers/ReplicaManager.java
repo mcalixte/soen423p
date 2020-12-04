@@ -22,6 +22,7 @@ public class ReplicaManager implements IReplicaManager {
 	private static final int nonByzantineFailureTolerance = 1;
 	private Stack<MessageRequest> nonByzantineFailureStack;
 
+
     private List<HashMap<OperationCode, ClientRequest >> operationHistory;
 
 	public ReplicaManager(RegisteredReplica associatedReplica, EntityAddressBook entity) {
@@ -30,7 +31,6 @@ public class ReplicaManager implements IReplicaManager {
 
 		this.nonByzantineFailureStack = new Stack<>();
         nonByzantineFailureStack.setSize(nonByzantineFailureTolerance);
-
 	}
 
     @Override
@@ -87,6 +87,8 @@ public class ReplicaManager implements IReplicaManager {
                     OperationCode.RESTORE_DATA_WITH_ORDERED_REQUESTS_NOTIFICATION,
                     returnProperEntity(messageRequest.getRegisteredReplica()),
                     messageRequest.getOperationHistory());
+
+            setOperationHistory(messageRequest.getOperationHistory());
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);
             socketWrapper.send(message, replicaInEntityForm);
@@ -104,6 +106,8 @@ public class ReplicaManager implements IReplicaManager {
                     OperationCode.RESTART_ORDER_NOTIFICATION,
                     returnProperEntity(messageRequest.getRegisteredReplica()),
                     messageRequest.getOperationHistory());
+
+            setOperationHistory(messageRequest.getOperationHistory());
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);
             socketWrapper.send(message, replicaInEntityForm);
@@ -124,5 +128,13 @@ public class ReplicaManager implements IReplicaManager {
                 restoreReplica(messageRequest);
                 break;
         }
+    }
+
+    public List<HashMap<OperationCode, ClientRequest>> getOperationHistory() {
+        return operationHistory;
+    }
+
+    public void setOperationHistory(List<HashMap<OperationCode, ClientRequest>> operationHistory) {
+        this.operationHistory = operationHistory;
     }
 }

@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e687ecb-cf90-4a0d-ab4d-6074f4e41857" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/client.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../client/client.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/ReplicaManager.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/src/managers/ReplicaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/src/managers/ReplicaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReplicaManager/src/managers/utils/ReplicaRestorationListenerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ReplicaManager/src/managers/utils/ReplicaRestorationListenerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../commonUtils/src/networkEntities/EntityAddressBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/replica-1.iws" beforeDir="false" afterPath="$PROJECT_DIR$/replica-1.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-2/replica-2.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-2/replica-2.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../replica-3/replica-3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../replica-3/replica-3.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sequencer/sequencer.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../sequencer/sequencer.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/remote/ReplicaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/remote/ReplicaServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +52,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -163,7 +166,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../commonUtils/src/infraCommunication/RequestListenerThread.java</url>
-          <line>62</line>
+          <line>71</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
