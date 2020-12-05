@@ -55,10 +55,10 @@ public class ReplicaErrorTracker {
     public void findPossibleErroneousReplica(List<ReplicaResponse> replicaResponses) {
         if (replicaResponses.size() == 3) {
             List<String> responses = new ArrayList<>();
-            for (ReplicaResponse response : replicaResponses) {
-                for (Map.Entry<String, String> entry : response.getResponse().entrySet()) {
-                    responses.add(entry.getValue());
-                }
+            for(ReplicaResponse replicaResonse : replicaResponses) {
+                System.out.println(replicaResonse.toString());
+                for(Map.Entry<String, String> stringResponse : replicaResonse.getResponse().entrySet())
+                     responses.add(stringResponse.getValue());
             }
 
             if (!responses.get(0).equalsIgnoreCase(responses.get(1))) {

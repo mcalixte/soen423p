@@ -72,13 +72,13 @@ public class FrontEndHelper {
         String userPrefix = customerID.substring(0, 2);
         ClientRequest request = null;
         if (userPrefix.equalsIgnoreCase("qc")) {
-            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.QUEBEC, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.QUEBEC, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("bc")) {
-            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.BRITISHCOLUMBIA, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("on")) {
-            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.ONTARIO, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.PURCHASE_ITEM, Location.ONTARIO,UserType.CUSTOMER);
         }
 
         request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
@@ -92,13 +92,13 @@ public class FrontEndHelper {
         String userPrefix = customerID.substring(0, 2);
         ClientRequest request = null;
         if (userPrefix.equalsIgnoreCase("qc")) {
-            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.QUEBEC, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.QUEBEC, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("bc")) {
-            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.BRITISHCOLUMBIA, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("on")) {
-            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.ONTARIO, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.RETURN_ITEM, Location.ONTARIO, UserType.CUSTOMER);
         }
 
         request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
@@ -112,13 +112,13 @@ public class FrontEndHelper {
         String userPrefix = customerID.substring(0, 2);
         ClientRequest request = null;
         if (userPrefix.equalsIgnoreCase("qc")) {
-            request = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.FIND_ITEM, Location.QUEBEC, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("bc")) {
-            request = new ClientRequest(OperationCode.FIND_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.FIND_ITEM, Location.BRITISHCOLUMBIA, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("on")) {
-            request = new ClientRequest(OperationCode.FIND_ITEM, Location.ONTARIO, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.FIND_ITEM, Location.ONTARIO,UserType.CUSTOMER);
         }
 
         request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
@@ -130,13 +130,13 @@ public class FrontEndHelper {
         String userPrefix = customerID.substring(0, 2);
         ClientRequest request = null;
         if (userPrefix.equalsIgnoreCase("qc")) {
-            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.QUEBEC, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.QUEBEC, UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("bc")) {
-            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.BRITISHCOLUMBIA, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.BRITISHCOLUMBIA,UserType.CUSTOMER);
         }
         if (userPrefix.equalsIgnoreCase("on")) {
-            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.ONTARIO, UserType.MANAGER);
+            request = new ClientRequest(OperationCode.EXCHANGE_ITEM, Location.ONTARIO,UserType.CUSTOMER);
         }
 
         request.addRequestDataEntry(ParameterType.CLIENTID, customerID);
