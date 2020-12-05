@@ -172,11 +172,13 @@ public class Client{
                     dateString = scanner.nextLine();
                 }
                 response = frontend.createPurchaseItems(userID,itemID,dateString);
+                System.out.println(response);
                 break;
             case "find":
                 System.out.println("Enter the required item name : ");
                 itemName = scanner.nextLine();
                 response = frontend.createFindItem(userID,itemName);
+                System.out.println(response);
                 break;
             case "return":
                 System.out.println("Enter the required item ID : ");
@@ -189,6 +191,7 @@ public class Client{
                     dateString = scanner.nextLine();
                 }
                 response = frontend.createReturnItems(userID,itemID,dateString);
+                System.out.println(response);
                 break;
             case "exchange":
                 System.out.println("Enter the old item ID : ");
@@ -202,9 +205,10 @@ public class Client{
                     System.out.println("Enter the required date string, format \'dd/mm/yyyy\' hh:mm:ss: ");
                     dateString = scanner.nextLine();
                 }
-                response = frontend.createExchangeItem(userID,oldItemID,newItemID,dateString);
+                response = frontend.createExchangeItem(userID,newItemID,oldItemID,dateString);
+                System.out.println(response);
         }
-        System.out.println(response);
+
     }
 
     private static void handleManagerRequest(String command, Scanner scanner, IFrontend frontend) {
@@ -224,6 +228,7 @@ public class Client{
                 System.out.println("Enter the required price : ");
                 price = scanner.nextDouble();
                 response = frontend.createAddItem(userID, itemID, itemName, quantity, price);
+                System.out.println(response);
                 break;
             case "remove":
                 System.out.println("Enter the required itemID : ");
@@ -231,16 +236,18 @@ public class Client{
                 System.out.println("Enter the required quantity : ");
                 quantity = scanner.nextInt();
                 response = frontend.createRemoveItem(userID, itemID, quantity);
+                System.out.println(response);
                 break;
             case "list":
                 response = frontend.createListItems(userID);
+                System.out.println(response);
                 break;
         }
-        System.out.println(response);
+
     }
 
     private static boolean isDateFormatValid(String dateString) { // dd/mm/yyyy
-        String strDateRegEx = "([012][0-9]|[3][01])\\/(0[1-9]|1[012])\\/\\d{4} ([01][0-9]|2[0123]):([0-5][0-9]):([0-5][0-9])";
+        String strDateRegEx = "([012][0-9]|[3][01])\\/(0[1-9]|1[012])\\/\\d{4}";
         return dateString.matches(strDateRegEx);
     }
 }

@@ -38,7 +38,7 @@ public class ClientHelper {
             if (customerHasForeignItem(customerID, itemID, store)) {
                 replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Foreign Customer has a foreign item in their possession, can not purchase another. " + customerID + ", " + itemID + ", " + dateOfPurchase);
                 replicaResponse.setSuccessResult(false);
-                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                 return replicaResponse;
             }
 
@@ -48,7 +48,7 @@ public class ClientHelper {
             if (!ClientUtils.customerHasRequiredFunds(customerID, price, store.getCustomerBudgetLog())) {
                 replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer does not have the funds for this item,"+customerID + "," + itemID + "," + dateOfPurchase);
                 replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
-                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                 return replicaResponse;
             }
         }
@@ -94,7 +94,7 @@ public class ClientHelper {
 
             replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer purchased Item "+customerID + "," + itemID + "," + dateOfPurchase );
             replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
-            replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+            replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
             return replicaResponse;
         } else {
             if(itemID.contains(this.provinceID.toLowerCase())) {
@@ -102,7 +102,7 @@ public class ClientHelper {
 
                 replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: However customer added to the waitlist for this item. "+customerID + "," + itemID + "," + dateOfPurchase);
                 replicaResponse.setSuccessResult(isItemSuccessfullyPurchased);
-                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                 return replicaResponse;
             }
             else{
@@ -177,13 +177,13 @@ public class ClientHelper {
                 new HashSet<>(allFoundItems));
 
         for (Item item : allFoundItemsWithoutDuplicates)
-            foundItems.append("\t" + item.toString() + "\n");
+            foundItems.append("\t" + item.toString()+ " "+ findAmountOfItems(item, allFoundItems) + "\n" );
 
 
         //Build out the ReplicaResponse
         ReplicaResponse replicaResponse = new ReplicaResponse();
         replicaResponse.setSuccessResult(true);
-        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
         replicaResponse.getResponse().put(customerID, foundItems.toString());
 //        if (allFoundItems != null)
 //            if (allFoundItems.size() == 0)
@@ -196,6 +196,16 @@ public class ClientHelper {
 
         return replicaResponse;
     }
+
+    private int findAmountOfItems(Item item, List<Item> allFoundItems) {
+        int amount = 0;
+        for(Item itemType : allFoundItems)
+            if(itemType.getItemID().equalsIgnoreCase(item.getItemID()))
+                amount++;
+
+        return amount;
+    }
+
 
     public synchronized ReplicaResponse returnItem(String customerID, String itemID, String dateOfReturn, StoreImpl store) {
         Date dateOfReturnDate = null;
@@ -245,7 +255,7 @@ public class ClientHelper {
 
                         replicaResponse.getResponse().put(customerID,"Task SUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n");
                         replicaResponse.setSuccessResult(true);
-                        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                         return replicaResponse;
                     } else {
                         System.out.println("Alert: Customer has purchased this item in the past, but item purchase date exceeds 30days");
@@ -255,7 +265,7 @@ public class ClientHelper {
 
                         replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\nAlert: Customer has purchased this item in the past, but item purchase date exceeds 30days");
                         replicaResponse.setSuccessResult(false);
-                        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                        replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                         return replicaResponse;
                     }
                 } else {
@@ -263,14 +273,14 @@ public class ClientHelper {
 
                     replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item");
                     replicaResponse.setSuccessResult(false);
-                    replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                    replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                     return replicaResponse;
                 }
             else {
                 System.out.println("Alert: Customer has no record of past purchases");
                 replicaResponse.getResponse().put(customerID,"Task UNSUCCESSFUL: Customer "+ customerID+ " returned Item" + itemID+" on "+ dateOfReturn+"\n"+"Alert: Customer has past purchases, but NOT of this item");
                 replicaResponse.setSuccessResult(false);
-                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+                replicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
                 return replicaResponse;
             }
         else {

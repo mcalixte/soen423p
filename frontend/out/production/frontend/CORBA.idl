@@ -1,6 +1,6 @@
 module CORBA {
 
-    interface Frontend {
+    interface IFrontend {
 
         void softwareFailure(in string userID);
 

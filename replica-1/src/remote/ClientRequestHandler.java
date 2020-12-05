@@ -100,7 +100,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
                 replicaResponse =  returnItem(store,
                         (String) methodParameters.get(ParameterType.CLIENTID),
                         (String) methodParameters.get(ParameterType.ITEMID),
-                        (String) methodParameters.get(ParameterType.DATEOFPURCHASE));
+                        (String) methodParameters.get(ParameterType.DATEOFRETURN));
                 break;
             case EXCHANGE_ITEM:
                 replicaResponse =  exchange(store,

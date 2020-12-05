@@ -1,19 +1,18 @@
 package remote;
 
-import Components.store.StoreInterface;
 import infraCommunication.IClientRequestHandler;
 import replica.ClientRequest;
 import replica.ReplicaResponse;
 import replica.enums.ParameterType;
 import replica.interfaces.IClient;
+import service.interfaces.StoreInterface;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.URL;
-import java.rmi.RemoteException;
 import java.util.HashMap;
 
-public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
+public class ClientRequestHandler implements IClientRequestHandler, IClient {
     private static StoreInterface quebecStore;
     private static StoreInterface britishColumbiaStore;
     private static StoreInterface ontarioStore;
@@ -25,7 +24,6 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
     @Override
     public ReplicaResponse handleRequestMessage(ClientRequest clientRequest) {
         ReplicaResponse replicaResponse = new ReplicaResponse();
-        try {
         switch (clientRequest.getLocation()) {
             case QUEBEC:
                 replicaResponse = handleUserAction(clientRequest, quebecStore);
@@ -36,14 +34,12 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
             case BRITISHCOLUMBIA:
                 replicaResponse = handleUserAction(clientRequest, britishColumbiaStore);
                 break;
-        }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+
         }
         return replicaResponse;
     }
 
-    private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) throws RemoteException {
+    private ReplicaResponse handleUserAction(ClientRequest clientRequest, StoreInterface store) {
         ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getUserType()) {
             case CUSTOMER:
@@ -57,7 +53,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
         return replicaResponse;
     }
 
-    private ReplicaResponse handleManagerMethodInvocation(ClientRequest clientRequest, StoreInterface store) throws RemoteException {
+    private ReplicaResponse handleManagerMethodInvocation(ClientRequest clientRequest, StoreInterface store) {
         HashMap<ParameterType, Object> methodParameters = clientRequest.getMethodParameters();
         ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getMethod()) {
@@ -85,7 +81,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
         return replicaResponse;
     }
 
-    private ReplicaResponse handleCumstomerMethodInvocation(ClientRequest clientRequest, StoreInterface store) throws RemoteException {
+    private ReplicaResponse handleCumstomerMethodInvocation(ClientRequest clientRequest, StoreInterface store) {
         HashMap<ParameterType, Object> methodParameters = clientRequest.getMethodParameters();
         ReplicaResponse replicaResponse = new ReplicaResponse();
         switch (clientRequest.getMethod()) {
@@ -104,7 +100,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
                 replicaResponse =  returnItem(store,
                         (String) methodParameters.get(ParameterType.CLIENTID),
                         (String) methodParameters.get(ParameterType.ITEMID),
-                        (String) methodParameters.get(ParameterType.DATEOFPURCHASE));
+                        (String) methodParameters.get(ParameterType.DATEOFRETURN));
                 break;
             case EXCHANGE_ITEM:
                 replicaResponse =  exchange(store,
@@ -120,18 +116,18 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
 
     public void instantiateStoreServers() {
         try {
-            URL quebecURL = new URL("http://localhost:8002/quebecStore?wsdl");
-            QName quebecQName = new QName("http://store.Components/", "StoreImplementationService");
+            URL quebecURL = new URL("http://localhost:9000/quebecStore?wsdl");
+            QName quebecQName = new QName("http://service/", "StoreImplService");
             Service quebecService = Service.create(quebecURL, quebecQName);
             quebecStore = quebecService.getPort(StoreInterface.class);
 
-            URL ontarioURL = new URL("http://localhost:8001/ontarioStore?wsdl");
-            QName ontarioQName = new QName("http://store.Components/", "StoreImplementationService");
+            URL ontarioURL = new URL("http://localhost:9001/ontarioStore?wsdl");
+            QName ontarioQName = new QName("http://service/", "StoreImplService");
             Service ontarioService = Service.create(ontarioURL, ontarioQName);
             ontarioStore = ontarioService.getPort(StoreInterface.class);
 
-            URL britishColumbiaURL = new URL("http://localhost:8000/britishColumbiaStore?wsdl");
-            QName britishColumbiaQName = new QName("http://store.Components/", "StoreImplementationService");
+            URL britishColumbiaURL = new URL("http://localhost:9002/britishColumbiaStore?wsdl");
+            QName britishColumbiaQName = new QName("http://service/", "StoreImplService");
             Service britishColumbiaService = Service.create(britishColumbiaURL, britishColumbiaQName);
             britishColumbiaStore = britishColumbiaService.getPort(StoreInterface.class);
         } catch (Exception e) {
@@ -141,13 +137,8 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
     }
 
     @Override
-    public ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price){
-        try {
-            return store.addItem(managerID.toLowerCase(), itemID.toLowerCase(), itemName.toLowerCase(), quantity, price);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public ReplicaResponse addItem(StoreInterface store, String managerID, String itemID, String itemName, int quantity, double price) {
+        return store.addItem(managerID.toLowerCase(), itemID.toLowerCase(), itemName.toLowerCase(), quantity, price);
     }
 
     @Override
@@ -157,60 +148,37 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
 
     @Override
     public ReplicaResponse listItemAvailability(StoreInterface store, String managerID) {
-        try {
-            return store.listItemAvailability(managerID.toLowerCase());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return store.listItemAvailability(managerID.toLowerCase());
     }
 
     @Override
     public ReplicaResponse purchaseItem(StoreInterface store, String customerID, String itemID, String dateOfPurchase) {
-        try {
-            return store.purchaseItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return store.purchaseItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
     }
 
     @Override
-    public ReplicaResponse findItem(StoreInterface store, String customerID, String itemName){
-        try {
-            return store.findItem(customerID.toLowerCase(), itemName.toLowerCase());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public ReplicaResponse findItem(StoreInterface store, String customerID, String itemName) {
+        return store.findItem(customerID.toLowerCase(), itemName.toLowerCase());
     }
 
     @Override
-    public ReplicaResponse returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn){
+    public ReplicaResponse returnItem(StoreInterface store, String customerID, String itemID, String dateOfReturn) {
         ReplicaResponse returnResponse = new ReplicaResponse();
-        try {
         returnResponse = store.returnItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfReturn);
 
         String provinceOfItem = itemID.substring(0, 2);
         if (returnResponse.getResponse().get(customerID.toLowerCase()).contains("Alert: Item does not belong to this store...")) {
-
-                switch (provinceOfItem.toLowerCase()) {
-                    case "qc":
-
-                        returnResponse = quebecStore.returnItem(customerID, itemID, dateOfReturn);
-                        break;
-                    case "on":
-                        returnResponse = ontarioStore.returnItem(customerID, itemID, dateOfReturn);
-                        break;
-                    case "bc":
-                        returnResponse = britishColumbiaStore.returnItem(customerID, itemID, dateOfReturn);
-                        break;
-                }
+            switch (provinceOfItem.toLowerCase()) {
+                case "qc":
+                    returnResponse = quebecStore.returnItem(customerID, itemID, dateOfReturn);
+                    break;
+                case "on":
+                    returnResponse = ontarioStore.returnItem(customerID, itemID, dateOfReturn);
+                    break;
+                case "bc":
+                    returnResponse = britishColumbiaStore.returnItem(customerID, itemID, dateOfReturn);
+                    break;
             }
-
-        }
-        catch (RemoteException e) {
-            e.printStackTrace();
         }
         return returnResponse;
     }
@@ -221,4 +189,3 @@ public class ClientRequestHandler implements IClientRequestHandler, IClientS3 {
     }
 
 }
-

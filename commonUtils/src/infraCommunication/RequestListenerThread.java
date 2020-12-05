@@ -1,14 +1,15 @@
 package infraCommunication;
 
 import networkEntities.EntityAddressBook;
-import networkEntities.RegisteredReplica;
 import replica.ClientRequest;
 import replica.ReplicaResponse;
 
-import java.io.*;
-import java.net.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.MulticastSocket;
-import java.util.Arrays;
 
 public class RequestListenerThread extends Thread {
     private EntityAddressBook replica;
@@ -33,14 +34,14 @@ public class RequestListenerThread extends Thread {
         createSockets();
         while (true) {
             ClientRequest clientRequest = receiveIncomingClientRequest();
-            ClientRequest replay = receiveIncomingReplayRequest();
-
+            //ClientRequest replay = receiveIncomingReplayRequest();
+           // System.out.println(clientRequest.toString() +"Replay: "+replay.toString());
             ReplicaResponse replicaResponse = null;
             if(clientRequest != null)
                 replicaResponse =  processRequest(clientRequest);
 
-            if(replay != null)
-                processRequest(replay);
+//            if(replay != null)
+//                processRequest(replay);
 
             try {
                 System.out.println("Replying... " + replicaResponse);
@@ -60,11 +61,15 @@ public class RequestListenerThread extends Thread {
     private void createSockets() {
         try {
             datagramSocket = new DatagramSocket();
-            replaySocket = new DatagramSocket(replica.getPort());
+            System.out.println(replica.getPort()+" "+replica.getAddress());
+            replaySocket = new DatagramSocket(replica.getPort(), replica.getAddress());
+
             multicastReceiverSocket = new MulticastSocket(sourceNetworkEntity.getPort());
             multicastReceiverSocket.joinGroup(sourceNetworkEntity.getAddress());
         } catch (IOException ex) {
             System.out.println("Failed to create socket due to: " + ex.getMessage());
+            ex.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -85,7 +90,7 @@ public class RequestListenerThread extends Thread {
         try {
             ClientRequest clientRequest;
             multicastReceiverSocket.receive(incomingPacket);
-
+            System.out.println("MKC1 Receiving incoming clientRequest");
 
             byte[] data = incomingPacket.getData();
             ByteArrayInputStream in = new ByteArrayInputStream(data);
@@ -93,10 +98,10 @@ public class RequestListenerThread extends Thread {
             ObjectInputStream is = new ObjectInputStream(in);
             clientRequest = (ClientRequest) is.readObject();
             is.close();
+            System.out.println("MKC2: HERE");
             return clientRequest;
 
         } catch (Exception e) {
-//            System.out.println("PurchaseItem Exception: " + e);
              e.printStackTrace();
         }
         return null;

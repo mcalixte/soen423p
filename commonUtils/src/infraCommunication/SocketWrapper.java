@@ -39,15 +39,21 @@ public class SocketWrapper {
         senderSocket.send(sendPacket);
     }
 
-    public ObjectInputStream receive(int timeout) throws IOException {
+    public ObjectInputStream receive(int timeout) {
         byte[] incomingData = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(incomingData, incomingData.length);
+        try {
+            receiverSocket.setSoTimeout(10000);
+            receiverSocket.receive(receivePacket);
+            ByteArrayInputStream in = new ByteArrayInputStream(incomingData);
+            ObjectInputStream is = new ObjectInputStream(in);
 
-        receiverSocket.receive(receivePacket);
+            return is;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
 
-        ByteArrayInputStream in = new ByteArrayInputStream(incomingData);
-        ObjectInputStream is = new ObjectInputStream(in);
 
-        return is;
     }
 }

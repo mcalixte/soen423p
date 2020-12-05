@@ -10,10 +10,7 @@ import timer.SocketTimer;
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Frontend extends IFrontendPOA {
 
@@ -168,7 +165,7 @@ public class Frontend extends IFrontendPOA {
 //        }
         try {
             while (index < 3) {
-                ObjectInputStream is = replicaSocket.receive(responseTimer);
+                ObjectInputStream is = replicaSocket.receive(8000);
                 ReplicaResponse replicaResponse = (ReplicaResponse) is.readObject();
                 System.out.print("Collecting Message " + replicaResponse.toString());
                 receivedResponses.add(replicaResponse);
@@ -180,6 +177,7 @@ public class Frontend extends IFrontendPOA {
 //            responseTimer = responseTimeLimit.getTimeout();
 //        }
         } catch (Exception e) {
+            e.printStackTrace();
             int seqID = receivedResponses.get(0).getSequenceNumber();
             System.out.print("Collecting Message " + receivedResponses.size());
             for (ReplicaResponse r : receivedResponses) {
@@ -194,12 +192,14 @@ public class Frontend extends IFrontendPOA {
 
         System.out.print("Collecting Message line 180" + receivedResponses.size());
         int seqID = receivedResponses.get(0).getSequenceNumber();
-        for (ReplicaResponse r : receivedResponses) {
-            if (seqID != r.getSequenceNumber()) {
-                System.out.print("Invalid sequence number received");
-                receivedResponses.remove(r);
-            }
-        }
+
+//        for (Iterator<ReplicaResponse> it = receivedResponses.iterator(); it.hasNext(); ) {
+//            ReplicaResponse r = it. next();
+//            if (seqID != r.getSequenceNumber()) {
+//                System.out.print("Invalid sequence number received");
+//                receivedResponses.remove(r);
+//            }
+//        }
 
         return receivedResponses;
     }

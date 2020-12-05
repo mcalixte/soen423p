@@ -46,22 +46,21 @@ public class StoreImpl implements StoreInterface {
     ////////////////////////////////////
     ///       UDP Related Ports      ///
     ////////////////////////////////////
-    private static int quebecPurchaseItemUDPPort = 40000;
-    private static int quebecListItemUDPPort = 40001;
-    private static int quebecCustomerBudgetPort = 40002;
-    private static int quebecReturnUDPPort = 40003;
+    private static int quebecPurchaseItemUDPPort = 40999;
+    private static int quebecListItemUDPPort = 40998;
+    private static int quebecCustomerBudgetPort = 40997;
+    private static int quebecReturnUDPPort = 40996;
 
-    private static int britishColumbiaPurchaseItemUDPPort = 40004;
-    private static int britishColumbiaListItemUDPPort = 40005;
-    private static int britishColumbiaCustomerBudgetPort = 40006;
-    private static int britishColumbiaReturnUDPPort = 40007;
+    private static int britishColumbiaPurchaseItemUDPPort = 50004;
+    private static int britishColumbiaListItemUDPPort = 50005;
+    private static int britishColumbiaCustomerBudgetPort = 50006;
+    private static int britishColumbiaReturnUDPPort = 50007;
 
-    private static int ontarioPurchaseItemUDPPort = 40008;
-    private static int ontarioListItemUDPPort = 40009;
-    private static int ontarioCustomerBudgetPort = 40010;
-    private static int ontarioReturnUDPPort = 40011;
+    private static int ontarioPurchaseItemUDPPort = 50008;
+    private static int ontarioListItemUDPPort = 50009;
+    private static int ontarioCustomerBudgetPort = 50010;
+    private static int ontarioReturnUDPPort = 50011;
 
-    
 
     public StoreImpl(String provinceID) {
         this.provinceID = provinceID;
@@ -141,7 +140,7 @@ public class StoreImpl implements StoreInterface {
 
         ReplicaResponse finalReplicaResponse = new ReplicaResponse();
         finalReplicaResponse.setSuccessResult(isExchangeSuccessful);
-        finalReplicaResponse.setReplicaID(RegisteredReplica.ReplicaS1);
+        finalReplicaResponse.setReplicaID(RegisteredReplica.ReplicaS3);
         finalReplicaResponse.getResponse().put(customerID, exchangeResult.toString());
 
         return finalReplicaResponse;

@@ -126,7 +126,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
                 replicaResponse =  returnItem(store,
                         (String) methodParameters.get(ParameterType.CLIENTID),
                         (String) methodParameters.get(ParameterType.ITEMID),
-                        (String) methodParameters.get(ParameterType.DATEOFPURCHASE));
+                        (String) methodParameters.get(ParameterType.DATEOFRETURN));
                 break;
             case EXCHANGE_ITEM:
                 replicaResponse = exchange(store,
@@ -167,7 +167,7 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
     @Override
     public ReplicaResponse purchaseItem(StoreInterface store, String customerID, String itemID, String dateOfPurchase) {
         try {
-            return store.runRemotePurchase(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
+            return store.purchaseItem(customerID.toLowerCase(), itemID.toLowerCase(), dateOfPurchase);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -216,7 +216,9 @@ public class ClientRequestHandler implements IClientRequestHandler, IClient {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-
+        }
+        catch(Exception e) {
+            System.out.println("Not able to do the exchange");
         }
 
         HashMap<String, String> strResponse = new HashMap<>();

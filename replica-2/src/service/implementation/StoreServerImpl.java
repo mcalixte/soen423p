@@ -187,7 +187,7 @@ public class StoreServerImpl implements StoreInterface {
         if(isManager(managerID).equals("true")){
             if(inventory.isEmpty()){
                 returnResponse.setSuccessResult(true);
-                response.put(managerID,"The store inventory is currently empty! ");
+                response.put(managerID,"This store contains the following items: \r\n");
                 returnResponse.setResponse(response);
                 return(returnResponse);
             }
@@ -257,6 +257,8 @@ public class StoreServerImpl implements StoreInterface {
             return(returnResponse);
         }
         else {
+            if(isSameStore(itemID))
+                addToWaitlist(customerID, itemID, dateOfPurchase);
             returnResponse.setSuccessResult(false);
             response.put(customerID,"Task UNSUCCESSFUL: An item of that name does not exist in this store or has been removed");
             returnResponse.setResponse(response);

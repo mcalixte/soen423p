@@ -13,7 +13,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.HashMap;
 
-public class ReplicaServer3 {
+public class ReplicaServer1 {
 
     public static void main(String[] args) {
         System.out.println("Replica Server Started...");
@@ -22,7 +22,7 @@ public class ReplicaServer3 {
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
         IClientRequestHandler clientRequestHandler = new ClientRequestHandler();
-        RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS, EntityAddressBook.REPLICA3);
+        RequestListenerThread requestListenerThread = new RequestListenerThread(receivePacket, clientRequestHandler, EntityAddressBook.FRONTEND, EntityAddressBook.ALLREPLICAS, EntityAddressBook.REPLICA1);
         requestListenerThread.run();
 
         sendRestorationRequestAndRestore();
@@ -30,10 +30,10 @@ public class ReplicaServer3 {
 
     private static void sendRestorationRequestAndRestore() {
         try {
-            DatagramSocket datagramSocket = new DatagramSocket(EntityAddressBook.REPLICA3.getPort());
+            DatagramSocket datagramSocket = new DatagramSocket(EntityAddressBook.REPLICA1.getPort());
 
             MessageRequest messageRequest = new MessageRequest(OperationCode.RESTORE_DATA_WITH_ORDERED_REQUESTS_NOTIFICATION);
-            DatagramPacket senderPacket = messageRequest.getPacket(EntityAddressBook.MANAGER3);
+            DatagramPacket senderPacket = messageRequest.getPacket(EntityAddressBook.MANAGER1);
             datagramSocket.send(senderPacket);
 
             byte[] data = new byte[1024];
