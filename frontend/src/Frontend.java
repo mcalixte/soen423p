@@ -40,7 +40,7 @@ public class Frontend extends IFrontendPOA {
     public Frontend() {
         try {
             this.socket = new SocketWrapper(EntityAddressBook.FRONTEND);
-            this.socketMulticast = new MulticastSocket(EntityAddressBook.FRONTEND.getPort());
+            this.socketMulticast = new MulticastSocket(EntityAddressBook.MANAGER.getPort());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,18 +162,23 @@ public class Frontend extends IFrontendPOA {
      */
     public List<ReplicaResponse> receiveReplicaResponse(SocketWrapper replicaSocket) {
         List<ReplicaResponse> receivedResponses = new ArrayList<>();
-        int index = 3;
-        if (!timerState) {
-            responseTimeLimit.start();
-        }
+        int index = 0;
+//        if (!timerState) {
+//            responseTimeLimit.start();
+//        }
         try {
-            while (index > 0) {
+            while (index < 3) {
                 ObjectInputStream is = replicaSocket.receive(responseTimer);
                 ReplicaResponse replicaResponse = (ReplicaResponse) is.readObject();
                 System.out.print("Collecting Message " + replicaResponse.toString());
                 receivedResponses.add(replicaResponse);
-                index--;
+                index++;
             }
+            //        if (!timerState) {
+//            responseTimeLimit.stop();
+//            timerState = true;
+//            responseTimer = responseTimeLimit.getTimeout();
+//        }
         } catch (Exception e) {
             int seqID = receivedResponses.get(0).getSequenceNumber();
             System.out.print("Collecting Message " + receivedResponses.size());
@@ -183,11 +188,7 @@ public class Frontend extends IFrontendPOA {
                     System.out.print("Invalid sequence number received");
                 }
             }
-            if (!timerState) {
-                responseTimeLimit.stop();
-                timerState = true;
-                responseTimer = responseTimeLimit.getTimeout();
-            }
+
             return receivedResponses; //TODO Needs to be tested
         }
 
@@ -199,11 +200,7 @@ public class Frontend extends IFrontendPOA {
                 receivedResponses.remove(r);
             }
         }
-        if (!timerState) {
-            responseTimeLimit.stop();
-            timerState = true;
-            responseTimer = responseTimeLimit.getTimeout();
-        }
+
         return receivedResponses;
     }
 

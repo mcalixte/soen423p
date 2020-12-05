@@ -1,4 +1,6 @@
 package infraCommunication;
 
-public interface IGenericMessage {
+import java.io.Serializable;
+
+public interface IGenericMessage extends Serializable {
 }
