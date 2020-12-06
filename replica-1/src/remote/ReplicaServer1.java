@@ -7,10 +7,10 @@ import infraCommunication.RequestListenerThread;
 import networkEntities.EntityAddressBook;
 import replica.ClientRequest;
 
-import java.io.ByteArrayInputStream;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.MulticastSocket;
 import java.util.HashMap;
 
 public class ReplicaServer1 {
@@ -43,7 +43,7 @@ public class ReplicaServer1 {
             ByteArrayInputStream in = new ByteArrayInputStream(data);
             ObjectInputStream is = new ObjectInputStream(in);
             messageRequest = (MessageRequest) is.readObject();
-
+            System.out.println("Message Request Received R1: "+ messageRequest.toString());
             replayAllClientRequests(messageRequest);
             is.close();
         } catch (Exception e) {
@@ -53,9 +53,25 @@ public class ReplicaServer1 {
     }
 
     private static void replayAllClientRequests(MessageRequest messageRequest) {
-        for(HashMap<OperationCode, ClientRequest> operation: messageRequest.getOperationHistory()) {
-            ClientRequest clientRequest = operation.get(operation);
+        try {
+            MulticastSocket multicastSock = new MulticastSocket();
+            for(HashMap<OperationCode, ClientRequest> operation: messageRequest.getOperationHistory()) {
+                ClientRequest clientRequest = operation.get(operation);
 
+            }
+            
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            ObjectOutputStream os = new ObjectOutputStream(outputStream);
+            os.writeObject(messageRequest);
+            byte[] data = outputStream.toByteArray();
+            DatagramPacket sendPacket = new DatagramPacket(data, data.length, EntityAddressBook.ALLREPLICAS.getPort());
+            multicastSock.send(sendPacket);
+        } catch (IOException e) {
+           System.out.println(e.getMessage());
         }
+
+
+
+       
     }
 }

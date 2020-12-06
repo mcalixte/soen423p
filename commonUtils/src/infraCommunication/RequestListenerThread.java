@@ -34,14 +34,12 @@ public class RequestListenerThread extends Thread {
         createSockets();
         while (true) {
             ClientRequest clientRequest = receiveIncomingClientRequest();
-            //ClientRequest replay = receiveIncomingReplayRequest();
-           // System.out.println(clientRequest.toString() +"Replay: "+replay.toString());
+//            ReplayThread replayThread = new ReplayThread(replica, clientRequestHandler);
+//            replayThread.run();
+
             ReplicaResponse replicaResponse = null;
             if(clientRequest != null)
                 replicaResponse =  processRequest(clientRequest);
-
-//            if(replay != null)
-//                processRequest(replay);
 
             try {
                 System.out.println("Replying... " + replicaResponse);
@@ -54,8 +52,6 @@ public class RequestListenerThread extends Thread {
                 }
             }
         }
-
-
 
 
     private void createSockets() {
@@ -107,25 +103,6 @@ public class RequestListenerThread extends Thread {
         return null;
     }
 
-    private ClientRequest receiveIncomingReplayRequest() {
-        try {
-            ClientRequest clientRequest;
-            replaySocket.receive(incomingPacket);
 
-
-            byte[] data = incomingPacket.getData();
-            ByteArrayInputStream in = new ByteArrayInputStream(data);
-
-            ObjectInputStream is = new ObjectInputStream(in);
-            clientRequest = (ClientRequest) is.readObject();
-            is.close();
-            return clientRequest;
-
-        } catch (Exception e) {
-//            System.out.println("PurchaseItem Exception: " + e);
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 }

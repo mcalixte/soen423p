@@ -106,7 +106,7 @@ public class ReplicaManager implements IReplicaManager {
                     OperationCode.RESTART_ORDER_NOTIFICATION,
                     returnProperEntity(messageRequest.getRegisteredReplica()),
                     messageRequest.getOperationHistory());
-
+            
             setOperationHistory(messageRequest.getOperationHistory());
             // Set the Replica in message
             message.setRegisteredReplica(associatedReplica);

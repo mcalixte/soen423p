@@ -25,6 +25,8 @@ public class Frontend extends IFrontendPOA {
 
     private boolean timerState;
 
+    private HashMap<RegisteredReplica, Integer> consecutiveErrorTracker = new HashMap<>();
+
     private int responseTimer = 3000;
 
 
@@ -38,6 +40,9 @@ public class Frontend extends IFrontendPOA {
         try {
             this.socket = new SocketWrapper(EntityAddressBook.FRONTEND);
             this.socketMulticast = new MulticastSocket(EntityAddressBook.MANAGER.getPort());
+            this.consecutiveErrorTracker.put(RegisteredReplica.ReplicaS1, 0);
+            this.consecutiveErrorTracker.put(RegisteredReplica.ReplicaS2, 0);
+            this.consecutiveErrorTracker.put(RegisteredReplica.ReplicaS3, 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -234,7 +239,18 @@ public class Frontend extends IFrontendPOA {
             System.out.print("MKC7");
             return new ReplicaResponse(RegisteredReplica.NONE, false, 0, stringResponses);
         } else if (erroneousReplicas.size() != 0) {
-            processesFailuresBadResponses(erroneousReplicas);
+            for(Map.Entry<RegisteredReplica,Integer> response: consecutiveErrorTracker.entrySet()) {
+                if (response.getKey() == erroneousReplicas.get(0))
+                {
+                    response.setValue(response.getValue()+1);
+                }
+            }
+            if(consecutiveErrorTracker.get(erroneousReplicas.get(0)) == 3) {
+                processesFailuresBadResponses(erroneousReplicas);
+                //consecutiveErrorTracker.replace(erroneousReplicas.get(0),0);
+                stringResponses.put("", "System needs to be restarted and restored as 3 errors has been produced by a replica, wait for acknowledgment of restart and restoration...");
+                return new ReplicaResponse(RegisteredReplica.NONE, false, 0, stringResponses);
+            }
             System.out.print("MKC8");
             return tracker.getValidReplicas().get(0);
         }

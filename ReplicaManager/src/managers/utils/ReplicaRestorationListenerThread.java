@@ -52,6 +52,7 @@ public class ReplicaRestorationListenerThread extends Thread{
     private void createSockets() {
         try {
             datagramSenderSocket = new DatagramSocket();
+//            datagramReceiverSocket = new DatagramSocket();
             serverReceiverSocket = new MulticastSocket(EntityAddressBook.MANAGER.getPort());
             serverReceiverSocket.joinGroup(EntityAddressBook.MANAGER.getAddress());
         } catch (IOException ex) {
@@ -73,6 +74,7 @@ public class ReplicaRestorationListenerThread extends Thread{
 
             ObjectInputStream is = new ObjectInputStream(in);
             messageRequest = (MessageRequest) is.readObject();
+            System.out.println(messageRequest.toString());
             is.close();
             return messageRequest;
 

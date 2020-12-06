@@ -17,7 +17,6 @@ public class Sequencer {
     public static void main(String[] args) {
         while(true) {
             ClientRequest request = awaitClientRequest();
-            //System.out.print(request);
             if(request != null) {
                 try {
                     InetAddress group = EntityAddressBook.ALLREPLICAS.getAddress();

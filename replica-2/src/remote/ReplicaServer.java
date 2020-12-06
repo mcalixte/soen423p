@@ -44,7 +44,7 @@ public class ReplicaServer {
             ByteArrayInputStream in = new ByteArrayInputStream(data);
             ObjectInputStream is = new ObjectInputStream(in);
             messageRequest = (MessageRequest) is.readObject();
-
+            System.out.println("Message Request Received R2: "+ messageRequest.toString());
             replayAllClientRequests(messageRequest);
             is.close();
         } catch (Exception e) {

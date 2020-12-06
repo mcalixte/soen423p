@@ -2,14 +2,14 @@ package service;
 
 import networkEntities.RegisteredReplica;
 import replica.ReplicaResponse;
-import service.entities.item.Item;
-import service.entities.threads.ListItemThread;
-import service.entities.threads.PurchaseItemThread;
-import service.entities.threads.ReturnItemThread;
-import service.entities.threads.UpdateCustomerBudgetLogThread;
+import service.utilities.entities.item.Item;
+import service.utilities.entities.threads.ListItemThread;
+import service.utilities.entities.threads.PurchaseItemThread;
+import service.utilities.entities.threads.ReturnItemThread;
+import service.utilities.entities.threads.UpdateCustomerBudgetLogThread;
 import service.interfaces.StoreInterface;
-import service.utils.helpers.ClientHelper;
-import service.utils.helpers.ManagerHelper;
+import service.utilities.helpers.ClientHelper;
+import service.utilities.helpers.ManagerHelper;
 
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
