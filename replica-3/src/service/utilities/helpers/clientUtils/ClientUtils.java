@@ -1,8 +1,8 @@
-package service.utils.helpers.clientUtils;
+package service.utilities.helpers.clientUtils;
 
 import replica.ReplicaResponse;
-import service.entities.item.Item;
-import service.utils.date.DateUtils;
+import service.utilities.entities.item.Item;
+import service.utilities.date.DateUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;

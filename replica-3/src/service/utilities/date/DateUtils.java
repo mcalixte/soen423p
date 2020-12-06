@@ -1,4 +1,4 @@
-package service.utils.date;
+package service.utilities.date;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

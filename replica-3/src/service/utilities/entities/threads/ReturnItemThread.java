@@ -1,4 +1,4 @@
-package service.entities.threads;
+package service.utilities.entities.threads;
 
 import replica.ReplicaResponse;
 import service.StoreImpl;

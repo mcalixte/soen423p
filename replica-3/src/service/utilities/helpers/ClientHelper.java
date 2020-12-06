@@ -1,12 +1,12 @@
-package service.utils.helpers;
+package service.utilities.helpers;
 
 import networkEntities.RegisteredReplica;
 import replica.ReplicaResponse;
 import service.StoreImpl;
-import service.entities.item.Item;
-import service.utils.date.DateUtils;
-import service.utils.helpers.clientUtils.ClientUtils;
-import service.utils.helpers.managerUtils.ManagerUtils;
+import service.utilities.entities.item.Item;
+import service.utilities.date.DateUtils;
+import service.utilities.helpers.clientUtils.ClientUtils;
+import service.utilities.helpers.managerUtils.ManagerUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;

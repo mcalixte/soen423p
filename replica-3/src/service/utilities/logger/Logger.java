@@ -1,10 +1,8 @@
-package service.utils.logger;
+package service.utilities.logger;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Logger {
     private static File file;

@@ -1,4 +1,4 @@
-package service.entities.item;
+package service.utilities.entities.item;
 
 import java.io.Serializable;
 

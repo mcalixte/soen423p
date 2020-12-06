@@ -1,4 +1,4 @@
-package service.entities.threads;
+package service.utilities.entities.threads;
 
 import replica.ReplicaResponse;
 import service.StoreImpl;
@@ -9,8 +9,6 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class PurchaseItemThread extends Thread {
     private DatagramSocket serverSocket;

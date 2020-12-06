@@ -1,10 +1,10 @@
-package service.utils.helpers;
+package service.utilities.helpers;
 
 import networkEntities.RegisteredReplica;
 import replica.ReplicaResponse;
 import service.StoreImpl;
-import service.entities.item.Item;
-import service.utils.helpers.managerUtils.ManagerUtils;
+import service.utilities.entities.item.Item;
+import service.utilities.helpers.managerUtils.ManagerUtils;
 
 import java.util.HashMap;
 import java.util.List;

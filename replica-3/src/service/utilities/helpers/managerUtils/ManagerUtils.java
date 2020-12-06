@@ -1,7 +1,7 @@
-package service.utils.helpers.managerUtils;
+package service.utilities.helpers.managerUtils;
 
 import service.StoreImpl;
-import service.entities.item.Item;
+import service.utilities.entities.item.Item;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package service.entities.threads;
+package service.utilities.entities.threads;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
